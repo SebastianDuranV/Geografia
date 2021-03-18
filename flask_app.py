@@ -52,7 +52,7 @@ translateNameSingle = dict(
 #Crear directorio
 def createDirectory(id,type,x=0):
     if x != 0 :
-        return 0 
+        return 0
     directory = os.path.join('./static/uploaders/' + type, str(id))
     try:
         os.makedirs(directory)
@@ -277,7 +277,7 @@ def login():
             return render_template('login.html', user = login_form)
         if login_form.password.data == user.password:
             session['idUser'] = user.id
-            return redirect(url_for('index')) 
+            return redirect(url_for('index'))
         else:
             flash("Email o contraseña no valida")
             return render_template('login.html', user = login_form)
@@ -324,10 +324,8 @@ def getPublicListBlogCategory(idcategory):
 
 @app.route('/contact_us')
 def contact_us():
-    return render_template('/Frontal/contact_us.html')  
+    return render_template('/Frontal/contact_us.html')
 
 @app.route('/single')
 def single():
     return render_template('/Frontal/single.html')
-
-
