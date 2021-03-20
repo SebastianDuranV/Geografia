@@ -7,7 +7,10 @@ app = Flask(__name__)
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:password@localhost/proyectogeografia'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://SebastianDuranVi:1996duranrugby@SebastianDuranVilches.mysql.pythonanywhere-services.com/SebastianDuranVi$default'
 
-#app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
+app.config['SQLALCHEMY_POOL_RECYCLE'] = 30
+app.config['SQLALCHEMY_POOL_TIMEOUT'] = 40
+
 
 db = SQLAlchemy(app)
 db.create_all()

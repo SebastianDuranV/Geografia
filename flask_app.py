@@ -1,10 +1,10 @@
 from flask import Flask, redirect, render_template, url_for, request, flash, make_response, session
-from consultor_sql import User, Category , db, Blog, News, Monitoring, Proyects, Maps
+from consultor_sql import User, Category , db, Blog, News, Monitoring, Proyects, Maps, app
 import forms
 import os
 from werkzeug.utils import secure_filename
 
-app = Flask(__name__)
+#app = Flask(__name__)
 app.secret_key = 'Mi_perro_se_llama_manjar'
 db.create_all()
 
