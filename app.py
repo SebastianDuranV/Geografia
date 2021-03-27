@@ -19,12 +19,12 @@ TipeClass = dict(
 )
 
 # Inicio
-@app.route('/Index')
+@app.route('/ModoEditor')
 def index():
     try:
         if session['idUser']:
-            user = User.query.filter_by(id=session['idUser'])
-            return render_template('index_user.html', isSuper = 0)
+            user = User.query.filter_by(id=session['idUser']).first_or_404()
+            return render_template('index_user.html',  isSuper = user.isSuperUser )
             #if user.isSuperUser:
             #    return render_template('index_user.html', isSuper = 1)
             #return render_template('index_user.html', isSuper = 0)
@@ -100,6 +100,7 @@ def createUser():
 @app.route('/createCategory', methods = ['POST','GET'] )
 def createCategory():
     comment_form = forms.FormCategory(request.form)
+    user = User.query.filter_by(id=session['idUser']).first_or_404()
     if request.method == 'POST' and comment_form.validate():
         name = comment_form.name.data
         cat = Category(name=name)
@@ -108,11 +109,13 @@ def createCategory():
         flash("Categoría para blog creado")
         return redirect(url_for('createCategory'))
     else:
-         return render_template('create_category.html', cat=comment_form)
+         return render_template('create_category.html', cat=comment_form,  isSuper = user.isSuperUser )
+
 
 @app.route('/createPost/<type>', methods = ['POST','GET'] )
 def createPost(type):
     comment_form = formsPostDic[type](request.form)
+    user = User.query.filter_by(id=session['idUser']).first_or_404()
     if request.method == 'POST' and comment_form.validate():
         title = comment_form.title.data
         subtitle = comment_form.subtitle.data
@@ -120,8 +123,9 @@ def createPost(type):
         body = request.form['Article']
         user = User.query.filter_by(id= session['idUser']).first_or_404()
         if type == "Blog":
-            category =  request.form.get('category')
-            post = TipeClass[type](title=title, subtitle=subtitle, body=body,category=category, user=user, image=image)
+            categoryId =  request.form.get('category')
+            category = Category.query.filter_by(id = categoryId).first_or_404()
+            post = TipeClass[type](title=title, subtitle=subtitle, body=body,category=category ,user=user, image=image)
         else:
             post = TipeClass[type](title=title, subtitle=subtitle, body=body, user=user, image=image)
         db.session.add(post)
@@ -134,8 +138,8 @@ def createPost(type):
     else:
         if type == "Blog":
             cat = Category.query.all()
-            return render_template('create_post.html', type=translateNameSingle[type], post=comment_form, typeEng=type, cat = cat)
-        return render_template('create_post.html', type=translateNameSingle[type], post=comment_form, typeEng=type)
+            return render_template('create_post.html', type=translateNameSingle[type], post=comment_form, typeEng=type, cat = cat,  isSuper = user.isSuperUser )
+        return render_template('create_post.html', type=translateNameSingle[type], post=comment_form, typeEng=type,  isSuper = user.isSuperUser )
 
 
 
@@ -190,24 +194,26 @@ def updatePerfil():
         user.password = request.form['password']
         db.session.commit()
         flash("Usuario fue actualizado")
-        return render_template('update_user.html' , user=user)
+        return render_template('update_user.html' , user=user, isSuper = user.isSuperUser )
     else:
-        return render_template('update_user.html' , user=user)
+        return render_template('update_user.html' , user=user, isSuper = user.isSuperUser )
 
 
 @app.route('/updateCategory/<idCat>', methods = ['POST','GET'] )
 def updateCategory(idCat):
+    user = User.query.filter_by(id=session['idUser']).first_or_404()
     cat = Category.query.filter_by(id=idCat).first_or_404()
     if request.method == 'POST':
         cat.name = request.form['name']
         db.session.commit()
         flash("Categoría fue actualizado")
-        return render_template('update_category.html', cat=cat, id=idCat)
+        return render_template('update_category.html', cat=cat, id=idCat, isSuper = user.isSuperUser )
     else:
-        return render_template('update_category.html', cat=cat, id=idCat)
+        return render_template('update_category.html', cat=cat, id=idCat, isSuper = user.isSuperUser )
 
 @app.route('/updatePost/<type>/<idPost>', methods = ['POST','GET'] )
 def updatePost(idPost,type):
+    user = User.query.filter_by(id=session['idUser']).first_or_404()
     post = TipeClass[type].query.filter_by(id=idPost).first_or_404()
     if request.method == 'POST':
         post.title = request.form['title']
@@ -218,22 +224,22 @@ def updatePost(idPost,type):
             post.category_id = request.form['idcategory']
         db.session.commit()
         flash("Actualizado")
-        return render_template('update_post.html', post=post, id=idPost, type=type)
+        return render_template('update_post.html', post=post, id=idPost, type=type, isSuper = user.isSuperUser )
     else:
-        return render_template('update_post.html', post=post, id=idPost, type=type)
+        return render_template('update_post.html', post=post, id=idPost, type=type, isSuper = user.isSuperUser )
 
 
 # Mostrar
 @app.route('/getList')
 def getList():
     getObject = request.args.get('type','<h1> No type declarated </h1>')
+    user = User.query.filter_by(id=session['idUser']).first_or_404()
     try:
-        user = User.query.filter_by(id=session['idUser'])
-        allObject = TipeClass[getObject].query.filter_by(user_id=session['idUser'])
-        #if user.isSuperUser == 0:
-        #    allObject = TipeClass[getObject].query.filter_by(user_id=session['idUser'])
-        #else:
-        #    allObject = TipeClass[getObject].query.all()
+        #allObject = TipeClass[getObject].query.filter_by(user_id=session['idUser'])
+        if user.isSuperUser == 0:
+            allObject = TipeClass[getObject].query.filter_by(user_id=session['idUser'])
+        else:
+            allObject = TipeClass[getObject].query.all()
     except:
         return '<h1> No found type </h1>'
 
@@ -243,7 +249,7 @@ def getList():
     #else:
     #    allObject = TipeClass[getObject].query.all()
 
-    return render_template('show_list_types.html', objects=allObject , type=getObject)
+    return render_template('show_list_types.html', objects=allObject , type=getObject, isSuper = user.isSuperUser )
 
 
 @app.route('/user/<username>')
@@ -258,9 +264,20 @@ def show_post(idpost,type):
     otherpost = TipeClass[type].query.order_by(TipeClass[type].pub_date).all()
 
     # hacer un sistema de previo y siguiente
-    for i in otherpost:
-        print(i.id)
-    return render_template('/Frontal/single.html', post=post)
+    for i in range(len(otherpost)):
+        if otherpost[i].id == post.id:
+            try:
+                prev = otherpost[i-1].id
+            except:
+                prev = 0
+            try:
+                later = otherpost[i+1].id
+            except:
+                later = 0
+    if type == 'Blog':
+        category = Category.query.all()
+        return render_template('/Frontal/single.html', post=post, prev = prev, later = later, type=type, category=category)
+    return render_template('/Frontal/single.html', post=post, prev = prev, later = later, type=type)
 
 
 
@@ -296,14 +313,14 @@ def logout():
 
 #### PAGINA NUEVA :::::::::
 @app.route('/')
+@app.route('/index')
 def indexx():
-    blogs = Blog.query.all()
-    news = News.query.all()
-    proyects = Proyects.query.all()
-    maps = Maps.query.all()
-    monitoring = Monitoring.query.all()
-    return render_template('/Frontal/index.html', blogs = blogs , news =news , proyects=proyects, monitoring= monitoring, maps = maps)
-
+    blogs = Blog.query.order_by(Blog.pub_date.desc()).limit(5).all()
+    news = News.query.order_by(News.pub_date.desc()).limit(5).all()
+    #proyects = Proyects.query.all()
+    #maps = Maps.query.all()
+    #monitoring = Monitoring.query.all()
+    return render_template('/Frontal/index.html', Blogs = blogs , news =news )
 
 @app.route('/<type>')
 def getPublicList(type):
@@ -318,9 +335,32 @@ def getPublicList(type):
 
 @app.route('/Blog/<idcategory>')
 def getPublicListBlogCategory(idcategory):
-    category = Category.query.filter_by(id=idcategory).all()
-    allObject = TipeClass[type].query.filter_by(category=category).all()
+    category = Category.query.filter_by(id=idcategory).first_or_404()
+    allObject = Blog.query.filter_by(category=category).all()
+    category = Category.query.all()
     return render_template('Frontal/list.html', posts = allObject , type='Blog', transType = 'Blog', category=category)
+
+## BUSQUEDA
+@app.route('/search')
+def searchs():
+    getObject = request.args.get('search','<h1> No type declarated </h1>')
+    search = getObject.split()
+    types =["News","Monitoring","Blog","Maps","Proyects"]
+    allObject = []
+    for k in types:
+        listType = TipeClass[k].query.order_by(TipeClass[k].pub_date.desc()).all()
+        listType = list(listType)
+        print(listType)
+        for i in listType:
+            exist = True
+            j = 0
+            while j < len(search) and exist:
+                if not search[j] in (i.title + " " + i.subtitle + " " + i.body):
+                    exist = False
+                j += 1
+            if exist :
+                allObject.append(i)
+    return render_template('Frontal/list.html', posts = allObject , type="Resultado de busqueda", transType = "Resultado de busqueda")
 
 @app.route('/contact_us')
 def contact_us():
@@ -330,9 +370,6 @@ def contact_us():
 def single():
     return render_template('/Frontal/single.html')
 
-#@app.route('/c')
-#def c():
-#    return render_template('/Frontal/carusel.html')
 
 
 

@@ -97,6 +97,10 @@ caption {
     }
   }
 
+  .imagen-index{
+    display:block;
+    margin:auto;
+    }
   
 .container-fluid, .container-xl, .container-lg, .container-md, .container-sm {
     width: 100%;

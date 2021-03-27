@@ -1,0 +1,374 @@
+NOTICIAS
+Se tituló alumno de Ingeniería Civil de la UACH desarrollando abanico aluvial experimental
+http://drive.google.com/uc?export=view&id=1dEm70silMGZSKRp9CsWTIxD-7dTVvZs8
+<h1> ¡Felicitaciones a Patricio! </h1>
+<a> El viernes 20 de noviembre de 2020 se tituló Patricio Mansilla como ingeniero civil con proyecto de tesis titulado “Construcción y automatización de abanico aluvial experimental para simular procesos geomorfológicos”. La tesis dirigida por Pablo Iribarren y Bruno Mazzorana se enmarca dentro del proyecto SEDIMPACT. Patricio construyó un  abanico aluvial experimental y automatizó secciones del abanico con servomotores, giroscopio y cámara usando el microprocesador Raspberry Pi.  Se utilizó impresora 3D para construir el abanico y lenguaje de programación Python para automatizar los procesos y crear interfaz de usuario. </a>
+<img src="http://drive.google.com/uc?export=view&id=1dEm70silMGZSKRp9CsWTIxD-7dTVvZs8" >
+--------------------------
+Se tituló alumno de Geografía estudiando la formación de lagunas glaciares en Patagonia
+http://drive.google.com/uc?export=view&id=13s6WfNG089HKUnDptWVSWqYasirjm06E
+<h1> ¡Felicitaciones por el trabajo Jorge! </h1>
+<a> El día miércoles 16 de septiembre se Tituló como Geógrafo Jorge Berkoff con la tesis titulada “Anticipando la formación de lagunas glaciares en Patagonia: primeros pasos”. La tesis dirigida por Pablo Iribarren, Marius Schaefer y Bruno Mazzorana buscó comprender los factores que explican la formación de lagunas glaciares en Patagonia analizando datos morfométricos de lagunas formadas en los últimos 20 años en las Cuencas de los ríos Exploradores y Pascua. </a>
+<img src="http://drive.google.com/uc?export=view&id=13s6WfNG089HKUnDptWVSWqYasirjm06E" >
+
+
+::::::::::::::::::::::::::::   BLOG :::::::::::::::::::::::::::::::::::::
+Manual de instalación y uso de Open Drone Map
+http://drive.google.com/uc?export=view&id=1o3FrFgyK9Un2Wy2KAmGoMMP1yX9Qq_g-
+<h1> Instalación Open Drone Map </h1>
+<h2> ¿Qué es Open Drone Map? </h2>
+<img src="http://drive.google.com/uc?export=view&id=1o3FrFgyK9Un2Wy2KAmGoMMP1yX9Qq_g-">
+<p> OpenDroneMap (ODM) es un <strong>kit de herramientas de código abierto</strong> para procesar imágenes capturadas por drones. ¿Qué significa que sea de código abierto? Es simplemente que es un programa gratuito el cual está en constante desarrollo con una gran comunidad detrás. ODM comenzó como un conjunto de herramientas de líneas de comandos para procesar imágenes aéreas, pero desde entonces se ha extendido y ahora presenta aplicaciones y API ampliables (Interfaz de programación de aplicaciones). </p> <a>Este programa nos ayudará a pasar de nuestras imágenes a datos geográficos tridimensionales como imágenes ortorrectificadas, modelos digital de superficie (DSM), modelos digital de elevación (DEM), nubes de puntos y modelos 3D texturizados.</a>
+<p>Esta es la dirección web: <a href="https://www.opendronemap.org/">https://www.opendronemap.org/</a></p>
+
+<p>Para poder utilizar esta caja de herramientas, podemos hacerlo de distintas formas. Puede ser desde un terminal de comandos (CMD) en Windows o mac, o puede utilizarse de forma nativa en Linux. </p>
+<p>Como existe una gran cantidad de potenciales usuarios que no están familiarizados a trabajar desde líneas de comandos, hemos decidido hacer un tutorial de instalación y uso de Open Drone Map (ODM) a partir de su aplicación que se llama WebODM. Esta es una interfaz visual que va a poder ayudarnos a trabajar de una forma más familiar para quienes trabajan con fotogrametría con drones. </p>
+<h3>ALGUNOS ASPECTOS IMPORTANTES ANTES DE LA INSTALACION DE WEBODM. </h3>
+<p>Existen distintas formas de instalar WebODM de forma fácil o automática, pero tendríamos que pagar por el instalador. Pero existe una forma manual que es gratis y que le vamos a enseñar. Es importante destacar que todos estos pasos de instalación y resolución de problemas pueden encontrarse en <a href="https://github.com/OpenDroneMap/WebODM">https://github.com/OpenDroneMap/WebODM</a>.</p>
+<h4>Especificaciones Técnicas. </h4>
+<p>En la pagina mencionada anteriormente dice que es necesario tener como mínimo unos 100 GB de espacio libre en el disco duro (También es bueno que dediquemos un solo disco para este programa). También es necesario tener unos 16 GB de RAM. Uno puede hacer cosas pequeñas con menos recursos, pero tendrían que ser para áreas pequeñas y utilizar pocas imágenes. Todo dependerá del objetivo de nuestro trabajo. Además, se recomienda tener una CPU de 4 núcleos, y tener instalado Windows 10 pro ya que con otras versiones de Windows es más difícil la instalación. </p>
+<p>Para saber esta información presiona click derecho sobre el logo de Windows, y seleccionas sistema. </p><img src="http://drive.google.com/uc?export=view&id=1RjCcoabLh67XsDkxqFB4JfbVxEBp-Rzl">
+<p>Algo super importante antes de partir es tener habilitada la virtualización. </p>
+<img src="http://drive.google.com/uc?export=view&id=12Ss4XJ29f_x20gZp6nWQEJNM5O05VRNW">
+<p>Esto se realiza desde el controlador de la Bios, al cual accedes al encender el pc y aprietas F2 o alguna tecla dependiendo de tu modelo de pc, y ahí puedes seleccionar habilitar virtualización. Esto lo puedes ver si está habilitado desde administrador de tareas – Rendiomiento - CPU.</p>
+<h4 STYLE="margin-bottom: 0.11in">Aplicaciones necesarias para instalar WebODM</h4>
+<P STYLE="margin-bottom: 0.11in"><B>Git.</B></P>
+<P STYLE="margin-bottom: 0.11in">Se descarga un ejecutable desde este link <A HREF="https://git-scm.com/downloads">https://git-scm.com/downloads</A>y se instala .</P>
+<P STYLE="margin-bottom: 0.11in"><B>Docker</B></P>
+<P STYLE="margin-bottom: 0.11in">Un contenedor es una unidad estándar
+de software que empaqueta el código y todas sus dependencias para
+que la aplicación se ejecute de forma rápida y confiable de un
+entorno informático a otro.</P>
+<P STYLE="margin-bottom: 0.11in">He utilizado la versión actual de
+este programa, pero me ha dado errores. La versión que ha sido de
+ayuda es la 2.2.0.5 la puedes descargar del siguiente enlace
+<A HREF="https://docs.docker.com/docker-for-windows/release-notes/">https://docs.docker.com/docker-for-windows/release-notes/</A></P>
+<P STYLE="margin-bottom: 0.11in">Pero igual puedes instalar la
+versión más nueva, todo depende de tu computadora.</P>
+<P STYLE="margin-bottom: 0.11in">Instalas Docker con el archivo que
+descargaste e instalas.</P>
+<img src="http://drive.google.com/uc?export=view&id=1JzK3F7iupCOkiDdjG_wITTltu_32b-Y_">
+
+<h3>Instalación WebODM</h3>
+<P STYLE="margin-bottom: 0.11in">Con Docker ya instalado, tienes que
+configurar el espacio del contenedor, los recursos que vamos a
+destinar para el uso de WebODM. Para ello tienes que abrir Docker,
+abajo en la barra de tareas aparecerá un símbolo de una ballena,
+click derecho sobre el icono y selecionas settings.</P>
+<img src="http://drive.google.com/uc?export=view&id=1cPhVdeyczm5p721-IUGLEndDayTUbFKS" >
+<P STYLE="margin-bottom: 0.11in">Una vez abierto aparecerá el menú
+principal, y seleccionas resources. Y ya puedes destinar la cantidad
+de CPUS, Memory (memoria ram, no les recomiendo dedicar todo ya que
+se pegará el pc), Swap (que es memoria virtual) y la ubicación y el
+tamaño del disco.</P>
+<p>Seleccionamos aplicar y reiniciar.
+Cuando ya esté corriendo nuevamente podemos instalar WebODM</p>
+<img src="http://drive.google.com/uc?export=view&id=1mPJs5uzj5TkHoBwugzWJyEjiR4sNQMpZ">
+<BR><BR>
+<p>Tenemos que abrir la aplicación de Git Bash. La puedes buscar a través del buscador de Windows.
+tenemos que poner la siguiente línea de comando:
+git clone https://github.com/OpenDroneMap/WebODM --config core.autocrlf=input --depth 1
+y presionamos enter
+luego hacemos lo mismo con 
+cd WebODM
+./webodm.sh start 
+</p>
+<img src="http://drive.google.com/uc?export=view&id=16gtNrT21u5E8IBlHUoQNlKFIaZ297eWZ">
+
+
+<h2>Uso de WebODM</h2>
+<P STYLE="margin-bottom: 0.11in">Para abrir la aplicación, tenemos
+que ejecutar Docker. Esto se realiza presionando en el ícono del
+escritorio ya instalado y configurado. 
+</P>
+
+<P STYLE="margin-bottom: 0.11in"><A NAME="_Hlk57967888"></A>Luego se
+debe abrir la aplicación Git Bash y dentro del terminal escribimos:</P>
+<P STYLE="margin-bottom: 0in; line-height: 100%"><FONT FACE="Lucida Console, serif"><FONT SIZE=2 STYLE="font-size: 9pt">cd
+WebODM</FONT></FONT></P>
+</p><br>
+<img src="http://drive.google.com/uc?export=view&id=1aH1jisDo9fz8Q3GxBDdWdMvF2NWzdzA4">
+<P STYLE="margin-bottom: 0in; line-height: 100%">Presionamos Enter y
+posterior a ello escribimos : <FONT FACE="Lucida Console, serif"><FONT SIZE=2 STYLE="font-size: 9pt">./webodm.sh
+start</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 100%">Y presionamos Enter.
+Aparecerá un listado de códigos.</P>
+<img src="http://drive.google.com/uc?export=view&id=1nCTWGz9bc6ZoQLpq9jnBOtUDQcCLTdPz">
+<P STYLE="margin-bottom: 0in; line-height: 100%">cuando ya haya
+corrido podemos entrar a nuestro navegador web y escribimos en la
+parte superior <A HREF="http://localhost:8000/">http://localhost:8000/</A></P>
+<P STYLE="margin-bottom: 0in; line-height: 100%">Al ir a esta
+dirección debería aparecer lo siguiente en el navegador. Si es así
+vamos por buen camino.</P>
+
+<img src="http://drive.google.com/uc?export=view&id=1nCTWGz9bc6ZoQLpq9jnBOtUDQcCLTdPz">
+<P STYLE="margin-bottom: 0.11in">Antes de cargar las imágenes
+tenemos que generar nuestro archivo de puntos de control.</P>
+<P STYLE="margin-bottom: 0.11in">Por lo general nuestros gps nos dan
+las coordenadas de nuestros puntos de control en un archivo “.csv”
+el cual tenemos que editar y guardar el identificador, latitud,
+longitud y elevación en formato texto para que webodem, no tenga
+problemas con los separadores decimales (comas y puntos, lo cual
+siempre es un problema).</P>
+<img src="http://drive.google.com/uc?export=view&id=1To7su_GfsEyAB_DcXDauepJbbuX595nq"><img src="http://drive.google.com/uc?export=view&id=1hG6l3TBr_hk5NQ_IAT75dprrLWsXE3_q">
+<p>Una vez ya cambiado esos parámetros, eliminamos las columnas que no sirvan y eliminamos los nombres de las columnas. Guardamos el archivo como “.csv” luego ese archivo lo cambiamos a “.txt” ya que el programa nos pide ese formato de archivo. Esto se realiza desde el mismo administrador de archivos y cambiamos la extensión. (si no aparece la extensión del archivo, vas al panel de arriba en el administrador de archivos y seleccionas “vista” luego seleccionas el cuadro que dice extensiones de nombre de archivo.)</p>
+<img src="http://drive.google.com/uc?export=view&id=1gWtvVr7je7FaRvREGzcH4gtnk3DSpVO0"><img src="http://drive.google.com/uc?export=view&id=1XZLe8fWL8qR_ljpZerH2VXn1z11GJzHu"><img src="http://drive.google.com/uc?export=view&id=1LYAnTpydHfIyN8YNTgvoUymzn4sQ4oNa">
+
+<p>Una vez guardado el txt, lo abrimos y agregamos el sistema de coordenadas en la primera fila. En mi caso es WGS84. Si existe algún problema el mismo programa te dice la nomenclatura del archivo txt.</p>
+
+<img src="http://drive.google.com/uc?export=view&id=1fcwZVR4Oit8EUNllKprcUomOcI8wfoHQ">
+
+<P STYLE="margin-bottom: 0.11in">Aunque pueden existir otros
+problemas al escribir es sistema de coordenadas. Hay otra forma de
+adjuntarlo al archivo y escribirlo. Con la pagina Spacial Reference
+podemos buscar con el código de nuestro sistema de coordenadas
+escrito en la nomenclatura para “Proj4js format”, la cual no me
+ha generado problemas al adjuntarlo al txt.</P>
+<P STYLE="margin-bottom: 0.11in">En mi caso el código es EPSG:4326 y
+se escribe en el formato así:</P>
+<P STYLE="margin-bottom: 0in; line-height: 100%"><FONT FACE="Courier New, serif"><FONT SIZE=2><FONT COLOR="#000000"><SPAN LANG="en-US">+proj=longlat
++ellps=WGS84 +datum=WGS84 +no_defs</SPAN></FONT></FONT></FONT></P>
+<P LANG="en-US" STYLE="margin-bottom: 0.11in"><BR><BR>
+</P>
+<P STYLE="margin-bottom: 0.11in">Cuando el archivo está bien aparece
+el siguiente cuadro: y cargamos 
+</P>
+<P STYLE="margin-bottom: 0.11in">IMPORTANTE: el nombre de los puntos
+no debe tener espacio. Sino no reconoce los puntos.</P>
+
+<img src="http://drive.google.com/uc?export=view&id=1mYsh6qCFyS79tSQr5qe2hZ2_clROUXM5">
+
+
+<P STYLE="margin-bottom: 0.11in">Luego cargamos las imágenes en el
+apartado que dice “Choose images” y en el apartado lateral
+derecho aparecen los puntos en el mapa. 
+</P>
+<P STYLE="margin-bottom: 0.11in">Ahora tenemos que asociar los puntos
+de control a imágenes. Debemos tener un mínimo de 3 imágenes
+asociadas a cada uno de nuestros puntos para disminuir el error que
+podamos tener. Mientras más imágenes estén asociadas a un mismo
+punto de control mejor será la construcción de nube de puntos. 
+</P>
+<P STYLE="margin-bottom: 0.11in">Esto se realiza de la siguiente
+manera, en el apartado de las imágenes identificamos una que
+contenga los puntos de control, le hacemos doble click y aparecerá
+la imagen desplegada con un punto naranjo en medio de la imagen y
+otro punto naranjo en el mapa.</P>
+
+<img src="http://drive.google.com/uc?export=view&id=1DEGBKmnZIF1XNlr14ieWgcjCUgKLsb47">
+
+
+<p>Lo que tenemos que realizar es eliminar ambos puntos, ya que son puntos que genera automáticamente el programa. Presionamos Delete en cada uno.</p>
+<p>Luego identificamos un punto de control en la imagen, nos vamos en el apartado superior derecho de la imagen, y presionamos el icono que tiene el símbolo de + , esto nos va a dar la opción de poner un punto en la imagen y luego asociarlo al punto que corresponda en el mapa. Para hacerlo, una vez puesto el punto en la imagen, vamos al apartado del mapa y seleccionamos el punto al que corresponde, esto va a generar que queden ambos puntos de color verde y que, al momento de pasar el cursor por encima de uno de ellos, ambos se agrandan señalando así que están asociados.</p>
+
+<img src="http://drive.google.com/uc?export=view&id=1fK_KxJuQgqrUapZ4omud04JFjQ_HfzmD">
+<img src="http://drive.google.com/uc?export=view&id=11kl4mHv336HF1AVMfzptq8M5RwnOrarY">
+<P STYLE="margin-bottom: 0.11in">Esto se realiza periódicamente
+hasta finalizar de asociar los puntos de control.</P>
+<P STYLE="margin-bottom: 0.11in">Una vez listo, vamos a la parte
+superior derecha del mapa. Y presionamos donde dice “export file”
+y guardamos el archivo en la carpeta que contiene nuestras imágenes.</P>
+
+<img src="http://drive.google.com/uc?export=view&id=1yEmYQb9wdqq7ARBqyoxqOkTsTqA96RAL">
+
+<P STYLE="margin-bottom: 0.11in">Ya guardado el archivo procedemos a
+ir al apartado de “DASHBOARD” que se ubica en la parte superior
+izquierda de WebODM.</P>
+
+<img src="http://drive.google.com/uc?export=view&id=1c2eDQunR1cQwNMAGv22GlOCFkHtbq8Ad">
+<p>Una vez ahí podemos hacer click en donde dice “Add Project” para crear una tarea nueva. Podemos cambiar el nombre y crear una descripción del proyecto.</p>
+
+<img src="http://drive.google.com/uc?export=view&id=18AcneOgKis0oGahTev44-G3FUMraUC7q">
+
+<p>Una vez creado el proyecto vamos al botón que dice “select images and GCP” y seleccionamos todas las imágenes de nuestro vuelo de dron y el archivo de puntos de control que creamos en el paso anterior. </p>
+
+<img src="http://drive.google.com/uc?export=view&id=1G72ayJ5COz_fJukhIUJUZ-WiR-kLx4Vw">
+
+<p>Podemos cambiar el nombre de la tarea y tenemos algunas opciones para poder decidir que realizar. Donde dice “options” tenemos un listado de algunas tareas predeterminadas por el programa que funcionan super bien, pero en nuestro caso nos vamos a enfocar en la personalizadas o “Custom”. </p>
+<p>Para ello presionamos el botón “edit”, y aparecerá un listado de parámetros que podemos cambiar y configurar para poder realizar nuestro ortomosaico, además cada uno tiene un botón de información sobre el parámetro. Esto nos ayudará cuando no sepamos que estamos modificando.</p>
+
+
+<img src="http://drive.google.com/uc?export=view&id=1Koy6lKsajAL8MjTWrMjohdqlrZrmly4J">
+
+<P STYLE="margin-bottom: 0.11in">Los parámetros que vamos a
+modificar son:</P>
+<P STYLE="margin-bottom: 0.11in">Orthophoto-Resolution (float&gt;0.0)
+= 2</P>
+<P STYLE="margin-bottom: 0.11in">Dtm = enable</P>
+<P STYLE="margin-bottom: 0.11in">Dem-resolution = 8 (dicen que es
+recomendable 4 veces la resolución de la ortofoto)</P>
+<P STYLE="margin-bottom: 0.11in">DSM= enable</P>
+<P STYLE="margin-bottom: 0.11in">Force GPS= enable</P>
+<P STYLE="margin-bottom: 0.11in"><BR><BR>
+</P>
+
+<P STYLE="margin-bottom: 0.11in">Una vez cambiados los parámetros
+podemos empezar la tarea y dejar que trabaje automáticamente.</P>
+<img src="http://drive.google.com/uc?export=view&id=1oJTfK5MJElVBCIzYQjy9XQO-7VZdG1ug">
+
+<P STYLE="margin-bottom: 0.11in">Una vez que seleccionamos start
+procesing  aparecerá el estado de la tarea, la cantidad de minutos
+en que demora en procesar. Ahora solo queda esperar para poder
+observar los resultados y guardarlos.</P>
+
+<img src="http://drive.google.com/uc?export=view&id=1BRSVFwnozjmZlQPEBy_tEUaSMwee-ZL6">
+
+<P STYLE="margin-bottom: 0in; line-height: 100%"><FONT FACE="Courier New, serif"><FONT SIZE=2>Apareció
+un problema y era la proyección del archivo de los puntos de
+control, tuvimos que cambiar a estos parámetros “<FONT COLOR="#000000">+proj=longlat
++ellps=WGS84 +datum=WGS84 +no_defs&quot;</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0.11in"><BR><BR>
+</P>
+<P STYLE="margin-bottom: 0.11in">Una vez completada la tarea podemos
+tener los siguientes resultados que se muestran a continuación:</P>
+
+<img src="http://drive.google.com/uc?export=view&id=1XT54ZE4XfkcCmam2EsYaMAVSUT37yIkG">
+
+<p>En el botón que dice Dowload assets podemos descargar los resultados:</p>
+<img src="http://drive.google.com/uc?export=view&id=1TmgvFS9-92bXetzHqNMWbYSMjk6CdRTG">
+<p>Además, podemos ver los resultados directo en el mapa con el botón View Map. </p>
+
+<img src="http://drive.google.com/uc?export=view&id=1mOwVJQ4ZYVghtlQVHyZi9F3p-V1N14OT">
+
+<p>En la esquina superior derecha encontramos otros botones donde está la ortofoto, un índice vegetacional, el Modelo digital de Superficie y el Modelo digital del terreno.</p>
+<p>Si seleccionamos en la esquina inferior derecha el botón 3D podemos ver la nube de puntos densa y un modelo 3d de la superficie.<img src="http://drive.google.com/uc?export=view&id=1WPvhRKGLnBEWzcswAvPT5unpSKbrWVKu"></p>
+
+
+
+
+<p>En la parte izquierda tenemos distintos tipos de herramientas que nos pueden servir para realizar ciertas mediciones o análisis. Hay muchas más cosas que se pueden realizar, pero que tendríamos que ir viendo con el tiempo. </p>
+<p></p>
+
+
+---------------------------------------------------------------------------------
+APK para planes de vuelo con Drones
+Uso de DJI Pilot
+http://drive.google.com/uc?export=view&id=1-ui008uxZmNiFsiP_9-8U513PWKr1kxr
+<h1>Planes de vuelo con Drones para Fotogrametría: Uso de DJI Pilot </h1>
+<p>En este blog haremos un pequeño tutorial del uso de planes de vuelo con Drones. Veremos desde la descarga de la aplicación hasta el uso 
+y algunas consideraciones al momento de emprender el vuelo. Siempre considerando las leyes y permisos necesarios para realizar un vuelo dentro 
+de Chile o en donde te encuentres para realizar el vuelo, aunque no indagaremos específicamente en ello.</p>
+<h2>APK DJI Pilot</h2>
+<p>Podemos descargar la aplicación desde la página oficial de <a href="https://www.dji.com/downloads/djiapp/dji-pilot">DJI</a>.<BR><BR> 
+Este tutorial sirve específicamente en Android, a productos DJI como la serie MAVIC, Matrice 300 RTK, Matrice 200 Series V2, Phantom 4 RTK, 
+Matrice 200 Series V1, Matrice 600 Pro. </p>
+
+<p>Una vez descargada la aplicación en nuestro smartphone <img src="http://drive.google.com/uc?export=view&id=10PhhqNgYMgMnbPReB4a2cFUA4Ys02Vuc"> podemos 
+abrir la aplicación sin y con el dron conectado o encendido, ya que como veremos más adelante la aplicación sirve tanto para el vuelo manual como para el 
+vuelo automático.</p>
+
+<p> Una vez abierta la aplicación veremos el menú principal en donde encontramos dos opciones una es la opción de vuelo manual 
+y la otra es la opción de plan de Vuelo, la cual es de nuestro interés. Aunque hablaremos del vuelo manual más adelante. 
+<img src="http://drive.google.com/uc?export=view&id=10dSiH2VFHxzlerbfMn4eE2fG9KPxStoD"> A parte de las dos opciones generales, 
+la pantalla nos muestra más cosas como en la parte inferior del menú principal nos dice que la aeronave está desconectada. Al lado inferior derecho
+ tenemos otros dos botones, uno con forma de imagen para ver las imágenes que tiene el Dron en su memoria y el otro lleva a información relacionada a los desarrolladores
+ de la aplicación.</p>
+
+<p>En la parte superior derecha podemos encontrar tres líneas que nos llevarán a las opciones de la aplicación 
+<img src="http://drive.google.com/uc?export=view&id=10k-e54r4SSI8wwZyl96R3G8SgxfnuYf0", las cuales nos perminten
+realizar descarga de mapas offline con la opcion <strong>offline Map</strong> para cuando estemos en zonas sin cobertura,
+ la segunda opcion que se desplega es <strong>flight Record</strong>la cual nos perminte ver el resumen de nuestros vuelos con el Dron, 
+imágenes, distancia recorrida, etc. La tercera opción es la de <strong>GEO Zone Unlocking</strong> que permite ver los permisos de vuelos 
+en zonas restringidas por la aplicación que se denominan <strong>zonas de autorización</strong> de color azul que DJI denomina en su
+ <a href="https://www.dji.com/flysafe/self-unlock">página web</a>.
+En la misma página podemos encontrar cómo conseguir permisos para volar en estas zonas y poder obtener los permisos. La tercera 
+opcion es <strong>Enterprise Shield</strong>, la cual proporciona proteccion a los productos DJI. Y la ultima opcción es <strong>Settings</strong> donde
+ tenemos las distintas opciones de nuestra cuenta. </p>
+
+<h2>Preparación del vuelo en casa</h2>
+
+<p> una de las ventajas que podemos tener con esta aplicación, es que si conocemos la zona de interes del levantamiento fotogramétrico, podemos preparar la configuración del vuelo automático desde nuestra casa. 
+</p>
+<p>Para lograrlo, podemos hacerlo de dos formas. 1) desde la misma aplicación del smartphone  2)Crear un kml desde nuestro pc y cargarlo desde la aplicación.</p>
+
+<h3>Desde DJI Pilot</h3>
+
+<p>En el menú principal al entrar a la aplicación  seleccionamos la opccion <strong>Mission Fligth</strong> la cual desplegará la siguiente pantalla <img src="http://drive.google.com/uc?export=view&id=120aRxBr-Ok0yaVHb-IqHxi8KpF7A1XEU">. 
+Seleccionamos <strong>create a Route</strong> y nos aparecerá lo siguiente. <img src="http://drive.google.com/uc?export=view&id=11tlTs_NZqVMAElW-C0CoxihJoxL9qAw4">
+ Estas son las 4 opciones de tipos de Vuelo automático que podemos utilizar:</p>
+<p><strong>Waypoint</strong> La cual nos permite escoger puntos de interes en donde queremos recopilar las imágenes <img src="http://drive.google.com/uc?export=view&id=12DyXPYt7aVqFadoyjqdMZ7Vd_m6PeZGN">
+o escoger un objetivo movil de interes, donde el dron
+se centrará para capturar imágenes.</p>
+<p><strong>Mapping</strong>: Esta opción nos permite realizar vuelos autónomos para hacert levantamientos en 2D, mapas u ortomosaicos.</p>
+<p><strong>Oblique</strong>: Esta opción es similar a la anterior pero está pensada principalmente para realizar levantamientos 3D.</p>
+<p><strong>Linear flight Mission</strong>: La cual nos permite realizar capturas de imágenes en forma lineal, como para realizar levantamientos en carreteras, lineas eléctricas, etc.</p>
+
+<p></p>
+<p></p>
+<h2>Antes del vuelo</h2>
+
+<p>Una buena práctica es verificar el estado de la aeronave antes de ir a terreno, en casa con conexión a internet, actualizar los programas, 
+mapas e incluso el mismo dron. No obstante, en Terreno debemos
+hacer un nuevo check al dron, ya que en el traslado se pude descalibrar algun sensor del dispositivo. 
+una buena alternativa es hacer un primer vuelo manual seleccionando en la pantalla principal de DJI Pilot.<img src="http://drive.google.com/uc?export=view&id=12T2KosEtJDYesGhSS9tT0Ntyj76jsnbC"></p>
+<p>Al seleccionar, nos aparecerá una pantalla como la siguiente <img src="http://drive.google.com/uc?export=view&id=12Wv07xCUX7sJ9A1KzWldPgwjZ1u7UQTj"> en donde tenemos distintas opciones que nos mostrarán el estado de 
+la aeronave, los sensores, niveles de batería y algunas opciones para el vuelo. En definitiva nos permite realizar un Checklist antes de emprender el vuelo.</p>
+<p>al salir de esa opción, vamos a ver la pantalla princial del vuelo manual, donde podremos ver distintos íconos. <img src="http://drive.google.com/uc?export=view&id=13c5jOACbYWb3ZljlOSowkcMlFHk_y9CT">  la parte superior 
+derecha encontramos el estado de la señal del gps, la señal del control remoto con el Dron, la señal de transmisión de la pantalla con el simbolo HD y el estado de la batería.  Se puede apreciar en la parte inferior una pantalla mas pequeña, 
+la cual la seleccionamos y sirve para ver un mapa que nos muestra nuestra ubicación, la del dron y las zonas distintas zonas donde se puede y no se puede volar.<img src="http://drive.google.com/uc?export=view&id=12dumPhPUKhv5WJfYPtLNGOy3-OG0QT3O"> </p>
+<p>Si volvemos a la Página principal del vuelo manual encontraremos en el lado derecho las distintas opciones, en el icono de la parte inferior tenemos las opciones de la cámara.<img src="http://drive.google.com/uc?export=view&id=13XLPCVagFNLDiHmBTN04szhfhXxCq78f"> 
+subiendo, despues tenemos el ícono con un recuadro y un play el cual nos lleva a las imágenes tomadas y almacenadas en el dron. <img src="http://drive.google.com/uc?export=view&id=13DSM6MW38wAddLJVGNMlfTcfHc3SCOHx"> </p>
+
+<p>en la parte que dice <strong>MENU</strong> encontramos todas las opciones que tienen relación con la cámara para fotografía y video.<img src="http://drive.google.com/uc?export=view&id=13_sZBuEMiEqzKGEJvsGnLnFN8qtQxXbY"></p>
+<p>en la parte superior derecha donde aparecen <strong>...</strong> vamos a encontrar las opciones en orden descendente para la configuraciones del Dron y sus modos de vuelo,<img src="http://drive.google.com/uc?export=view&id=12m6Jjm9__8ke9zvjjyxS2D2zNAWZzHK9">
+ configurar la activación de los sensores contra obstaculos,<img src="http://drive.google.com/uc?export=view&id=12tt4Y9RjGE4sUYU8NNnRanvyAx1pmjH9"> 
+configurar el control remoto,<img src="http://drive.google.com/uc?export=view&id=12uNmo2LDBA9FYigQuh3siMbcLMgNN9_v">
+ configurar la señal de la imagen en tiempo real,<img src="http://drive.google.com/uc?export=view&id=12w6vXIn3_WfTgX0_dTAjXymu5gi3-KpM">
+ el estado de la aeronave, <img src="http://drive.google.com/uc?export=view&id=12yYFV5aZN6RxHCUyc1tRwHRYZMmQlEQW">
+ y el gimbal,<img src="http://drive.google.com/uc?export=view&id=130mwcZ4g6CHJEwOZxhU_DtNZxk2vsaqE">
+ y en la parte final otras opciones como las unidades en que se miden ciertos parámetros como velocidad y altura.<img src="http://drive.google.com/uc?export=view&id=137XuCzUxEkKegx68fM7IDWN2albU7ug6"></p>
+
+<h2>Vuelo Para Modelos 3D</h2>
+
+<p>Cómo habiamos mencionado anteriormente, una de las ventajas de la aplicación son sus modos de vuelos, en particular nos enfocaremos en el uso del modo de vuelo autónomo denominado <strong>Oblique</strong>. Cuando abrimos 
+esta opción nos aparecerá lo siguiente <img src="http://drive.google.com/uc?export=view&id=155K6lM7WnjF35_tefr5657T9zV1d6-Uc"> donde seleccionaremos <strong>Create a Route</strong>dandonos una pantalla similar a esta.
+ <img src="http://drive.google.com/uc?export=view&id=15AzcbmVcBti1npFzVt-6LG82Gfd0lRk7"> Al presionar el recuadro del centro nos realizará un poligono automática mente que podremos editar segun nuestra área de interes para realizar el levantamiento fotogrametrico.
+ <img src="http://drive.google.com/uc?export=view&id=15CiCJOUogrHF8mOWkbF0ESSYV9l1mvDE"> En la parte dereche podemos ver un listado del 1 al 5 donde aparecen los distintos vuelos, ya que para poder realizar levantamientos 3D necesitamos obtener imágenes de 
+distintos ángulos para poder realizar la reconstrucción. <img src="http://drive.google.com/uc?export=view&id=14VS7oD5Vz1eJSszNi9CRdu2ZHDEvSOL4"> </p>
+
+<p> En la Opción <strong>>></strong> nos despliega las opciones que tienen que ver con eltípo de cámara, en donde podremos nosotros mismos editar si no se encuentra el modelo de nuestro dron. 
+La altura a la que podremos sobrevolar, la cantidad de cm/pixel, el modo de captura de imagen,<img src="http://drive.google.com/uc?export=view&id=15d6WpbtoP0B7aGYa25H7i4SYs-bTdg3x">
+la altura, velocidad de despegue, la velocidad realizando el vuelo,<img src="http://drive.google.com/uc?export=view&id=15O8QtT8rN3Y3WP5Q6dtbe0bOZv8AiiNt"> en opciones avanzadas podemos ver las opciones de solapamiento que pueden tener lás imágenes.
+<img src="http://drive.google.com/uc?export=view&id=15WRD6Qbi3dBLD5yQ9BEhWIkvO9RItXSz"> </p>
+
+<p>Una vez configurados y guardados con el boton al lado izquierdo, presionamos el mismo para cargar el vuelo, donde podremos seleccionar 
+los vuelos que queremos realizar.<img src="http://drive.google.com/uc?export=view&id=14PbSj4GNmxVxK8rMTQ9yMxWBqbn89evZ">
+Una vez aceptados nos aparecerá el resumen del vuelo y presionamos aceptar y comenzar el vuelo<img src="http://drive.google.com/uc?export=view&id=14PAaXx8TV6XtZUgWUGIcNqGHsNaCjcit">.
+Solo queda esperar que se complete y recorrido y volverá al punto de partida
+
+<iframe src="https://drive.google.com/file/d/14ZaPjUZMyvwRIL8hIg2KioFDhy5aD0uC/preview" width="640" height="480"></iframe>
+
+<img src="http://drive.google.com/uc?export=view&id=14DPTzDbFh0ZZ3TtTJypjYVHr_NWaq40v">
+<img src="http://drive.google.com/uc?export=view&id=14i3IkM7kt9FHn6o1dKu4PAtqZJV49-Ga">
+
+---------------------------------------------------------------------------
+
+
+:::::::::::::::::::::::::::::::::::  PROYECTOS :::::::::::::::::::::::::::::::::
+Metodología para el monitoreo e inventario de glaciares y lagunas glaciares. 
+Ministerio del Ambiente Perú y PNUD (Programa de las Naciones Unidas para el Desarrollo)
+http://drive.google.com/uc?export=view&id=12QUo5G2kYk2ztfCNCi5TcPwemzGMtCHd
+<a> El proyecto liderado por Guillermo Azocar de Atacama Ambiente y Pablo Iribarren del Instituto de Ciencias de la Tierra UACH busca sintetizar  metodologías para el inventario y monitoreo de glaciares y lagunas glaciares. Se pone énfasis en aplicaciones en la criósfera de Perú. El proyecto tiene una duración de un año y contempla capacitaciones en campo en Cordillera Blanca y el complejo volcánico Coropuna.</a>
+<img src="http://drive.google.com/uc?export=view&id=12QUo5G2kYk2ztfCNCi5TcPwemzGMtCHd">
+--------------------------
+
+SEDIMPACT
+Unravelling the dynamics and impacts  of sediment-laden flows in urban areas in southern Chile as a basis for innovative adaptation 
+http://drive.google.com/uc?export=view&id=1rpGwxhAHNxCp16bhzkWedpFnZfbTW3oi
+<a> En este proyecto liderado por Bruno Mazzorana se estudian las amenazas fluviales para la cuidad de Chaitén, los impactos que estas generan y las maneras con que la población puede adaptarse. En el estudio de las amenazas fluviales y de sus efectos se emplean métodos computacionales y de experimentación física. Para impulsar la adaptación preventiva y la transformación innovadora se explorará métodos de participación novedosos como la "open space technology".</a>
+<img src="http://drive.google.com/uc?export=view&id=1b3Gn53_6HRlLaRZLngs1Xx1YgaHRHG1-" >
+
+-------------------------------
+Glacier lakes in Chile: evolution and outburst flood hazard assessment
+Understanding glacier lakes dynamics  and associated hazards
+http://drive.google.com/uc?export=view&id=1RjowrVQalvIFlHGZpo2EGkR6JlztR6Ky
+<a> El proyecto Fondecyt de Iniciación Nr. 11190389 liderado por Pablo Iribarren tiene una duración de tres años e intenta comprender los factores que explican la formación y evolución de lagunas glaciares además de evaluar los peligros asociados. Para caracterizar las lagunas y su evolución se utilizan técnicas de percepción remota, vehículos no tripulados (aéreos y acuáticos) y sensores de nivel instalados en campo. Para identificar zonas susceptibles a inundación se simulan crecidas con modelos físicos validados con datos geomorfológicos y entrevistas a testigos oculares. Así, los resultados del proyecto buscan aportar insumos para el ordenamiento territorial en zonas englaciadas en el contexto del cambio global.</a>
+<img src="http://drive.google.com/uc?export=view&id=1RjowrVQalvIFlHGZpo2EGkR6JlztR6Ky">
+
+-------------------------------------------
+
+
+::::::: WEBMAPS::::
+
+https://anthoncode.com/wp-content/uploads/2019/06/Bolivia-mapa-desde-el-google-earth-mapa-fisico.jpg
+/index.html

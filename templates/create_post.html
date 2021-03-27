@@ -27,9 +27,9 @@
         {% if type == 'Blog' %}
         <div class="form-group floating-label-form-group controls">
         <td> Categoría
-          <select class="form-control" placeholder="catergory" id="catergory" name="catergory">
-            {%for i in category%}
-              <option value="{{i.0}}">{{i.1}} </option>
+          <select class="form-control" placeholder="category" id="category" name="category">
+            {%for i in cat%}
+              <option value="{{i.id}}">{{i.name}} </option>
            {%endfor%} 
          </select>
         </div>

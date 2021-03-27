@@ -21,7 +21,7 @@
                         <a href="/post/{{type}}/{{post.id}}" class="fh5co_magna py-2"> "{{post.title}}</a> <a href="#" class="fh5co_mini_time py-3"> {{post.user.username}} {{post.user.lastname}} -  {{post.pub_date}} </a>
                         <div class="fh5co_consectetur"> {{post.subtitle}}
                         {% else %}
-                        <a href="./static/uploaders/mapas/{{post.id}}/{{post.body}}" class="fh5co_magna py-2"> "{{post.title}}</a> <a href="#" class="fh5co_mini_time py-3"> {{post.user.username}} {{post.user.lastname}} -  {{post.pub_date}} </a>
+                        <a href="./static/uploaders/Maps/{{post.id}}/{{post.body}}" class="fh5co_magna py-2"> "{{post.title}}</a> <a href="#" class="fh5co_mini_time py-3"> {{post.user.username}} {{post.user.lastname}} -  {{post.pub_date}} </a>
                         <div class="fh5co_consectetur"> {{post.subtitle}}
                         {% endif %}
                         </div>
@@ -30,6 +30,24 @@
                 {% endfor %}
             </div>
             <div class="col-md-3 animate-box" data-animate-effect="fadeInRight">
+
+                <!-- BUSCADOR-->
+                <form name="New news" action="/search" enctype="multipart/form-data" method="GET" id="contactForm" style="padding-top: -3vmin" novalidate>
+                    <div class="card my-4">
+                      <h5 class="card-header">Buscador interno</h5>
+                      <div class="card-body">
+                        <div class="input-group">
+                          <input type="text" id="search" name="search" class="form-control" placeholder="Buscar ...">
+                          <span class="input-group-append">
+                            <button class="btn btn-secondary" type="submit">Buscar</button>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                </form>
+
+
+
                 {% if type == 'Blog' %}
                 <div>
                     <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">Categorías</div>
@@ -37,7 +55,7 @@
                 <div class="clearfix"></div>
                 <div class="fh5co_tags_all">
                     {% for cat in category %}
-                    <a href="/Blog/cat.name" class="fh5co_tagg">{{cat.name}}</a>
+                    <a href="/Blog/{{cat.id}}" class="fh5co_tagg">{{cat.name}}</a>
                     {% endfor %}
                 </div>
                 {%endif%}

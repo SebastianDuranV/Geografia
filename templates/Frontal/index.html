@@ -8,8 +8,8 @@
                 <source src="/static/assets/video/0002-2599.mp4" type="video/mp4">
         </div>
     </div>
-    <div class="mx-auto text-center center masthead " style="background-color: rgba(228, 194, 3, 0.781)">
-        <h1 class="mx-auto my-0 spdp_right"  >CUENCA AUSTRAL</h1>
+    <div class="mx-auto text-center center masthead " style="background-color: rgba(54, 168, 44, 0.781)">
+        <h1 class="mx-auto my-0"  >CUENCA AUSTRAL</h1>
         <h2 class="text-white-90 mx-auto mt-2">Instituto de ciencias de la tierra</h2>
     </div>
 
@@ -62,10 +62,10 @@
     <div>
         <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">Sobre nosotros</div>
     </div>
-        <div class="footer_sub_about"> Nuestro objetivo es dar a conocer investigaciones que desarrollan algunos docentes, alumnos y colaboradores del área de Geografía Física de la Universidad Austral de Chile. Compartimos información de los sitios que monitoreamos, nuestros proyectos, tutoriales y más.
+        <div class="footer_sub_about" style="color: black;">Somos un grupo de docentes, estudiantes y colaboradores de la Universidad Austral de Chile con intereses en geografía física. El objetivo del sitio es compartir información de los sitios que monitoreamos, nuestros proyectos, tutoriales, reflexiones y más. 
     </div>
     <div style=" min-height: 2vmin;" ></div>
-    <img class="img-fluid" src="{{ url_for('static', filename='assets/img/valdivia-2207188.jpg')}}" alt="" />
+    <img class="img-fluid " src="{{ url_for('static', filename='assets/img/portada.jpg')}}" alt="" />
     <div style=" min-height: 7vmin;" ></div>
     </div>
     <div class="container animate-box" data-animate-effect="fadeIn">
@@ -80,7 +80,7 @@
                                                            class="fh5co_img_special_relative"/></div>
                     <div class="fh5co_latest_trading_img_position_absolute"></div>
                     <div class="fh5co_latest_trading_img_position_absolute_1">
-                        <a href="single.html" class="text-white"> {{new.title}}</a>
+                        <a href="/post/News/{{new.id}}" class="text-white"> {{new.title}}</a>
                         <div class="fh5co_latest_trading_date_and_name_color">{{new.user.username}} {{new.user.lastname}} -  {{new.pub_date}}</div>
                     </div>
                 </div>
@@ -92,16 +92,16 @@
 <div class="container-fluid pb-4 pt-5">
     <div class="container animate-box">
         <div>
-            <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">Proyectos</div>
+            <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">Blogs</div>
         </div>
         <div class="owl-carousel owl-theme" id="slider2">
-            {% for proyect in proyects %}
+            {% for Blog in Blogs %}
             <div class="item px-2">
                 <div class="fh5co_hover_news_img">
-                    <div class="fh5co_news_img"><img src="{{proyect.image}}" alt=""/></div>
+                    <div class="fh5co_news_img"><img src="{{Blog.image}}" alt=""/></div>
                     <div>
-                        <a href="single.html" class="d-block fh5co_small_post_heading"><span class="">{{proyect.title}}</span></a>
-                        <div class="c_g"><i class="fa fa-clock-o"></i> {{proyect.pub_date}}</div>
+                        <a href="/post/Blog/{{Blog.id}}" class="d-block fh5co_small_post_heading"><span class="">{{Blog.title}}</span></a>
+                        <div class="c_g"><i class="fa fa-clock-o"></i> {{Blog.pub_date}}</div>
                     </div>
                 </div>
             </div>
@@ -238,7 +238,7 @@
                         </div>
                     </div>
                     <div class="col-md-7 animate-box">
-                        <a href="single.html" class="fh5co_magna py-2"> {{blog.title}} </a> <a href="single.html" class="fh5co_mini_time py-3"> {{new.user}} -
+                        <a href="single.html" class="fh5co_magna py-2"> {{blog.title}} </a> <a href="single.html" class="fh5co_mini_time py-3">  -
                             {{blog.pub_date}} </a>
                         <div class="fh5co_consectetur"> {{blog.subtitle}}
                         </div>
@@ -393,7 +393,7 @@
     
             <!--div class="col-lg-10 mx-auto">
             <div class="footer_main_title py-4"> Sobre nosotros</div>
-            <div class="footer_sub_about pb-4"> Nuestro objetivo es dar a conocer investigaciones que desarrollan algunos docentes, alumnos y colaboradores del área de Geografía Física de la Universidad Austral de Chile. Compartimos información de los sitios que monitoreamos, nuestros proyectos, tutoriales y más.
+            <div class="footer_sub_about pb-4"> Nuestro objetivo es dar a conocer investigaciones que desarrollan algunos docentes, alumnos y colaboradores del área de Geografía Física de la Universidad Austral de Chile. Compartimos información de los sitios que monitoreamos, nuestros Blogos, tutoriales y más.
             </div>
             <img class="img-fluid" src="{{ url_for('static', filename='assets/img/valdivia-2207188.jpg')}}" alt="" />
             <div style=" min-height: 11.75vmin;" ></div>

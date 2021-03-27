@@ -4,8 +4,8 @@ from datetime import datetime
 
 app = Flask(__name__)
 
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:password@localhost/proyectogeografia'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://SebastianDuranVi:1996duranrugby@SebastianDuranVilches.mysql.pythonanywhere-services.com/SebastianDuranVi$default'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:password@localhost/proyectogeografia'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://SebastianDuranVi:1996duranrugby@SebastianDuranVilches.mysql.pythonanywhere-services.com/SebastianDuranVi$default'
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.config['SQLALCHEMY_POOL_RECYCLE'] = 30
@@ -54,9 +54,9 @@ class User(db.Model):
     def __repr__(self):
         return '%r' % self.username
 
-class SuperUser(User):
-    def __init__(self):
-        self.isSuperUser = db.Column(db.Boolean, nullable=False, default=1)
+#class SuperUser(User):
+#    def __init__(self):
+#        self.isSuperUser = db.Column(db.Boolean, nullable=False, default=1)
 
 class Blog(db.Model):
     id = db.Column(db.Integer, primary_key=True)
