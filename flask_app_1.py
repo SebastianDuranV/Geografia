@@ -51,21 +51,26 @@ translateNameSingle = dict(
 # Cargar archivos en directorio ::::::::::::::::::
 #Crear directorio
 def createDirectory(id,type,x=0):
-    if x != 0 :
-        return 0
-    directory = os.path.join('./static/uploaders/' + type, str(id))
-    try:
-        os.makedirs(directory)
-    except:
-        directory = os.path.join('./static/uploaders/' + type)
-        os.makedirs(directory)
-        createDirectory(id,type,1)
+    #if x != 0 :
+    #    return 0
+    directory = os.path.join('/home/iribarrenp/Geografia/static/uploaders/' + type + '/' + str(id))
+    #try:
+        #os.makedirs(directory)
+    #try:
+    os.mkdir(directory)
+    #except:
+    #    return 0
+    #except:
+    #    directory = os.path.join('./static/uploaders/' + type)
+    #    os.mkdir(directory)
+        #os.makedirs(directory)
+    #    createDirectory(id,type,1)
 
 
 #Cargar archivos
 def upload(id,type,request):
     createDirectory(id,type)
-    app.config['UPLOAD_FOLDER'] = "./static/uploaders/" + type +'/'+ str(id)
+    app.config['UPLOAD_FOLDER'] = "/home/iribarrenp/Geografia/static/uploaders/" + type +'/'+ str(id)
     #f = request.files['files']
     #filename = secure_filename(f.filename)
     #f.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
