@@ -3,6 +3,9 @@ from consultor_sql import User, Category , db, Blog, News, Monitoring, Proyects,
 import forms
 import os
 from werkzeug.utils import secure_filename
+from pandas import pandas as pd
+import glob
+
 
 app = Flask(__name__)
 app.secret_key = 'Mi_perro_se_llama_manjar'
@@ -370,7 +373,30 @@ def contact_us():
 def single():
     return render_template('/Frontal/single.html')
 
+@app.route('/show_casa')
+def show_casa():
 
+    #Fecha ultimo dato
+    data= pd.read_csv("/home/iribarrenp/mysite/static/casa/datos/bmp280.csv")
+    data= data.iloc[:,1:]
+    data.columns=["Date","Temp","Hum","Press","lluvia"]#Renombro columnas porque se me dan vuelta :)
+    data['Date'] = pd.to_datetime(data['Date'])
+    data.set_index("Date",inplace=True)
+    fecha=str(data.index[-1])[:-10]
+
+    #Ruta ultima foto
+    files = glob.glob("/home/iribarrenp/mysite/static/casa/fotos/"+"*.jpg")
+    files.sort(key=os.path.getmtime)
+    foto= files[-1]
+    foto=foto.split('/static')[-2:][1]
+
+    #Ruta ultimos datos
+    templateData = {
+      'fecha': fecha,
+      'ruta_foto':foto
+      }
+
+    return render_template('/Frontal/casa.html',**templateData)
 
 
 
