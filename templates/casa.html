@@ -1,0 +1,196 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Calle Calle</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+										<h1>Datos riveras del Calle Calle</h1>
+									</header>
+
+									<p>Instalación 2019-10-17</p>
+                                    <p>Último registro {{ fecha }}</p>
+
+									<span class="image main"><img src="/casa/datos/bmp280.png"  alt="" /></span>
+
+								<p>Datos de temperatura, humedad y presión atmosférica de estación Riveras del Calle Calle. Datos obtenidos con sensor BME280 instalado sin radiation shield bajo techo. Está conectado a Raspberry Pi Zero W y guarda datos cada 10 minutos. Gráficos muestran registros de las últimas 24 horas. La foto es tomada con camara Raspberry Pi V2 y se actualiza cada una hora. Los datos y la foto son enviados cada una hora a servidor web. El datalogger funciona con panel solar de 12v y batería de 12v 12Ah conectado a regulador de carga y a un buck converter para bajar voltaje a 5.6 v</p>
+
+
+									<hr class="major" />
+
+									<video width=100% height=auto controls autoplay>
+                                   <source src="/casa/fotos/TimeLapseCasa.mp4" type="video/mp4">
+
+								     <p>La camara está instalada a la intermperie dentro de carcasa de camara de seguridad falsa aprovechando su sección transparente, rotación en 360 grados e impermeabilidad.Se muestra video de las últimas 8 fotos.</p>
+
+
+                                 </video>
+
+
+								</section>
+
+						</div>
+					</div>
+
+				<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+
+							<!-- Search -->
+								<section id="search" class="alt">
+									<form method="post" action="#">
+										<input type="text" name="query" id="query" placeholder="Search" />
+									</form>
+								</section>
+
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+										<li><a href="/home/iribarrenp/mysite/templates/index.html">Inicio</a></li>
+
+										<li>
+											<span class="opener">Riveras Calle Calle</span>
+											<ul>
+												<li><a href=show_casa>Fotos y datos últimas 24 horas</a></li>
+
+												<li><a href="/casa/datos/bmp280.html" id="HyperLink1">Gráficos toda la serie de tiempo</a></li>
+
+												<li><a href="/casa/datos/bmp280.csv" download ="datos_Casa.csv">Descarga de datos </a></li>
+
+											</ul>
+										</li>
+
+										<li>
+											<span class="opener">Río Pitote</span>
+											<ul>
+												<li><a href=show_casa>Fotos y datos últimas 24 horas</a></li>
+
+												<li><a href="/casa/datos/bmp280.html" id="HyperLink1">Gráficos toda la serie de tiempo</a></li>
+
+												<li><a href="/casa/datos/bmp280.csv" download ="datos_Casa.csv">Descarga de datos </a></li>
+
+											</ul>
+										</li>
+
+										<li>
+											<span class="opener">Glaciar Exploradores</span>
+											<ul>
+												<li><a href=show_casa>Fotos y datos últimas 24 horas</a></li>
+
+												<li><a href="/casa/datos/bmp280.html" id="HyperLink1">Gráficos toda la serie de tiempo</a></li>
+
+												<li><a href="/casa/datos/bmp280.csv" download ="datos_Casa.csv">Descarga de datos </a></li>
+
+											</ul>
+										</li>
+
+
+										 <li>
+											<span class="opener">Tutoriales</span>
+											<ul>
+												<li><a href=#>Python y QGIS</a></li>
+
+												<ul>
+												    <li><a href=#>Geopandas</a></li>
+												    <li><a href=#>Python Earth Engine Api</a></li>
+
+												</ul>
+
+												<li><a href=#>Raspberry Pi y Arduino</a></li>
+
+												<ul>
+												    <li><a href=#>Datalogger Arduino</a></li>
+												    <li><a href=#>Datalogger Raspberry pi</a></li>
+
+												</ul>
+
+												<li><a href=#>Otros</a></li>
+
+											</ul>
+										</li>
+
+
+									</ul>
+								</nav>
+
+						<!-- Section -->
+								<section>
+									<header class="major">
+										<h2>Datalogger en base Arduino</h2>
+									</header>
+									<div class="mini-posts">
+										<article>
+											<a href="#" class="image"><img src="images/arduino1.jpg" alt="" /></a>
+											<p>Versión de prueba datalogger para monitorear nivel de agua usando sensor de presión BMP280.</p>
+										</article>
+										<article>
+											<a href="#" class="image"><img src="images/arduino_casa.jpg" alt="" /></a>
+											<p>Datalogger para medir nivel de agua, hielo o nieve en base a sensor de ultrasonido</p>
+										</article>
+										<article>
+											<a href="#" class="image"><img src="images/arduino_manflas.JPG" alt="" /></a>
+											<p>Datalogger con cinta de 10 termistores para medir temperatura a diferentes profundidades</p>
+										</article>
+									</div>
+									<ul class="actions">
+										<li><a href="#" class="button">More</a></li>
+									</ul>
+								</section>
+
+							<!-- Section -->
+								<section>
+									<header class="major">
+										<h2>Contáctenos</h2>
+									</header>
+									<p>Si necesita conocer el nivel de ríos, lagos, canales o conocer condiciones meteorológicas escríbanos y podemos desarrollar una solución. </p>
+									<ul class="contact">
+										<li class="icon solid fa-envelope"><a href="#">pablo.iribarren@uach.cl</a></li>
+										<li class="icon solid fa-phone">(56)962091486</li>
+										<li class="icon solid fa-home">Emilio Pugn 4° piso Isla Teja, Valdivia, Chile<br /></li>
+									</ul>
+								</section>
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">Investigamos, creamos, compartimos!! <a href="https://unsplash.com"></a><a</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
+
