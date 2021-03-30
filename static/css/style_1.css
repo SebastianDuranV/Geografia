@@ -1127,4 +1127,13 @@ a, a:hover {
     font-size: 1.05rem
 }
 
+@media (max-width: 992px) {
+    .single #fh5co-title-box .page-title h2 {
+        font-size: 30px;
+    }
+    .single #fh5co-title-box .page-title h3 {
+        font-size: 20px;
+    }
+  }
+
 /*# sourceMappingURL=style_1.css.map */

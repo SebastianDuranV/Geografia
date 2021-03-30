@@ -383,7 +383,7 @@ def single():
 def show_casa():
 
     #Fecha ultimo dato
-    data= pd.read_csv("/home/iribarrenp/mysite/static/casa/datos/bmp280.csv")
+    data= pd.read_csv("./static/monitoreo/casa/datos/bmp280.csv")
     data= data.iloc[:,1:]
     data.columns=["Date","Temp","Hum","Press","lluvia"]#Renombro columnas porque se me dan vuelta :)
     data['Date'] = pd.to_datetime(data['Date'])
@@ -391,7 +391,7 @@ def show_casa():
     fecha=str(data.index[-1])[:-10]
 
     #Ruta ultima foto
-    files = glob.glob("/home/iribarrenp/mysite/static/casa/fotos/"+"*.jpg")
+    files = glob.glob("./static/monitoreo/casa/fotos/"+"*.jpg")
     files.sort(key=os.path.getmtime)
     foto= files[-1]
     foto=foto.split('/static')[-2:][1]

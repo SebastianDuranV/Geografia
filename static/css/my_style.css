@@ -4,6 +4,7 @@
     min-height: 81.1vh;
 }
 
+/*
 video {
     position: relative;
     top: 50%;
@@ -17,6 +18,12 @@ video {
     background: url(styles.css) no-repeat;
     background-size: cover;
     transition: 1s opacity;
+}*/
+
+video {
+  position: initial;
+  top: 50%;
+  max-width: 100%;
 }
 
 .center{

@@ -1,14 +1,14 @@
 {% extends "Frontal/layout.html" %}
 {% block content %}
 <title>Cuenca Austral - Datos riveras del Calle Calle</title>
-<div id="fh5co-title-box" style="background-image: url();  background-position: 0px -20px;" data-stellar-background-ratio="0.5">
+<!--div id="fh5co-title-box" style="background-image: url();  background-position: 0px -20px;" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="page-title">
         <h2>Datos riveras del Calle Calle</h2>
         <h3 style="color:white">Instalación 2019-10-17</h3>
         <h3 style="color:white">Último registro {{ fecha }}</h3>
     </div>
-</div>
+</div-->
 <div id="fh5co-single-content" class="container-fluid pb-4 pt-4 paddding">
     <div class="container paddding">
         <div class="row mx-0">
@@ -16,7 +16,10 @@
                 <!--span class="image main">
                     <img src="./home/iribarrenp/mysite/static/casa/datos/bmp280.png"  alt="" />
                 </span-->
-                <img src="./home/iribarrenp/mysite/static/casa/datos/bmp280.png"  alt="" />
+                <h1>Datos riveras del Calle Calle</h1>
+                <h2 >Instalación 2019-10-17</h2>
+                <h2 >Último registro {{ fecha }}</h2>
+                <img src="./static/monitoreo/casa/datos/bmp280.png"  alt="" />
 				<p>Datos de temperatura, humedad y presión atmosférica de estación Riveras del Calle Calle.
 				Datos obtenidos con sensor BME280 instalado sin radiation shield bajo techo.
 				Está conectado a Raspberry Pi Zero W y guarda datos cada 10 minutos.
@@ -26,7 +29,7 @@
                 <hr class="major" />
 
 				<video controls autoplay>
-                <source src="./home/iribarrenp/mysite/static/casa/fotos/TimeLapseCasa.mp4" type="video/mp4">
+                <source src="./static/monitoreo/casa/fotos/TimeLapseCasa.mp4" type="video/mp4">
                 </video>
                 <p>La camara está instalada a la intermperie dentro de carcasa de camara de seguridad falsa aprovechando su sección transparente,
                 rotación en 360 grados e impermeabilidad.Se muestra video de las últimas 8 fotos.</p>
