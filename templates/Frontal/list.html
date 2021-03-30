@@ -6,8 +6,24 @@
         <div class="row mx-0">
             <div class="col-md-8 animate-box" data-animate-effect="fadeInLeft">
                 <div>
-                    <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">{{transType}}</div>
+                    <h2 class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">{{transType}}</h2>
                 </div>
+                {% if type == "Monitoring"%}
+                <h4>Monitoreo Dinamico</h4>
+                <div class="row pb-4">
+                <div class="col-md-5">
+                    <div class="fh5co_hover_news_img">
+                        <div class="fh5co_news_img"><img href="https://es.wikipedia.org/wiki/Arduino#/media/Archivo:Arduino_Logo.svg" alt=""/></div>
+                        <div></div>
+                    </div>
+                </div>
+                <div class="col-md-7 animate-box">
+                    <a href="/show_casa"  class="fh5co_magna py-2">Datos riveras del Calle Calle</a>
+                    <div class="fh5co_consectetur"> Con arduino</div>
+                </div></div>
+
+                <h4>Monitoreo Estatico</h4>
+                {% endif %}
                 {% for post in posts %}
                 <div class="row pb-4">
                     <div class="col-md-5">
@@ -18,10 +34,10 @@
                     </div>
                     <div class="col-md-7 animate-box">
                         {% if type != 'Maps'%}
-                        <a href="/post/{{type}}/{{post.id}}" class="fh5co_magna py-2"> "{{post.title}}</a> <a href="#" class="fh5co_mini_time py-3"> {{post.user.username}} {{post.user.lastname}} -  {{post.pub_date}} </a>
+                        <a href="/post/{{type}}/{{post.id}}" class="fh5co_magna py-2"> {{post.title}}</a> <a href="#" class="fh5co_mini_time py-3"> {{post.user.username}} {{post.user.lastname}} -  {{post.pub_date}} </a>
                         <div class="fh5co_consectetur"> {{post.subtitle}}
                         {% else %}
-                        <a href="./static/uploaders/Maps/{{post.id}}/{{post.body}}" class="fh5co_magna py-2"> "{{post.title}}</a> <a href="#" class="fh5co_mini_time py-3"> {{post.user.username}} {{post.user.lastname}} -  {{post.pub_date}} </a>
+                        <a href="./static/uploaders/Maps/{{post.id}}/{{post.body}}" class="fh5co_magna py-2"> {{post.title}}</a> <a href="#" class="fh5co_mini_time py-3"> {{post.user.username}} {{post.user.lastname}} -  {{post.pub_date}} </a>
                         <div class="fh5co_consectetur"> {{post.subtitle}}
                         {% endif %}
                         </div>
