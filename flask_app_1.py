@@ -229,9 +229,12 @@ def updatePost(idPost,type):
         post.body = request.form['body']
         post.image = request.form['image']
         if type=='Blog':
-            categoryId =  request.form.get('category')
-            category = Category.query.filter_by(id = categoryId).first_or_404()
-            post.category_id = category
+            try:
+                categoryId =  request.form.get('category')
+                category = Category.query.filter_by(id = categoryId).first_or_404()
+                post.category_id = category
+            except:
+                return 'ERRor'
         db.session.commit()
         flash("Actualizado")
         if type=="Blog":
