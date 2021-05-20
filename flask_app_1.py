@@ -228,23 +228,23 @@ def updatePost(idPost,type):
         post.subtitle = request.form['subtitle']
         post.body = request.form['body']
         post.image = request.form['image']
-        if type=='Blog':
-            try:
-                categoryId =  request.form.get('category')
-                category = Category.query.filter_by(id = categoryId).first_or_404()
-                post.category_id = category
-            except:
-                return 'ERRor'
+        #if type=='Blog':
+        #    try:
+        #        categoryId =  request.form.get('category')
+         #       category = Category.query.filter_by(id = categoryId).first_or_404()
+        #        post.category_id = category
+        #    except:
+        #        return 'ERRor'
         db.session.commit()
         flash("Actualizado")
-        if type=="Blog":
-            category = Category.query.all()
-            return render_template('update_post.html', post=post, id=idPost, type=type, isSuper = user.isSuperUser, cat = category)
+        #if type=="Blog":
+        #    category = Category.query.all()
+        #    return render_template('update_post.html', post=post, id=idPost, type=type, isSuper = user.isSuperUser, cat = category)
         return render_template('update_post.html', post=post, id=idPost, type=type, isSuper = user.isSuperUser )
     else:
-        if type=="Blog":
-            category = Category.query.all()
-            return render_template('update_post.html', post=post, id=idPost, type=type, isSuper = user.isSuperUser, cat = category)
+        #if type=="Blog":
+        #    category = Category.query.all()
+        #    return render_template('update_post.html', post=post, id=idPost, type=type, isSuper = user.isSuperUser, cat = category)
         return render_template('update_post.html', post=post, id=idPost, type=type, isSuper = user.isSuperUser )
 
 
