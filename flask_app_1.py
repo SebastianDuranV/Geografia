@@ -232,8 +232,14 @@ def updatePost(idPost,type):
             post.category_id = request.form['idcategory']
         db.session.commit()
         flash("Actualizado")
+        if type=="Blog":
+            category = Category.query.all()
+            return render_template('update_post.html', post=post, id=idPost, type=type, isSuper = user.isSuperUser, cat = category)
         return render_template('update_post.html', post=post, id=idPost, type=type, isSuper = user.isSuperUser )
     else:
+        if type=="Blog":
+            category = Category.query.all()
+            return render_template('update_post.html', post=post, id=idPost, type=type, isSuper = user.isSuperUser, cat = category)
         return render_template('update_post.html', post=post, id=idPost, type=type, isSuper = user.isSuperUser )
 
 
