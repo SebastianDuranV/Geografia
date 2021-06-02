@@ -1,5 +1,5 @@
 from flask import Flask, redirect, render_template, url_for, request, flash, make_response, session
-from consultor_sql import User, Category , db, Blog, News, Monitoring, Proyects, Maps
+from consultor_sql import User, Category , db, Blog, News, Monitoring, Proyects, Maps, app
 import forms
 import os
 from werkzeug.utils import secure_filename
@@ -7,7 +7,7 @@ from pandas import pandas as pd
 import glob
 
 
-app = Flask(__name__)
+#app = Flask(__name__)
 app.secret_key = 'Mi_perro_se_llama_manjar'
 db.create_all()
 
@@ -54,21 +54,26 @@ translateNameSingle = dict(
 # Cargar archivos en directorio ::::::::::::::::::
 #Crear directorio
 def createDirectory(id,type,x=0):
-    if x != 0 :
-        return 0 
-    directory = os.path.join('./static/uploaders/' + type, str(id))
-    try:
-        os.makedirs(directory)
-    except:
-        directory = os.path.join('./static/uploaders/' + type)
-        os.makedirs(directory)
-        createDirectory(id,type,1)
+    #if x != 0 :
+    #    return 0
+    directory = os.path.join('/home/iribarrenp/Geografia/static/uploaders/' + type + '/' + str(id))
+    #try:
+        #os.makedirs(directory)
+    #try:
+    os.mkdir(directory)
+    #except:
+    #    return 0
+    #except:
+    #    directory = os.path.join('./static/uploaders/' + type)
+    #    os.mkdir(directory)
+        #os.makedirs(directory)
+    #    createDirectory(id,type,1)
 
 
 #Cargar archivos
 def upload(id,type,request):
     createDirectory(id,type)
-    app.config['UPLOAD_FOLDER'] = "./static/uploaders/" + type +'/'+ str(id)
+    app.config['UPLOAD_FOLDER'] = "/home/iribarrenp/Geografia/static/uploaders/" + type +'/'+ str(id)
     #f = request.files['files']
     #filename = secure_filename(f.filename)
     #f.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
@@ -223,12 +228,23 @@ def updatePost(idPost,type):
         post.subtitle = request.form['subtitle']
         post.body = request.form['body']
         post.image = request.form['image']
-        if type=='Blog':
-            post.category_id = request.form['idcategory']
+        #if type=='Blog':
+        #    try:
+        #        categoryId =  request.form.get('category')
+         #       category = Category.query.filter_by(id = categoryId).first_or_404()
+        #        post.category_id = category
+        #    except:
+        #        return 'ERRor'
         db.session.commit()
         flash("Actualizado")
+        #if type=="Blog":
+        #    category = Category.query.all()
+        #    return render_template('update_post.html', post=post, id=idPost, type=type, isSuper = user.isSuperUser, cat = category)
         return render_template('update_post.html', post=post, id=idPost, type=type, isSuper = user.isSuperUser )
     else:
+        #if type=="Blog":
+        #    category = Category.query.all()
+        #    return render_template('update_post.html', post=post, id=idPost, type=type, isSuper = user.isSuperUser, cat = category)
         return render_template('update_post.html', post=post, id=idPost, type=type, isSuper = user.isSuperUser )
 
 
@@ -297,7 +313,7 @@ def login():
             return render_template('login.html', user = login_form)
         if login_form.password.data == user.password:
             session['idUser'] = user.id
-            return redirect(url_for('index')) 
+            return redirect(url_for('index'))
         else:
             flash("Email o contraseña no valida")
             return render_template('login.html', user = login_form)
@@ -367,7 +383,7 @@ def searchs():
 
 @app.route('/contact_us')
 def contact_us():
-    return render_template('/Frontal/contact_us.html')  
+    return render_template('/Frontal/contact_us.html')
 
 @app.route('/single')
 def single():
@@ -378,7 +394,7 @@ def single():
 def show_casa():
 
     #Fecha ultimo dato
-    data= pd.read_csv("./static/monitoreo/casa/datos/bmp280.csv")
+    data= pd.read_csv("/home/iribarrenp/Geografia/static/monitoreo/casa/datos/bmp280.csv")
     data= data.iloc[:,1:]
     data.columns=["Date","Temp","Hum","Press","lluvia"]#Renombro columnas porque se me dan vuelta :)
     data['Date'] = pd.to_datetime(data['Date'])
@@ -386,7 +402,7 @@ def show_casa():
     fecha=str(data.index[-1])[:-10]
 
     #Ruta ultima foto
-    files = glob.glob("./static/monitoreo/casa/fotos/"+"*.jpg")
+    files = glob.glob("/home/iribarrenp/Geografia/static/monitoreo/casa/fotos/"+"*.jpg")
     files.sort(key=os.path.getmtime)
     foto= files[-1]
     foto=foto.split('/static')[-2:][1]
