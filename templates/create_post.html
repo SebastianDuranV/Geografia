@@ -6,6 +6,7 @@
 <form  action="/createPost/{{typeEng}}" enctype="multipart/form-data" method="POST" id="contactForm" style="padding-top: -3vmin" novalidate>
     <div class="container">
       <h2 class="text-white" >Crear {{type}} </h2>
+      <h3 class="text-white"> Sí subes algún contenido, especialemte un mapa es necesario que subas los archivos, pero sin CARPETAS. (el sistema no lo hacepta por ahora)</h3>
       <div class="control-group">
         <div class="form-group floating-label-form-group controls">
           {{ render_field(post.title, class="form-control" , placeholder="Titulo" ) }}

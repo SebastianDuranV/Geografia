@@ -1,6 +1,0 @@
-Mapas -> archivos -> eliminar -> descargar.
-cambiar las imagenes
-Monitoreo.
-Seguridad
-Numero de visitantes.
-botones de navegación entre articulos.

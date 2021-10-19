@@ -11,6 +11,7 @@ import glob
 app.secret_key = 'Mi_perro_se_llama_manjar'
 db.create_all()
 
+# Diccionario para disminuir el codigo
 TipeClass = dict(
     User = User,
     Category = Category,
@@ -21,7 +22,7 @@ TipeClass = dict(
     Proyects = Proyects
 )
 
-# Inicio
+# El modo editor es para tener acceso a la base de datos.
 @app.route('/ModoEditor')
 def index():
     try:
@@ -51,32 +52,19 @@ translateNameSingle = dict(
     Proyects = "Proyectos"
 )
 
-# Cargar archivos en directorio ::::::::::::::::::
-#Crear directorio
+# Cargar archivos en directorio 
+# Crear directorio
 def createDirectory(id,type,x=0):
-    #if x != 0 :
-    #    return 0
     directory = os.path.join('/home/iribarrenp/Geografia/static/uploaders/' + type + '/' + str(id))
-    #try:
-        #os.makedirs(directory)
-    #try:
+    #directory = os.path.join('C:/Users/Sebastián-Durán/Documents/P R O Y E C T O S/Nueva carpeta/Geografia/static/uploaders/' + type + '/' + str(id))
     os.mkdir(directory)
-    #except:
-    #    return 0
-    #except:
-    #    directory = os.path.join('./static/uploaders/' + type)
-    #    os.mkdir(directory)
-        #os.makedirs(directory)
-    #    createDirectory(id,type,1)
 
 
 #Cargar archivos
 def upload(id,type,request):
     createDirectory(id,type)
     app.config['UPLOAD_FOLDER'] = "/home/iribarrenp/Geografia/static/uploaders/" + type +'/'+ str(id)
-    #f = request.files['files']
-    #filename = secure_filename(f.filename)
-    #f.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+    #app.config['UPLOAD_FOLDER'] = "C:/Users/Sebastián-Durán/Documents/P R O Y E C T O S/Nueva carpeta/Geografia/static/uploaders/" + type +'/'+ str(id)
 
     # save each "charts" file
     uploaded_files = request.files.getlist("files")
@@ -84,11 +72,8 @@ def upload(id,type,request):
         filename = secure_filename(file.filename)
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
-    #for file in request.files['files']:
-    #    print(file)
-    #    file.save(os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(file.filename)))
 
-
+# Creación de un usuario nuevo
 @app.route('/createUser', methods = ['POST','GET'] )
 def createUser():
     comment_form = forms.FormUser(request.form)
@@ -105,6 +90,7 @@ def createUser():
     else:
         return render_template('create_user.html', user=comment_form)
 
+#Creación de una nueva categoría para {la sección de los blog
 @app.route('/createCategory', methods = ['POST','GET'] )
 def createCategory():
     comment_form = forms.FormCategory(request.form)
@@ -119,7 +105,7 @@ def createCategory():
     else:
          return render_template('create_category.html', cat=comment_form,  isSuper = user.isSuperUser )
 
-
+# Crea un blog y lo asocia a una categoría
 @app.route('/createPost/<type>', methods = ['POST','GET'] )
 def createPost(type):
     comment_form = formsPostDic[type](request.form)
@@ -152,7 +138,8 @@ def createPost(type):
 
 
 
-# Eliminar
+# Función para eliminar datos en la base de datos.
+# Para usuarios
 @app.route('/deleteUser/<username>')
 def delete_user(username):
     user = User.query.filter_by(username=username).first_or_404()
@@ -160,6 +147,7 @@ def delete_user(username):
     db.session.commit()
     return redirect(url_for('index'))
 
+# Para categorías
 @app.route('/deleteCategory/<idCat>')
 def delete_category(idCat):
     cat = Category.query.filter_by(id=idCat).first_or_404()
@@ -167,6 +155,7 @@ def delete_category(idCat):
     db.session.commit()
     return redirect(url_for('index'))
 
+# Para los post
 @app.route('/deletePost/<type>/<idPost>')
 def delete_post(idPost,type):
     post = TipeClass[type].query.filter_by(id=idPost).first_or_404()
@@ -175,22 +164,7 @@ def delete_post(idPost,type):
     return redirect(url_for('index'))
 
 
-
-
-#@app.route('/updateUser/<username>', methods = ['POST','GET'] )
-#def updateUser(username):
-#    user = User.query.filter_by(username=username).first_or_404()
-#    if request.method == 'POST':
-#        user.userName = request.form['username']
-#        user.email = request.form['email']
-#        db.session.commit()
-#        flash("Usuario fue actualizado")
-        #return redirect(url_for('index'))
-#        return render_template('update_user.html' , user=user, username=username)
-#    else:
-#        return render_template('update_user.html' , user=user, username=username)
-
-
+#Actualizar bases de datos
 @app.route('/updateUserPerfil', methods = ['POST','GET'] )
 def updatePerfil():
     id = session['idUser']
@@ -248,7 +222,7 @@ def updatePost(idPost,type):
         return render_template('update_post.html', post=post, id=idPost, type=type, isSuper = user.isSuperUser )
 
 
-# Mostrar
+# Mostrar en el frontend.
 @app.route('/getList')
 def getList():
     getObject = request.args.get('type','<h1> No type declarated </h1>')
@@ -301,7 +275,7 @@ def show_post(idpost,type):
 
 
 # Sesiones de usuario
-# ::: Entrar
+# Para acceder a la base de datos
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     login_form = forms.FormLoginUser(request.form)
@@ -320,7 +294,7 @@ def login():
     else:
         return render_template('login.html', user = login_form)
 
-# ::: Salir
+# Salir
 @app.route('/logout')
 def logout():
     if 'idUser' in session:
@@ -385,6 +359,20 @@ def searchs():
 def contact_us():
     return render_template('/Frontal/contact_us.html')
 
+
+# Proyecto exploradores
+# Monitoreo de un glaciar
+# Mostrar mapa
+@app.route('/Monitoring/glaciar')
+def map_glaciar():
+    return render_template('/Frontal/glaciar.html')
+
+# Mostrar mapas
+@app.route('/Monitoring/glaciar/<nameType>/<id>')
+def prueba(nameType, id):
+    df = pd.read_csv("C:/Users/Sebastián-Durán/Documents/P R O Y E C T O S/Nueva carpeta/Geografia/static/csv_glaciar/example_baliza.csv")
+    return render_template('/Frontal/glaciar/graficos.html', information=df, nameType = nameType )
+
 @app.route('/single')
 def single():
     return render_template('/Frontal/single.html')
@@ -415,8 +403,10 @@ def show_casa():
 
     return render_template('/Frontal/casa.html',**templateData)
 
+# Creación de nuevo proyecto
 
 
+# Comentar al momento de implementarlo en la web.
 if __name__=='__main__':
     app.run(host= '0.0.0.0',debug=True)
 

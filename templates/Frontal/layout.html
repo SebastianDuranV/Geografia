@@ -1,11 +1,5 @@
 <!DOCTYPE html>
-<!--
-	24 News by FreeHTML5.co
-	Twitter: https://twitter.com/fh5co
-	Facebook: https://fb.com/fh5co
-	URL: https://freehtml5.co
--->
-<html lang="en" class="no-js">
+<html lang="es" class="no-js">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -25,60 +19,16 @@
     <!-- Modernizr JS -->
     <script src="{{ url_for('static', filename='js/modernizr-3.5.0.min.js')}}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    {% block head %}
+    {% endblock %}
+
 </head>
 <body class='single'>
-<!--<div class="container-fluid fh5co_header_bg">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 fh5co_mediya_center"><a href="#" class="color_fff fh5co_mediya_setting"><i
-                    class="fa fa-clock-o"></i>&nbsp;&nbsp;&nbsp;Friday, 5 January 2018</a>
-                <div class="d-inline-block fh5co_trading_posotion_relative"><a href="#" class="treding_btn">Trending</a>
-                    <div class="fh5co_treding_position_absolute"></div>
-                </div>
-                <a href="#" class="color_fff fh5co_mediya_setting">Instagram’s big redesign goes live with black-and-white app</a>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="container-fluid">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 col-md-3 fh5co_padding_menu">
-                <img src="{{ url_for('static', filename='images/logo.png')}}" alt="img" class="fh5co_logo_width"/>
-            </div>
-            <div class="col-12 col-md-9 align-self-center fh5co_mediya_right">
-                <div class="text-center d-inline-block">
-                    <a class="fh5co_display_table"><div class="fh5co_verticle_middle"><i class="fa fa-search"></i></div></a>
-                </div>
-                <div class="text-center d-inline-block">
-                    <a class="fh5co_display_table"><div class="fh5co_verticle_middle"><i class="fa fa-linkedin"></i></div></a>
-                </div>
-                <div class="text-center d-inline-block">
-                    <a class="fh5co_display_table"><div class="fh5co_verticle_middle"><i class="fa fa-google-plus"></i></div></a>
-                </div>
-                <div class="text-center d-inline-block">
-                    <a href="https://twitter.com/fh5co" target="_blank" class="fh5co_display_table"><div class="fh5co_verticle_middle"><i class="fa fa-twitter"></i></div></a>
-                </div>
-                <div class="text-center d-inline-block">
-                    <a href="https://fb.com/fh5co" target="_blank" class="fh5co_display_table"><div class="fh5co_verticle_middle"><i class="fa fa-facebook"></i></div></a>
-                </div>
-                <div class="d-inline-block text-center dd_position_relative ">
-                    <select class="form-control fh5co_text_select_option">
-                        <option>English </option>
-                        <option>French </option>
-                        <option>German </option>
-                        <option>Spanish </option>
-                    </select>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-        </div>
-    </div>
-</div> -->
-<div class="container-fluid bg-faded fh5co_padd_mediya padding_786">
+<div class="container-fluid bg-faded fh5co_padd_mediya padding_786" style="z-index: 1;">
     <div class="container padding_786">
         <nav class="navbar navbar-toggleable-md navbar-light ">
-            <button class="navbar-toggler navbar-toggler-right mt-3" type="button" data-toggle="collapse"
+            <button class="navbar-toggler navbar-toggler-right " type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation"><span class="fa fa-bars"></span></button>
             <a class="navbar-brand" href="#">Cuenca Austral</a>
@@ -102,8 +52,17 @@
                     <li class="nav-item ">
                         <a class="nav-link" href="/News">Noticias <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item ">
+                    <!--li class="nav-item ">
                         <a class="nav-link" href="/Monitoring">Monitoreo <span class="sr-only">(current)</span></a>
+                    </li-->
+                     <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdownMenuButton3" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">Monitoreo<span class="sr-only">(current)</span></a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink_1">
+                            <a class="dropdown-item"  href="/Monitoring">Estatico</a>
+                            <a class="dropdown-item"  href="/Monitoring">Dinamico</a>
+                            <a class="dropdown-item"  href="/Monitoring/glaciar">Glaciar</a>
+                        </div>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link" href="/Maps">WebMaps <span class="sr-only">(current)</span></a>
@@ -136,28 +95,13 @@
 {% endblock %}
 
 
-<!--div class="container-fluid fh5co_footer_right_reserved">
-    <div class="container">
-        <div class="row  ">
-            <div class="col-12 col-md-6 py-4 Reserved"> © Copyright 2018, All rights reserved. Design by <a href="https://freehtml5.co" title="Free HTML5 Bootstrap templates">FreeHTML5.co</a>. </div>
-            <div class="col-12 col-md-6 spdp_right py-4">
-                <a href="index.html" class="footer_last_part_menu">Home</a>
-                <a href="Contact_us.html" class="footer_last_part_menu">About</a>
-                <a href="Contact_us.html" class="footer_last_part_menu">Contact</a>
-                <a href="blog.html" class="footer_last_part_menu">Latest News</a></div>
-        </div>
-    </div>
-</div-->
-
-<!--div class="col-12 py-4 Reserved" style="text-align: center"> © Copyright 2018, All rights reserved. Design by <a href="https://freehtml5.co" title="Free HTML5 Bootstrap templates">FreeHTML5.co</a>. </div-->
-
 <div class="container-fluid fh5co_footer_bg pb-3">
     <div class="container animate-box">
         <div class="row">
-            <div class="col-5 py-5"><h1>Cuenca Austral</h1>
+            <div class="col py-5"><h1>Cuenca Austral</h1>
             </div>
             
-            <div class="col-5 col-md-7 spdp_right py-5">
+            <div class="col spdp_right py-5">
                 <div class="footer_main_title pb-2"> Contacto</div>
                 <div class="footer_sub_about pb-2"> cuenca.austral2021@gmail.com
                 </div>
@@ -168,11 +112,6 @@
                     <!--div class="text-center d-inline-block"><a class="fh5co_display_table_footer">
                         <div class="fh5co_verticle_middle"><i class="fa fa-google-plus"></i></div>
                     </a></div-->
-                    <!--div class="text-center d-inline-block"><a class="fh5co_display_table_footer">
-                        <div class="fh5co_verticle_middle"><i class="fa fa-twitter"></i></div>
-                    </a></div>
-                    <div class="text-center d-inline-block"><a class="fh5co_display_table_footer">
-                        <div class="fh5co_verticle_middle"><i class="fa fa-facebook"></i></div-->
                     </a></div>
                 </div>
             </div>
