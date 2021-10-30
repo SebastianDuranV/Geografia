@@ -371,8 +371,8 @@ def map_glaciar():
 import pickle
 @app.route('/Monitoring/glaciar/<nameType>/<id>')
 def prueba(nameType, id):
-    df = pd.read_csv("C:/Users/Sebastián-Durán/Documents/P R O Y E C T O S/Nueva carpeta/Geografia/static/csv_glaciar/example_baliza.csv")
-    #df = 
+    #df = pd.read_csv("C:/Users/Sebastián-Durán/Documents/P R O Y E C T O S/Nueva carpeta/Geografia/static/csv_glaciar/example_baliza.csv")
+    
 
     if nameType == 'cambios':
         x = 'punto_'
@@ -382,12 +382,12 @@ def prueba(nameType, id):
         nombre_archivo = x + id + ".json"
 
 
-    path = "C:/Users/Sebastián-Durán/Documents/P R O Y E C T O S/Nueva carpeta/Geografia/static/exploradores/"
+    #path = "C:/Users/Sebastián-Durán/Documents/P R O Y E C T O S/Nueva carpeta/Geografia/static/exploradores/"
+    path = "/home/iribarrenp/Geografia/static/exploradores/"
 
     with open(path + nombre_archivo, 'rb') as fp:
         dat = pickle.load(fp)
-    print(type(df))
-    df = pd.DataFrame.from_dict(dat)
+    #df = pd.DataFrame.from_dict(dat)
 
     print(dat['punto'])
 
