@@ -43,7 +43,7 @@
             <div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
               <div>
                 {% if nameType == "baliza"%}
-                {{information.values[0].div | safe}}
+                {{information.div[0] | safe}}
                 {% endif %}
               </div>
             </div>
@@ -62,7 +62,7 @@
               <div>
                 <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4 form-group">Nacionalidad de observadores</div>
                 {% if nameType == "baliza"%}
-                {{information.values[1].div | safe}}
+                {{information.div[1] | safe}}
                 {% else %}
                 {{information.div | safe}}
                 {% endif %}
@@ -87,7 +87,7 @@
               
               <div class="col-md-4 container animate-box" data-animate-effect="fadeIn">
                 <div class="card" style="width: 18rem;">
-                  <img class="card-img-top" src="{{information.img.value[0]}}" alt="Foto 1">
+                  <img class="card-img-top" src="{{information.img[0]}}" alt="Foto 1">
                   <div class="card-body">
                     <h5 class="card-title">{{information.names.value[0]}</h5>
                     <!--p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p-->
@@ -97,9 +97,9 @@
 
               <div class="col-md-4 container animate-box" data-animate-effect="fadeIn">
                 <div class="card" style="width: 18rem;">
-                  <img class="card-img-top" src="{{information.img.value[1]}" alt="Foto 2">
+                  <img class="card-img-top" src="{{information.img[1]}" alt="Foto 2">
                   <div class="card-body">
-                    <h5 class="card-title">{{information.names.value[1]}</h5>
+                    <h5 class="card-title">{{information.names[1]}</h5>
                     <!--p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p-->
                   </div>
                 </div> 
@@ -107,9 +107,9 @@
 
               <div class="col-md-4 container animate-box" data-animate-effect="fadeIn">
                 <div class="card" style="width: 18rem;">
-                  <img class="card-img-top" src="{{information.img.value[2]}" alt="Foto 3">
+                  <img class="card-img-top" src="{{information.img[2]}" alt="Foto 3">
                   <div class="card-body">
-                    <h5 class="card-title">{{information.names.value[2]}</h5>
+                    <h5 class="card-title">{{information.names[2]}</h5>
                     <!--p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p-->
                   </div>
                 </div> 
@@ -138,8 +138,8 @@
           </div>
       </div>
       {% if nameType == "baliza"%}
-      {{information.values[0].script | safe}}
-      {{information.values[1].script | safe}}
+      {{information.script[0] | safe}}
+      {{information.script[1] | safe}}
       {% else %}
       {{information.script | safe}}
       {% endif %}
