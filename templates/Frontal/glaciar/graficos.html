@@ -34,7 +34,7 @@
           <div class="row mx-0 mt-4">
               <div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
                   <div>
-                      <h2 class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">Identificador: {{information.punto.values[0]}} </h2>
+                      <h2 class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">Identificador: {{information.punto}} </h2>
                   </div>
               </div>
           </div>
@@ -42,31 +42,37 @@
           <div class="row abs-center mx-0 mt-4">
             <div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
               <div>
-                {{information.div1.values[0] | safe}}
+                {% if nameType == "baliza"%}
+                {{information.values[0].div | safe}}
+                {% endif %}
               </div>
             </div>
           </div>
 
           <div class="row mx-0 mt-4 fh5co_footer_bg pt-3">
             <div class="col-md-7 animate-box" data-animate-effect="fadeInLeft">
-                <h5 class="form-group">En los últimos 7 días, el glaciar Exploradores ha perdido en total acumulada {{information.perdido.values[0]}} cm de espesor.</h5>
+                <h5 class="form-group">En los últimos 7 días, el glaciar Exploradores ha perdido en total acumulada {{information.perdido}} cm de espesor.</h5>
             </div>
             <div class="col-md-5 animate-box" data-animate-effect="fadeInLeft">
-                <h5 class="form-group">Cantidad de mediciones {{information.num_mediciones.values[0]}}</h5>
+                <h5 class="form-group">Cantidad de mediciones {{information.num_mediciones}}</h5>
             </div>
           </div>
           <div class="row  mx-0 mt-3 mb-3">
             <div class=" col-md-7 animate-box" data-animate-effect="fadeInLeft">
               <div>
                 <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4 form-group">Nacionalidad de observadores</div>
-                {{information.div2.values[0] | safe}}
+                {% if nameType == "baliza"%}
+                {{information.values[1].div | safe}}
+                {% else %}
+                {{information.div | safe}}
+                {% endif %}
               </div>
             </div>
             <div class="col-md-5 container animate-box form-group" data-animate-effect="fadeIn">
               <div>
                   <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4 form-group">Fotos tomadas</div>
-                  <div class="card" style="width: 19rem;">
-                    <img class="card-img-top" src="{{ url_for('static', filename='assets/video/cambio/fotos.gif')}}" alt="Animado">
+                  <div class="card" style="width: 20rem;">
+                    <img class="card-img-top" src="{{ url_for('static', filename='exploradores/' + information.punto + '.gif')}}" alt="Animado">
                   </div>
               </div>
           </div>
@@ -81,30 +87,30 @@
               
               <div class="col-md-4 container animate-box" data-animate-effect="fadeIn">
                 <div class="card" style="width: 18rem;">
-                  <img class="card-img-top" src="https://kc.kobotoolbox.org/media/large?media_file=marcosgomez%2Fattachments%2F928bd8fe213b44d1a09aed321935d1d4%2Ffce2e177-7bbd-4735-b849-f9c92c60ab06%2F163208988492942523402-19_18_18.jpg" alt="Foto 1">
+                  <img class="card-img-top" src="{{information.img.value[0]}}" alt="Foto 1">
                   <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <h5 class="card-title">{{information.names.value[0]}</h5>
+                    <!--p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p-->
                   </div>
                 </div> 
               </div>
 
               <div class="col-md-4 container animate-box" data-animate-effect="fadeIn">
                 <div class="card" style="width: 18rem;">
-                  <img class="card-img-top" src="https://kc.kobotoolbox.org/media/large?media_file=marcosgomez%2Fattachments%2F928bd8fe213b44d1a09aed321935d1d4%2Ffce2e177-7bbd-4735-b849-f9c92c60ab06%2F163208988492942523402-19_18_18.jpg" alt="Foto 2">
+                  <img class="card-img-top" src="{{information.img.value[1]}" alt="Foto 2">
                   <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <h5 class="card-title">{{information.names.value[1]}</h5>
+                    <!--p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p-->
                   </div>
                 </div> 
               </div>
 
               <div class="col-md-4 container animate-box" data-animate-effect="fadeIn">
                 <div class="card" style="width: 18rem;">
-                  <img class="card-img-top" src="https://kc.kobotoolbox.org/media/large?media_file=marcosgomez%2Fattachments%2F928bd8fe213b44d1a09aed321935d1d4%2Ffce2e177-7bbd-4735-b849-f9c92c60ab06%2F163208988492942523402-19_18_18.jpg" alt="Foto 3">
+                  <img class="card-img-top" src="{{information.img.value[2]}" alt="Foto 3">
                   <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <h5 class="card-title">{{information.names.value[2]}</h5>
+                    <!--p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p-->
                   </div>
                 </div> 
               </div>
@@ -131,9 +137,12 @@
           </div>
           </div>
       </div>
-    
-      {{information.script1.values[0] | safe}}
-      {{information.script2.values[0] | safe}}
+      {% if nameType == "baliza"%}
+      {{information.values[0].script | safe}}
+      {{information.values[1].script | safe}}
+      {% else %}
+      {{information.script | safe}}
+      {% endif %}
 
     {% endblock %}
     

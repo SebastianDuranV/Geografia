@@ -36,18 +36,18 @@ from PIL import Image
 # Obtener las imagenes
 def getUrlData(punto,data,tipo):
     lista_data_i = []
-    #lista_name = []
+    lista_name = []
     j = 0
     for i in range (len(data)):
         if data[i][tipo] == punto:
             lista_data_i.append(data[i]['_attachments'][0]['download_url'])
-            #lista_name.append(data[i][])
+            lista_name.append(data[i]['Nombre'])
             j =+ 1
             
         if j > 3 :
             break
             
-    return lista_data_i
+    return lista_data_i , lista_name
 
 
 
@@ -104,9 +104,9 @@ def getUrlDataList(punto, data, tipo):
         texto = y
         posicion = (100,100)
         font = cv2.FONT_ITALIC
-        tamaño = 2
+        tamaño = 1.5
         colorLetra = (250,250,250)
-        grosorLetra = 5
+        grosorLetra = 4
         
         cv2.putText(leer_imagen,texto,posicion,font,tamaño,colorLetra,grosorLetra)
     
@@ -286,7 +286,7 @@ for punto in puntos:
 
 
 
-
+print("Cambios")
 # Obtener los datos baliza
 KOBO_TOKEN = '26566dd7934bcb45fee86851765c4f7c867e9cc3'
 kobo = KoboExtractor(KOBO_TOKEN, 'https://kf.kobotoolbox.org/api/v2') # kobo.humanitarianresponse.info
@@ -301,37 +301,27 @@ data = data['results']
 baliza = ["b1","b2","b3","b4","b5","b6"]
 
 
-
-if len(data) != 0:
-    for punto in baliza:
+print("")
+print("Baliza")
+for punto in baliza:
+    try:
         script1 , div1 = getGraphicsGlaciar(data, punto)
         script2 , div2 = getGraphicCountry(punto,getCountryData(punto,data,"Baliza"))
-        img = getUrlData(punto, data, 'Baliza')
+        img, names = getUrlData(punto, data, 'Baliza')
         num_med = numberOfMedition(data,"Baliza",punto)
         perdido = lostThickness(data)
-        
-        d = {"punto": punto , "div" : div ,"script" : script,
-            "img" : img, 
-           "num_mediciones" : num_med, "perdido" : perdido}
-        
-        nombre_archivo = punto + ".json"
-        with open(nombre_archivo, 'wb') as fp:
-            pickle.dump(d, fp)
-            
-else:
-      for punto in baliza:
+    except:
         script1 , div1 = "",""
         script2 , div2 = "",""
-        img = ""
+        img, names = [] , []
         num_med = 0
         perdido = 0
-        
-        d = {"punto": punto , "div" : div ,"script" : script,
-            "img" : img, 
-           "num_mediciones" : num_med, "perdido" : perdido}
-        
-        nombre_archivo = punto + ".json"
-        with open(nombre_archivo, 'wb') as fp:
-            pickle.dump(d, fp)  
 
+    d = {"punto": punto , "div" : div ,"script" : script,
+        "img" : img, 
+       "num_mediciones" : num_med, "perdido" : perdido}
+        
+    nombre_archivo = punto + ".json"
+    with open(nombre_archivo, 'wb') as fp:
+        pickle.dump(d, fp)
 
