@@ -1,2 +1,4 @@
 ./static/uploaders/
 app.py
+*.json
+*.gif
