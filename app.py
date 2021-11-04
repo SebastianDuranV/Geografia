@@ -386,10 +386,14 @@ def prueba(nameType, id):
 
     with open(path + nombre_archivo, 'rb') as fp:
         dat = pickle.load(fp)
-    print(type(df))
-    df = pd.DataFrame.from_dict(dat)
+    #print(type(df))
+    #df = pd.DataFrame.from_dict(dat)
 
-    print(dat['punto'])
+
+    print("")
+    print(dat)
+    print("")
+    print("")
 
     return render_template('/Frontal/glaciar/graficos.html', information=dat, nameType = nameType )
 

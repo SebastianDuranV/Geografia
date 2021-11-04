@@ -4,9 +4,9 @@ from datetime import datetime
 
 app = Flask(__name__)
 
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:password@localhost/proyectogeografia'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:password@localhost/proyectogeografia'
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://SebastianDuranVi:1996duranrugby@SebastianDuranVilches.mysql.pythonanywhere-services.com/SebastianDuranVi$geografia'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://iribarrenp:valdivia2021@iribarrenp.mysql.pythonanywhere-services.com/iribarrenp$geografia'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://iribarrenp:valdivia2021@iribarrenp.mysql.pythonanywhere-services.com/iribarrenp$geografia'
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.config['SQLALCHEMY_POOL_RECYCLE'] = 30

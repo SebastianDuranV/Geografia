@@ -68,6 +68,7 @@
                 {% endif %}
               </div>
             </div>
+            {% if nameType != "baliza"%}
             <div class="col-md-5 container animate-box form-group" data-animate-effect="fadeIn">
               <div>
                   <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4 form-group">Fotos tomadas</div>
@@ -76,6 +77,7 @@
                   </div>
               </div>
           </div>
+          {% endif %}
           {% if nameType == "baliza" %}
             <div class="row  mx-0 mt-3 mb-3">
               <div class="container animate-box" data-animate-effect="fadeIn">

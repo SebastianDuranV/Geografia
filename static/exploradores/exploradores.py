@@ -313,12 +313,12 @@ for punto in baliza:
     except:
         script1 , div1 = "",""
         script2 , div2 = "",""
-        img, names = [] , []
+        img, names = ["No hay imagen"] , ["No hay imagen"]
         num_med = 0
         perdido = 0
 
     d = {"punto": punto , "div" : div ,"script" : script,
-        "img" : img, 
+        "img" : img, "names" : names,
        "num_mediciones" : num_med, "perdido" : perdido}
         
     nombre_archivo = punto + ".json"
