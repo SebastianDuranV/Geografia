@@ -187,7 +187,7 @@ for (const { geometry, properties } of geojson.features) {
     .setLngLat(geometry.coordinates)
     .setPopup(
       new mapboxgl.Popup({ offset: 25 }) // add popups
-        .setHTML(`<h2>${properties.title}</h2><p>${properties.description}</p><a class="btn btn-secundary" href='/Monitoring/glaciar/baliza/${properties.title[7]}'> aquí </a>`)
+        .setHTML(`<h2>${properties.title}</h2><p>${properties.description}</p><a class="btn btn-secundary" href='/Monitoring/exploradores/baliza/${properties.title[7]}'> aquí </a>`)
     )
     .addTo(map);
 }
@@ -203,7 +203,7 @@ for (const { geometry, properties } of cambios.features) {
     .setPopup(
       new mapboxgl.Popup({ offset: 25 }) // add popups
         .setHTML(
-          `<h2>${properties.title}</h2><p>${properties.description}</p><a class="btn btn-secundary" href='/Monitoring/glaciar/cambios/${properties.title[6]}'> aquí </a>`
+          `<h2>${properties.title}</h2><p>${properties.description}</p><a class="btn btn-secundary" href='/Monitoring/exploradores/cambios/${properties.title[6]}'> aquí </a>`
           // ${properties.title}
         )
     )
@@ -221,7 +221,7 @@ for (const { geometry, properties } of estacion.features) {
     .setPopup(
       new mapboxgl.Popup({ offset: 25 }) // add popups
         .setHTML(
-          `<h2>${properties.title}</h2><p>${properties.description}</p><a class="btn btn-secundary" href='/Monitoring/glaciar/prueba'> aquí </a>`
+          `<h2>${properties.title}</h2><p>${properties.description}</p><a class="btn btn-secundary" href='/Monitoring/exploradores/prueba'> aquí </a>`
           // ${properties.title}
         )
     )
