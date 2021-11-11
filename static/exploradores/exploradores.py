@@ -123,7 +123,7 @@ def getUrlDataList(punto, data, tipo):
         
             cv2.putText(leer_imagen,texto,posicion,font,tamano,colorLetra,grosorLetra)
     
-            # añadir imágenes al arreglo img_array
+            # anadir imágenes al arreglo img_array
             img_array.append(leer_imagen)
         except:
             print("Error de formato en archivo")
