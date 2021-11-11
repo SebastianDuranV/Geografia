@@ -257,7 +257,7 @@ puntos = ["punto_1", "punto_2", "punto_3", "punto_4", "punto_5" , "punto_6"]
 
 import pickle
 
-""" for punto in puntos:
+for punto in puntos:
     
     try:
         script, div = getGraphicCountry(punto,getCountryData(punto,data,'Punto_de_Observaci_n'))
@@ -285,7 +285,7 @@ import pickle
     
     nombre_archivo = punto + ".json"
     with open(nombre_archivo, 'wb') as fp:
-        pickle.dump(d, fp) """
+        pickle.dump(d, fp)
 
 
 

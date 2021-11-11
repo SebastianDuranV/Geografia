@@ -14,7 +14,11 @@ app.config['SQLALCHEMY_POOL_TIMEOUT'] = 40
 
 
 db = SQLAlchemy(app)
-db.create_all()
+try:
+    db.create_all()
+except:
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:password@localhost/proyectogeografia'
+    db.create_all()
 
 
 #class Post(db.Model):
