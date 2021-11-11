@@ -100,18 +100,21 @@ def getUrlDataList(punto, data, tipo):
     for x, y in zip(lista_data_i, lista_name):
         
         #Asignar a variable leer_imagen, el nombre de cada imagen
-        leer_imagen = imageio.imread(x)
-        texto = y
-        posicion = (100,100)
-        font = cv2.FONT_ITALIC
-        tamaño = 1.5
-        colorLetra = (250,250,250)
-        grosorLetra = 4
+        try:
+            leer_imagen = imageio.imread(x)
+            texto = y
+            posicion = (100,100)
+            font = cv2.FONT_ITALIC
+            tamaño = 1.5
+            colorLetra = (250,250,250)
+            grosorLetra = 4
         
-        cv2.putText(leer_imagen,texto,posicion,font,tamaño,colorLetra,grosorLetra)
+            cv2.putText(leer_imagen,texto,posicion,font,tamaño,colorLetra,grosorLetra)
     
-        # añadir imágenes al arreglo img_array
-        img_array.append(leer_imagen)
+            # añadir imágenes al arreglo img_array
+            img_array.append(leer_imagen)
+        except:
+            print("Error de formato en archivo")
         
     
     #Guardar Gif
@@ -183,14 +186,14 @@ def getGraphicsGlaciar(data, punto):
     for i in x:
         df[i] = None
 
+
     for i in data:
         if i['Baliza'] == punto:
-            df = df.append({'Pais' : i['Pa_s'],'Grupo' : i['Observador'],'cm' : int(i['Altura_cms']),'Seccion' : i['Segmento_Baliza'],
+            df = df.append({'Pais' : i['Pais'], 'Grupo' : i['Observador'],'cm' : int(i['Altura_cms']),'Seccion' : i['Segmento_Baliza'],
                        'Nombre' : i['Observador'],'Fecha' : i['Fecha_y_Hora'][:10],
-                            'Hora' : i['Fecha_y_Hora'][len(data[0]['Fecha_y_Hora'])-5:]},
+                            'Hora' : i['Fecha_y_Hora'][-5:]},
                       ignore_index=True)
-    df
-    
+
     #Transformando fecha y hora a datetime y eliminando nans
     df['date']=pd.to_datetime(df['Fecha'], format="%Y-%m-%d").dt.date.astype(str)
     df['time']=pd.to_datetime(df['Hora'], format="%H:%M").dt.time.astype(str)
@@ -254,7 +257,7 @@ puntos = ["punto_1", "punto_2", "punto_3", "punto_4", "punto_5" , "punto_6"]
 
 import pickle
 
-for punto in puntos:
+""" for punto in puntos:
     
     try:
         script, div = getGraphicCountry(punto,getCountryData(punto,data,'Punto_de_Observaci_n'))
@@ -282,7 +285,7 @@ for punto in puntos:
     
     nombre_archivo = punto + ".json"
     with open(nombre_archivo, 'wb') as fp:
-        pickle.dump(d, fp)
+        pickle.dump(d, fp) """
 
 
 
@@ -310,6 +313,7 @@ for punto in baliza:
         img, names = getUrlData(punto, data, 'Baliza')
         num_med = numberOfMedition(data,"Baliza",punto)
         perdido = lostThickness(data)
+        print(punto)
     except:
         script1 , div1 = "",""
         script2 , div2 = "",""
@@ -317,7 +321,7 @@ for punto in baliza:
         num_med = 0
         perdido = 0
 
-    d = {"punto": punto , "div" : div ,"script" : script,
+    d = {"punto": punto , "div1" : div1 ,"script1" : script1, "div2" : div2 ,"script2" : script2,
         "img" : img, "names" : names,
        "num_mediciones" : num_med, "perdido" : perdido}
         
