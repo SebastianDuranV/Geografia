@@ -38,14 +38,26 @@ def getUrlData(punto,data,tipo):
     lista_data_i = []
     lista_name = []
     j = 0
-    for i in range (len(data)):
+    """ for i in range (len(data)):
         if data[i][tipo] == punto:
             lista_data_i.append(data[i]['_attachments'][0]['download_url'])
             lista_name.append(data[i]['Nombre'])
             j =+ 1
             
         if j > 3 :
-            break
+            break """ 
+
+    for i in range (3):
+        if data[i][tipo] == punto:
+            lista_data_i.append(data[i]['_attachments'][0]['download_url'])
+            lista_name.append(data[i]['Nombre'])
+    
+    lista_data_i.append("https://image.flaticon.com/icons/png/512/1034/1034633.png")
+    lista_name.append("No hay imagen")
+    lista_data_i.append("https://image.flaticon.com/icons/png/512/1034/1034633.png")
+    lista_name.append("No hay imagen")
+    lista_data_i.append("https://image.flaticon.com/icons/png/512/1034/1034633.png")
+    lista_name.append("No hay imagen")
             
     return lista_data_i , lista_name
 
@@ -120,7 +132,7 @@ def getUrlDataList(punto, data, tipo):
     #Guardar Gif
     nombre_archivo = punto + '.gif'
     try:
-        imageio.mimwrite(nombre_archivo, img_array, 'GIF', duration=1)
+        imageio.mimwrite(nombre_archivo, img_array, 'GIF', duration=5)
     except:
         print("No image")
 
@@ -247,7 +259,8 @@ kobo = KoboExtractor(KOBO_TOKEN, 'https://kf.kobotoolbox.org/api/v2') # kobo.hum
 asset_uid = "ajYQ63QAQhzKx7F3F9zEvR" #"a7Wd6TUVqejWxSwBkzSGY9"
 # asset_uid = "aGigj5YaeQpmeyqvzjUEVp" Para el otro formulario
 #today = date.today()
-#datos_today = kobo.get_data(asset_uid,submitted_after = today )
+#print(date.today())
+datos_today = kobo.get_data(asset_uid,submitted_after = "2021-11-4" )
 data = kobo.get_data(asset_uid)
 data = kobo . sort_results_by_time(data['results'], reverse = True) 
 
@@ -296,7 +309,7 @@ kobo = KoboExtractor(KOBO_TOKEN, 'https://kf.kobotoolbox.org/api/v2') # kobo.hum
 #asset_uid = "atX9jThsvhvhhjFf573eng" #"a7Wd6TUVqejWxSwBkzSGY9"
 asset_uid = "a5xomk6KgJfvM3CpiX23tH" # Para el otro formulario
 #today = date.today()
-#datos_today = kobo.get_data(asset_uid,submitted_after = today )
+datos_today = kobo.get_data(asset_uid,submitted_after = "2021-11-4" )
 data = kobo.get_data(asset_uid)
 data = data['results']
 
@@ -315,11 +328,11 @@ for punto in baliza:
         perdido = lostThickness(data)
         print(punto)
     except:
-        script1 , div1 = "",""
-        script2 , div2 = "",""
-        img, names = ["No hay imagen"] , ["No hay imagen"]
-        num_med = 0
-        perdido = 0
+        script1 , div1 = "","<h6> Sin datos <h6/>"
+        script2 , div2 = "","<h6> Sin datos <h6/>"
+        img, names = ["https://image.flaticon.com/icons/png/512/1034/1034633.png","https://image.flaticon.com/icons/png/512/1034/1034633.png","https://image.flaticon.com/icons/png/512/1034/1034633.png"] , ["No hay imagen","No hay imagen","No hay imagen"]
+        num_med = "-"
+        perdido = "-"
 
     d = {"punto": punto , "div1" : div1 ,"script1" : script1, "div2" : div2 ,"script2" : script2,
         "img" : img, "names" : names,
