@@ -260,7 +260,7 @@ asset_uid = "ajYQ63QAQhzKx7F3F9zEvR" #"a7Wd6TUVqejWxSwBkzSGY9"
 # asset_uid = "aGigj5YaeQpmeyqvzjUEVp" Para el otro formulario
 #today = date.today()
 #print(date.today())
-datos_today = kobo.get_data(asset_uid,submitted_after = "2021-11-4" )
+datos_today = kobo.get_data(asset_uid,submitted_after = "2021-11-6" )
 data = kobo.get_data(asset_uid)
 data = kobo . sort_results_by_time(data['results'], reverse = True) 
 
@@ -309,7 +309,7 @@ kobo = KoboExtractor(KOBO_TOKEN, 'https://kf.kobotoolbox.org/api/v2') # kobo.hum
 #asset_uid = "atX9jThsvhvhhjFf573eng" #"a7Wd6TUVqejWxSwBkzSGY9"
 asset_uid = "a5xomk6KgJfvM3CpiX23tH" # Para el otro formulario
 #today = date.today()
-datos_today = kobo.get_data(asset_uid,submitted_after = "2021-11-4" )
+datos_today = kobo.get_data(asset_uid,submitted_after = "2021-11-6" )
 data = kobo.get_data(asset_uid)
 data = data['results']
 

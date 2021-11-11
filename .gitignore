@@ -2,3 +2,5 @@
 app.py
 *.json
 *.gif
+./static/exploradores/*.json
+./static/exploradores/*.gif
