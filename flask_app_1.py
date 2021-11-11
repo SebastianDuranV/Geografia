@@ -267,6 +267,7 @@ def show_post(idpost,type):
                 later = otherpost[i+1].id
             except:
                 later = 0
+    post.pub_date = "Día " + str(post.pub_date)[8:10] + " del " +  str(post.pub_date)[5:7]  + " del año " +  str(post.pub_date)[0:4] 
     if type == 'Blog':
         category = Category.query.all()
         return render_template('/Frontal/single.html', post=post, prev = prev, later = later, type=type, category=category)
