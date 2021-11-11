@@ -117,11 +117,11 @@ def getUrlDataList(punto, data, tipo):
             texto = y
             posicion = (100,100)
             font = cv2.FONT_ITALIC
-            tamaño = 1.5
+            tamano = 1.5
             colorLetra = (250,250,250)
             grosorLetra = 4
         
-            cv2.putText(leer_imagen,texto,posicion,font,tamaño,colorLetra,grosorLetra)
+            cv2.putText(leer_imagen,texto,posicion,font,tamano,colorLetra,grosorLetra)
     
             # añadir imágenes al arreglo img_array
             img_array.append(leer_imagen)
