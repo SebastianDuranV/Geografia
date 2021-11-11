@@ -381,15 +381,13 @@ def prueba(nameType, id):
         x = 'b'
         nombre_archivo = x + id + ".json"
 
-
+    print(id)
     #path = "C:/Users/Sebastián-Durán/Documents/P R O Y E C T O S/Nueva carpeta/Geografia/static/exploradores/"
     path = "/home/iribarrenp/Geografia/static/exploradores/"
 
     with open(path + nombre_archivo, 'rb') as fp:
         dat = pickle.load(fp)
     #df = pd.DataFrame.from_dict(dat)
-
-    print(dat['punto'])
 
     return render_template('/Frontal/glaciar/graficos.html', information=dat, nameType = nameType )
 
