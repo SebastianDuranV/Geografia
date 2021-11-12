@@ -123,7 +123,7 @@ def getUrlDataList(punto, data, tipo):
         
             cv2.putText(leer_imagen,texto,posicion,font,tamano,colorLetra,grosorLetra)
     
-            # anadir imágenes al arreglo img_array
+            # anadir imagenes al arreglo img_array
             img_array.append(leer_imagen)
         except:
             print("Error de formato en archivo")
@@ -161,7 +161,7 @@ def generateGraphics(data,punto):
                 nonselection_alpha=0.3,
               size=8)
         
-    #Esto no está funcionando la idea es que se desplieguen estos datos cuando pinchas uno de los puntos
+    #Esto no esta funcionando la idea es que se desplieguen estos datos cuando pinchas uno de los puntos
     # Format tooltip
     tooltips = [ ('Pais', '@Pais'),
                     ('Nombre', '@Nombre'),
