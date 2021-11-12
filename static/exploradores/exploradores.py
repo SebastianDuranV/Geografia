@@ -147,7 +147,7 @@ def generateGraphics(data,punto):
                      x_axis_type = "datetime",
                      tools= 'pan,box_zoom,save,reset,hover', sizing_mode='scale_width')
             
-    #Gráfico linea
+    #Grafico linea
     fig.line(x="date_time",y="baliza",color='dodgerblue',line_width = 2,
                  legend_label= "Emergencia de baliza(cm)",source=source)
     
