@@ -169,7 +169,7 @@ def generateGraphics(data,punto):
 
     #Labels
     fig.xaxis.axis_label = "Fecha"
-    fig.yaxis.axis_label = "Pérdida de hielo (cm)"
+    fig.yaxis.axis_label = "Baja de hielo (cm)"
     
     #Leyenda
     fig.legend.location = "top_left"
