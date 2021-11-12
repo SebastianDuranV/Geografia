@@ -16,7 +16,7 @@ class KoboExtractor:
             https://kobo.humanitarianresponse.info/api/v2.
         debug: Set to True to enable debugging output. Default: False.
     """
-    def __init__(self, token: str, endpoint: str, debug: bool = False) -> None:
+    def __init__(self, token, endpoint, debug = False):
         """Initialises the KoboExtractor with token and endpoint.
         
         Args:
@@ -33,7 +33,7 @@ class KoboExtractor:
         pass
     
     
-    def list_assets(self) -> Dict[str, Any]:
+    def list_assets(self) :
         """Lists all assets (surveys).
         
         Lists all assets (surveys) in the associated KoBoToolbox account.
@@ -50,7 +50,7 @@ class KoboExtractor:
         return response.json()
     
     
-    def get_asset(self, asset_uid: str) -> Dict[str, Any]:
+    def get_asset(self, asset_uid):
         """Gets information on an asset (survey).
         
         Gets all information on an asset (survey) in the associated KoBoToolbox
