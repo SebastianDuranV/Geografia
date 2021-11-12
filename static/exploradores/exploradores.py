@@ -1,6 +1,6 @@
 from datetime import date
 from datetime import datetime
-from koboextractor import KoboExtractor
+from kobotolbox import KoboExtractor
 import pandas as pd
 
 from math import pi
