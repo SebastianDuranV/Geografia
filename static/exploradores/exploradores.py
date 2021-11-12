@@ -147,7 +147,7 @@ def generateGraphics(data,punto):
                      x_axis_type = "datetime",
                      tools= 'pan,box_zoom,save,reset,hover', sizing_mode='scale_width')
             
-    #Gráfico línea
+    #Gráfico linea
     fig.line(x="date_time",y="baliza",color='dodgerblue',line_width = 2,
                  legend_label= "Emergencia de baliza(cm)",source=source)
     
@@ -214,7 +214,7 @@ def getGraphicsGlaciar(data, punto):
     df.drop(["Fecha","Hora"],axis=1,inplace=True)
     df.dropna(inplace=True);
     
-    #Sumando largo de balizas anteriores para ver pérdida total de hielo en el periodo
+    #Sumando largo de balizas anteriores para ver perdida total de hielo en el periodo
     baliza= []
     for i in range(df.shape[0]):
         if df["Seccion"].iloc[i] == "1":
