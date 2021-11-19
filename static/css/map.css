@@ -69,10 +69,10 @@ body {
         padding: 10px;
         }
          
-        @media (max-width: 850px) {
+        @media (max-width: 1050px) {
 
             .map-overlay {
-                width: 44%;
+                width: 50%;
                 top:90 px;
             }
 

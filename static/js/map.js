@@ -10,7 +10,7 @@ const geojson = {
       type: "Feature",
       geometry: {
         type: "Point",
-        coordinates: [-73.1726267, -46.5158569],
+        coordinates: [-73.172144, -46.510571],
       },
       properties: {
         title: "Baliza 1",
@@ -22,7 +22,7 @@ const geojson = {
       type: "Feature",
       geometry: {
         type: "Point",
-        coordinates: [-73.1726267, -46.5158569],
+        coordinates: [-73.174046, -46.515939],
       },
       properties: {
         title: "Baliza 2",
@@ -34,7 +34,7 @@ const geojson = {
       type: "Feature",
       geometry: {
         type: "Point",
-        coordinates: [-73.1747528, -46.517085],
+        coordinates: [-73.173132, -46.513771],
       },
       properties: {
         title: "Baliza 3",
@@ -46,7 +46,7 @@ const geojson = {
       type: "Feature",
       geometry: {
         type: "Point",
-        coordinates: [-73.1747528, -46.517085],
+        coordinates: [-73.172133, -46.515963],
       },
       properties: {
         title: "Baliza 4",
@@ -58,18 +58,7 @@ const geojson = {
       type: "Feature",
       geometry: {
         type: "Point",
-        coordinates: [-73.1751505, -46.5191754],
-      },
-      properties: {
-        title: "Baliza 5",
-        description: "",
-      },
-    },
-    {
-      type: "Feature",
-      geometry: {
-        type: "Point",
-        coordinates: [-73.1751505, -46.5191754],
+        coordinates: [-73.171664, -46.514105],
       },
       properties: {
         title: "Baliza 6",
@@ -86,7 +75,7 @@ const estacion = {
       type: "Feature",
       geometry: {
         type: "Point",
-        coordinates: [-73.1743988, -46.5138834],
+        coordinates: [0, 0],
       },
       properties: {
         title: "Estación DGA",
@@ -103,69 +92,47 @@ const cambios = {
       type: "Feature",
       geometry: {
         type: "Point",
-        coordinates: [-73.1641448, -46.5020461],
+        coordinates: [-73.167549, -46.503222],
       },
       properties: {
-        title: "Vista 1",
-        description: "",
+        title: "Punto 1",
+        description: "Antes de la ola",
       },
     },
     {
       type: "Feature",
       geometry: {
         type: "Point",
-        coordinates: [-73.1665217, -46.5033542],
+        coordinates: [-73.169792, -46.505754],
       },
       properties: {
-        title: "Vista 2",
-        description: "",
+        title: "Punto 2",
+        description: "Después de la ola",
       },
     },
     {
       type: "Feature",
       geometry: {
         type: "Point",
-        coordinates: [-73.1698943, -46.5070519],
+        coordinates: [-73.17234, -46.510571],
       },
       properties: {
-        title: "Vista 3",
-        description: "",
+        title: "Punto 3",
+        description: "Laguna verde",
       },
     },
     {
       type: "Feature",
       geometry: {
         type: "Point",
-        coordinates: [-73.1727408, -46.5119445],
+        coordinates: [-73.17334, -46.513771],
       },
       properties: {
-        title: "Vista 4",
-        description: "",
+        title: "Punto 4",
+        description: "Laguna nueva",
       },
     },
-    {
-      type: "Feature",
-      geometry: {
-        type: "Point",
-        coordinates: [-73.1721592, -46.5141202],
-      },
-      properties: {
-        title: "Vista 5",
-        description: "",
-      },
-    },
-
-    {
-      type: "Feature",
-      geometry: {
-        type: "Point",
-        coordinates: [-73.1726896, -46.5204606],
-      },
-      properties: {
-        title: "Vista 6",
-        description: "",
-      },
-    },
+    
   ],
 };
 
@@ -203,7 +170,7 @@ for (const { geometry, properties } of cambios.features) {
     .setPopup(
       new mapboxgl.Popup({ offset: 25 }) // add popups
         .setHTML(
-          `<h2>${properties.title}</h2><p>${properties.description}</p><a class="btn btn-secundary" href='/Monitoring/exploradores/cambios/${properties.title[6]}'> aquí </a>`
+          `<h2>${properties.title}</h2><h3>${properties.description}</h3><a class="btn btn-secundary" href='/Monitoring/exploradores/cambios/${properties.title[6]}'> aquí </a>`
           // ${properties.title}
         )
     )
