@@ -432,9 +432,19 @@ def show_casa():
 # Creación de nuevo proyecto
 
 
+# Conexion con la api de los nodos para recivir datos
+
+# Implementación del monitoreo.
+from flask import Blueprint
+from api import nodo
+
+app.register_blueprint(nodo)
+
+
+
 # Comentar al momento de implementarlo en la web.
 if __name__=='__main__':
-    app.run(host= '0.0.0.0',debug=True)
+    app.run(host= '0.0.0.0',port=4000, debug=True)
 
 
 

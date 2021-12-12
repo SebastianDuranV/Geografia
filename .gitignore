@@ -4,3 +4,5 @@ app.py
 *.gif
 ./static/exploradores/*.json
 ./static/exploradores/*.gif
+*.csv
+*.jpg
