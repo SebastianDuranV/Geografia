@@ -437,9 +437,10 @@ def show_casa():
 # Implementación del monitoreo.
 from flask import Blueprint
 from api import nodo
+from nodoConsultor import nodoConsultor
 
 app.register_blueprint(nodo)
-
+app.register_blueprint(nodoConsultor)
 
 
 # Comentar al momento de implementarlo en la web.

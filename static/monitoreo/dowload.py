@@ -253,11 +253,11 @@ out.release()
 
 #Transformando avi a MP4
 
-#avitomp4 = ffmpy.FFmpeg(
-#inputs={'./casa/fotos/TimeLapseCasa.avi': None},
-#    outputs={'./casa/fotos/TimeLapseCasa.mp4': '-y'})
+avitomp4 = ffmpy.FFmpeg(
+inputs={'./casa/fotos/TimeLapseCasa.avi': None},
+    outputs={'./casa/fotos/TimeLapseCasa.mp4': '-y'})
 
 # windows
-avitomp4 = ffmpy.FFmpeg(executable='./ffmpeg/bin/ffmpeg.exe', inputs={'./casa/fotos/TimeLapseCasa.avi': None}, outputs={'./casa/fotos/TimeLapseCasa.mp4': '-y'})
-avitomp4.run()
+#avitomp4 = ffmpy.FFmpeg(executable='./ffmpeg/bin/ffmpeg.exe', inputs={'./casa/fotos/TimeLapseCasa.avi': None}, outputs={'./casa/fotos/TimeLapseCasa.mp4': '-y'})
+#avitomp4.run()
 

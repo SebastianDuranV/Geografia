@@ -164,6 +164,7 @@ def generarGraficos(data, atributo):
 import cv2
 import numpy as np
 import glob2 as glob
+import ffmpy
 
 def generarVideo(id):
 
@@ -187,3 +188,12 @@ def generarVideo(id):
     for i in range(len(img_array)):
         out.write(img_array[i])
     out.release()
+
+    avi_file_path = 'static/monitoreoDinamico/' + id +'/video.avi'
+    output_name = 'static/monitoreoDinamico/' + id +'/video.mp4'
+
+    os.popen("ffmpeg -i '{input}' -ac 2 -b:v 2000k -c:a aac -c:v libx264 -b:a 160k -vprofile high -bf 0 -strict experimental -f mp4 '{output} '".format(input = avi_file_path, output = output_name))
+
+    avitomp4 = ffmpy.FFmpeg(
+        inputs={'static/monitoreoDinamico/' + id +'/video.avi': None},
+        outputs={'static/monitoreoDinamico/' + id +'/video.mp4': '-y'})
