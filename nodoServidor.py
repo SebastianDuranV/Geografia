@@ -114,3 +114,19 @@ def getList():
     #    allObject = TipeClass[getObject].query.all()
 
     return render_template('show_list_types.html', objects=allObject , type=getObject, isSuper = user.isSuperUser )
+
+
+@nodoServidor.route('/editar/<idPost>', methods = ['POST','GET'] )
+def updatePost(idPost,type = "Nodo"):
+    user = User.query.filter_by(id=session['idUser']).first_or_404()
+    post = TipeClass[type].query.filter_by(id=idPost).first_or_404()
+    if request.method == 'POST':
+        post.nombre = request.form['nombre']
+        post.latitud = request.form['latitud']
+        post.descripcion = request.form['descripcion']
+        post.longitud = request.form['longitud']
+        db.session.commit()
+        flash("Actualizado")
+        return render_template('monitoreoDinamico/mostrar_nodo_admin.html', nodo=post, lat= post.latitud, lon = post.longitud , nombre=post.nombre, id=post.id)
+    else:
+        return render_template('monitoreoDinamico/editar_nodo.html', post=post, id=idPost, type=type, isSuper = user.isSuperUser )

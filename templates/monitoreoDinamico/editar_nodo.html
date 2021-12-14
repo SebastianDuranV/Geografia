@@ -1,0 +1,36 @@
+{% extends "./layout_user.html" %} {% block content %}
+<form action="{{id}}" enctype="multipart/form-data" method="POST" id="contactForm" style="padding-top: -3vmin" novalidate>
+    <div class="container">
+        {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
+        <p style="color: red">{{message}}</p>
+        {% endfor %} {% endif %} {% endwith %}
+        <h2 class="text-white">Actualizar / Editar</h2>
+        <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+                <label style="color:white">Nombre</label>
+                <input type="text" value="{{post.nombre}}" class="form-control" name="nombre" placeholder="nombre" id="nombre" required data-validation-required-message="Por favor ingrese: nombre.">
+                <p class="help-block text-danger"></p>
+            </div>
+            <div class="form-group floating-label-form-group controls">
+                <label style="color:white">latitud</label>
+                <input type="text" value="{{post.latitud}}" class="form-control" name="latitud" placeholder="latitud" id="latitud" required data-validation-required-message="Por favor ingrese: .">
+                <p class="help-block text-danger"></p>
+            </div>
+            <div class="form-group floating-label-form-group controls">
+                <label style="color:white">longitud</label>
+                <input type="text" value="{{post.longitud}}" class="form-control" name="longitud" placeholder="longitud" id="longitud" required data-validation-required-message="Por favor ingrese: .">
+                <p class="help-block text-danger"></p>
+            </div>
+            <div class="form-group floating-label-form-group controls">
+                <td> Descripción
+                    <textarea type="text" rows="10" class="form-control" name="descripcion" placeholder="descripcion" id="descripcion" required data-validation-required-message="Por favor ingrese: descripción.">{{post.descripcion}}</textarea>
+                    <p class="help-block text-danger"></p>
+            </div>
+            <br>
+            <div id="success"></div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary" id="sendMessageButton">Guardar</button>
+            </div>
+        </div>
+</form>
+{% endblock %}
