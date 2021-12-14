@@ -21,7 +21,7 @@ nodo = Blueprint('api',__name__,url_prefix='/api')
 @nodo.route("/post/<id>/<instrumento>", methods=["POST"])
 def post(id,instrumento):
     datos = request.json
-    #pprint.pprint(datos)
+    pprint.pprint(datos)
 
     if existeArchivo('static/monitoreoDinamico/' + id + '/' + instrumento + '.csv') == False:
         with open('static/monitoreoDinamico/' + id + '/' + instrumento + '.csv', 'a', newline='') as f_object:  
@@ -192,7 +192,8 @@ def generarVideo(id):
     avi_file_path = 'static/monitoreoDinamico/' + id +'/video.avi'
     output_name = 'static/monitoreoDinamico/' + id +'/video.mp4'
 
-    os.popen("ffmpeg -i '{input}' -ac 2 -b:v 2000k -c:a aac -c:v libx264 -b:a 160k -vprofile high -bf 0 -strict experimental -f mp4 '{output} '".format(input = avi_file_path, output = output_name))
+
+    os.popen("ffmpeg -y -i '{input}' -ac 2 -b:v 2000k -c:a aac -c:v libx264 -b:a 160k -vprofile high -bf 0 -strict experimental -f mp4 '{output} '".format(input = avi_file_path, output = output_name))
 
     avitomp4 = ffmpy.FFmpeg(
         inputs={'static/monitoreoDinamico/' + id +'/video.avi': None},

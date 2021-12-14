@@ -157,3 +157,20 @@ class Monitoring(db.Model):
 
     def __repr__(self):
         return '%r' % self.title
+
+
+class Nodo(db.Model):
+    id = db.Column(db.Integer, primary_key=True, unique=True)
+    nombre = db.Column(db.String(100), nullable=False)
+    latitud = db.Column(db.Float, nullable=False)
+    longitud = db.Column(db.Float, nullable=False)
+    descripcion = db.Column(db.Text, nullable=False)
+
+
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'),
+        nullable=False)
+    user = db.relationship('User',
+        backref=db.backref('nodo', lazy=True))
+    
+    def __repr__(self):
+        return '(%s,%s,%s,%s, %s)' % (self.id,self.nombre,self.latitud,self.longitud, self.descripcion)

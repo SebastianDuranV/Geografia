@@ -1,83 +1,193 @@
-{% extends "layout_user.html" %}
-{% block content %}
+{% extends "layout_user.html" %} {% block head %}
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+<link href="{{ url_for('static', filename='css/map.css')}}" rel="stylesheet" type="text/css" /> {% endblock %} {% block content %}
 
 
 <div class="container">
     <div class="row">
-        <h3 class="color: rgb(0,0,0)"> {{type}}</h3>
+        <h3 class="color: rgb(0,0,0)"> Lista : {{type}}s</h3>
 
-{% if type == "User"%}
-<table class="table">
-    <thead>
-        <tr class="table-success">
-            <th scope="col">id</th>
-            <th scope="col">Username</th>
-            <th scope="col">email</th>
-            <th scope="col">Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-    {% for i in objects %}
-    <tr class="table-primary">
-        <th scope="row">{{ i.id }}</th>
-        <td>{{ i.username }}</td>
-        <td>{{ i.email }}</td>
-        <td><a role="button" class="btn btn-primary" href="/user/{{i.username}}">Go</a> <a role="button" class="btn btn-info" href="/updateUser/{{i.username}}">Update</a> <a role="button" class="btn btn-danger"   href="/deleteUser/{{i.username}}">Delete</a></td>
-    </tr>
-    {%endfor%} 
-   </tbody>
-</table>
-{% endif %}
+        {% if type == "User" and type != "Nodo"%}
+        <table class="table">
+            <thead>
+                <tr class="table-success">
+                    <th scope="col">id</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">email</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in objects %}
+                <tr class="table-primary">
+                    <th scope="row">{{ i.id }}</th>
+                    <td>{{ i.username }}</td>
+                    <td>{{ i.email }}</td>
+                    <td><a role="button" class="btn btn-primary" href="/user/{{i.username}}">Ir</a> <a role="button" class="btn btn-info" href="/updateUser/{{i.username}}">Editar</a> <a role="button" class="btn btn-danger" href="/deleteUser/{{i.username}}">Eliminar</a></td>
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+        {% endif %} {% if type != "Category" and type != "User" and type != "Nodo"%}
+        <table class="table">
+            <thead>
+                <tr class="table-success">
+                    <th scope="col">id</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">date</th>
+                    {% if type == "Blog" %}
+                    <th scope="col">category</th>
+                    {% endif %}
+                    <th scope="col">user</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            {% for i in objects %}
+            <tr class="table-primary">
+                <th scope="row">{{ i.id }}</th>
+                <td>{{ i.title }}</td>
+                <td>{{ i.pub_date }}</td>
+                {% if type == "Blog" %}
+                <td>{{ i.category }}</td>
+                {% endif %}
+                <td>{{ i.user }}</td>
+                <td><a role="button" class="btn btn-primary" href="/post/{{type}}/{{i.id}}">Ir</a> <a role="button" class="btn btn-info" href="/updatePost/{{type}}/{{i.id}}">Editar</a> <a role="button" class="btn btn-danger" href="/deletePost/{{type}}/{{i.id}}">Eliminar</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% endif %} {% if type == "Nodo"%}
 
+        <div id='map'>
+            <!-- el mapa -->
+        </div>
 
-{% if type != "Category" and type != "User"%}
-<table class="table">
-    <thead>
-        <tr class="table-success">
-            <th scope="col">id</th>
-            <th scope="col">Title</th>
-            <th scope="col">date</th>
-            {% if type == "Blog" %}
-            <th scope="col">category</th>
-            {% endif %}
-            <th scope="col">user</th>
-            <th scope="col">Actions</th>
-        </tr>
-    </thead>
-    {% for i in objects %}
-    <tr class="table-primary">
-        <th scope="row">{{ i.id }}</th>
-        <td>{{ i.title }}</td>
-        <td>{{ i.pub_date }}</td>
-        {% if type == "Blog" %}
-        <td>{{ i.category }}</td>
+        <br>
+
+        <table class="table mt-3">
+            <thead>
+                <tr class="table-success">
+                    <th scope="col">id</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">latitud</th>
+                    <th scope="col">longitud</th>
+                    <th scope="col">Usuario</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            {% for i in objects %}
+            <tr class="table-primary">
+                <th scope="row">{{ i.id }}</th>
+                <td>{{ i.nombre }}</td>
+                <td>{{ i.latitud }}</td>
+                <td>{{ i.longitud }}</td>
+                <td>{{ i.user }}</td>
+                <td><a role="button" class="btn btn-primary" href="nodo/modoeditor/{{i.id}}">Ir</a> <a role="button" class="btn btn-info" href="/nodo/editar/{{i.id}}">Editar</a> <a role="button" class="btn btn-danger" href="nodo/eliminar/{{i.id}}">Eliminar</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% endif %} {% if type == "Category"%}
+        <table class="table">
+            <thead>
+                <tr class="table-success">
+                    <th scope="col">id</th>
+                    <th scope="col">Name category</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            {% for i in objects %}
+            <tr class="table-primary">
+                <th scope="row">{{ i.id }}</th>
+                <td>{{ i.name }}</td>
+                <td> <a role="button" class="btn btn-info" href="/updateCategory/{{i.id}}">Editar</a> <a role="button" class="btn btn-danger" href="/deleteCategory/{{i.id}}">Eliminar</a></td>
+            </tr>
+            {% endfor %}
+        </table>
         {% endif %}
-        <td>{{ i.user }}</td>
-        <td><a role="button" class="btn btn-primary" href="/post/{{type}}/{{i.id}}">Go</a> <a role="button" class="btn btn-info" href="/updatePost/{{type}}/{{i.id}}">Update</a> <a role="button" class="btn btn-danger" href="/deletePost/{{type}}/{{i.id}}">Delete</a></td>
-    </tr>
-    {% endfor %}
-</table>
-{% endif %}
+    </div>
+</div>
+{% if type == "Nodo"%}
+<script>
+    mapboxgl.accessToken =
+        "pk.eyJ1Ijoic2ViYXN0aWFuZHVyYW52IiwiYSI6ImNrc3NjamoxNzBpcGcybmpzYnpzNmJkc2cifQ.RmdHKIqJm4SqauLFIBN2CQ";
+
+    const map = new mapboxgl.Map({
+        container: "map",
+        style: "mapbox://styles/mapbox/satellite-v9",
+        center: [-73.012494, -39.798241],
+        zoom: 10,
+    });
+
+    let element = document.createElement("h2");
+    var t = document.createTextNode("Valdivia"); // Create a text node
+    element.appendChild(t);
+    element.style["-webkit-text-stroke"] = "0.5px white";
+
+    const title = document.getElementById("title");
+
+    let marker = new mapboxgl.Marker(element)
+        .setLngLat({
+            lng: -73.234348,
+            lat: -39.820650,
+        })
+        .addTo(map);
 
 
-{% if type == "Category"%}
-<table class="table">
-    <thead>
-        <tr class="table-success">
-            <th scope="col">id</th>
-            <th scope="col">Name category</th>
-            <th scope="col">Actions</th>
-        </tr>
-    </thead>
-    {% for i in objects %}
-    <tr class="table-primary">
-        <th scope="row">{{ i.id }}</th>
-        <td>{{ i.name }}</td>
-        <td> <a role="button" class="btn btn-info" href="/updateCategory/{{i.id}}">Update</a> <a role="button" class="btn btn-danger"  href="/deleteCategory/{{i.id}}">Delete</a></td>
-    </tr>
-    {% endfor %}
-</table>
-{% endif %}
-</div>
-</div>
-{% endblock %}
+    n = document.getElementById("nNodo").innerHTML;
+    n = n.slice(1, -1);
+    var fNodo = n.split(' ');
+    for (i = 0; i < fNodo.length; i++) {
+        fNodo[i] = fNodo[i].slice(1, -2);
+        fNodo[i] = fNodo[i].split(',')
+        actualizar(fNodo[i])
+    }
+
+
+
+    const geojson = {
+        type: "FeatureCollection",
+        features: [
+
+        ],
+    };
+
+
+    geojson.features.push({
+            type: "Feature",
+            geometry: {
+                type: "Point",
+                coordinates: [-73.234348, -39.820650],
+            },
+            properties: {
+                title: "Baliza 1",
+                description: "",
+            },
+        }
+
+    )
+
+
+    // add markers to map
+    for (const {
+            geometry,
+            properties
+        }
+        of geojson.features) {
+        // create a HTML element for each feature
+        const el = document.createElement("div");
+        el.className = "marker";
+
+        // make a marker for each feature and add it to the map
+        new mapboxgl.Marker(el)
+            .setLngLat(geometry.coordinates)
+            .setPopup(
+                new mapboxgl.Popup({
+                    offset: 25
+                }) // add popups
+                .setHTML(`<h2>${properties.title}</h2><p>${properties.description}</p><a class="btn btn-secundary" href='/Monitoring/exploradores/baliza/${properties.title[7]}'> aquí </a>`)
+            )
+            .addTo(map);
+    }
+</script>
+
+{% endif %} {% endblock %}

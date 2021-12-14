@@ -1,5 +1,5 @@
 
-from wtforms import Form, StringField, TextField, validators
+from wtforms import Form, StringField, TextField, validators, FloatField
 from wtforms.fields.html5 import EmailField
 
 
@@ -81,3 +81,19 @@ class FormMonitoring(FormPost):
 
 class FormWebMaps(FormPost):
     pass
+
+
+class FormNodo(Form):
+    nombre = StringField('nombre',
+        [
+            validators.Required(message= 'El nombre es requerido'),
+            validators.length(min=1, max=80, message='Ingrese un nombre valido.')
+        ])
+    latitud = FloatField('latitud',
+        [
+            validators.Required(message= 'Latitud es requerido'),
+        ])
+    longitud = FloatField('longitud',
+        [
+            validators.Required(message= 'El longitud es requerido'),
+        ])

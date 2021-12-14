@@ -1,0 +1,104 @@
+{% extends "layout_user.html" %} {% block head %}
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+<link href="{{ url_for('static', filename='css/map.css')}}" rel="stylesheet" type="text/css" /> {% endblock %} {% block content %}
+
+<header class="masthead">
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <h1> El identiuficador a ingresar es: {{nodo.id}} a la zona de configuración </h1>
+        </div>
+        <div class="col-md-6 px-3">
+            <div id='map'>
+                <!-- el mapa -->
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-12">
+            <a role="button" class="btn btn-info" href="/nodo/editar/{{nodo.id}}">Editar</a> <a role="button" class="btn btn-danger" href="/deletePost/Nodo/{{nodo.id}}">Eliminar</a></td>
+        </div>
+    </div>
+</header>
+
+
+<script>
+    mapboxgl.accessToken = "pk.eyJ1Ijoic2ViYXN0aWFuZHVyYW52IiwiYSI6ImNrc3NjamoxNzBpcGcybmpzYnpzNmJkc2cifQ.RmdHKIqJm4SqauLFIBN2CQ";
+
+
+
+    var lat = '{{lat}}';
+    var lon = '{{lon}}';
+
+    const map = new mapboxgl.Map({
+        container: "map",
+        style: "mapbox://styles/mapbox/satellite-v9",
+        center: [lon, lat],
+        zoom: 15,
+    });
+
+
+
+
+
+    let element = document.createElement("h2");
+    var t = document.createTextNode("Valdivia"); // Create a text node
+    element.appendChild(t);
+    element.style["-webkit-text-stroke"] = "0.5px white";
+
+    const title = document.getElementById("title");
+
+    let marker = new mapboxgl.Marker(element)
+        .setLngLat({
+            lng: -73.234348,
+            lat: -39.820650,
+        })
+        .addTo(map);
+
+
+    const geojson = {
+        type: "FeatureCollection",
+        features: [
+
+        ],
+    };
+
+    geojson.features.push({
+            type: "Feature",
+            geometry: {
+                type: "Point",
+                coordinates: [lon, lat],
+            },
+            properties: {
+                title: "{{nombre}}",
+                description: "",
+            },
+        }
+
+    )
+
+
+    // add markers to map
+    for (const {
+            geometry,
+            properties
+        }
+        of geojson.features) {
+        // create a HTML element for each feature
+        const el = document.createElement("div");
+        el.className = "marker";
+
+        // make a marker for each feature and add it to the map
+        new mapboxgl.Marker(el)
+            .setLngLat(geometry.coordinates)
+            .setPopup(
+                new mapboxgl.Popup({
+                    offset: 25
+                }) // add popups
+                .setHTML(`<h2 style="color:black">${properties.title}</h2><p>${properties.description}</p><a class="btn btn-secundary" href='/nodo/{{id}}'> aquí </a>`)
+            )
+            .addTo(map);
+    }
+</script>
+
+{% endblock %}

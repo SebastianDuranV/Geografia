@@ -1,5 +1,5 @@
 from flask import Flask, redirect, render_template, url_for, request, flash, make_response, session
-from consultor_sql import User, Category , db, Blog, News, Monitoring, Proyects, Maps, app
+from consultor_sql import User, Category , db, Blog, News, Monitoring, Proyects, Maps, app, Nodo
 import forms
 import os
 from werkzeug.utils import secure_filename
@@ -19,7 +19,8 @@ TipeClass = dict(
     News = News ,
     Monitoring = Monitoring ,
     Maps =  Maps ,
-    Proyects = Proyects
+    Proyects = Proyects,
+    Nodo = Nodo
 )
 
 # El modo editor es para tener acceso a la base de datos.
@@ -437,10 +438,10 @@ def show_casa():
 # Implementación del monitoreo.
 from flask import Blueprint
 from api import nodo
-from nodoConsultor import nodoConsultor
+from nodoServidor import nodoServidor
 
 app.register_blueprint(nodo)
-app.register_blueprint(nodoConsultor)
+app.register_blueprint(nodoServidor)
 
 
 # Comentar al momento de implementarlo en la web.

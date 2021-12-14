@@ -6,3 +6,4 @@ app.py
 ./static/exploradores/*.gif
 *.csv
 *.jpg
+token.txt
