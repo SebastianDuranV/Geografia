@@ -27,7 +27,10 @@
                 <video class="img-fluid col-md-12" src="{{ url_for('static', filename='monitoreoDinamico/'+ id +'/video.mp4')}}" controls></video>
             </div>
 
-            <h6 class="col-md-6 form-group abs-center">Video de las ultimas fotos tomadas</h6>
+            <div class="col-md-6 form-group abs-center">
+                <h6>Video de las ultimas fotos tomadas</h6>
+                <h6>Ultimo actualización: ---</h6>
+            </div>
 
         </div>
         <div class="row mx-0 mt-4">
@@ -39,9 +42,10 @@
         </div>
 
         <div class="row abs-center mx-0 mt-4">
-            <div class="col-md-7 animate-box" data-animate-effect="fadeInLeft">
-                <div>
+            <div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
+                <div class=" py-1 mb-4">
                     <h4 class=" py-1 mb-2">Distancia entre el nodo y el río (sensor ultrasonido)</h4>
+                    <a class=" py-1 mb-4" href="{{ url_for('static', filename='monitoreoDinamico/'+ id +'/ultrasonido.csv')}}" download="Datos">Descargar datos (csv)</a>
                 </div>
                 <div>
                     {{graficos.ultrasonido.distancia[1]| safe}}
@@ -53,6 +57,7 @@
             <div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
                 <div>
                     <h4 class=" py-1 mb-2">Temperatura, presion, humedad del ambiente (Bmp280)</h4>
+                    <a class=" py-1 mb-4" href="{{ url_for('static', filename='monitoreoDinamico/'+ id +'/bmp280.csv')}}" download="Datos">Descargar datos (csv)</a>
                 </div>
             </div>
         </div>
@@ -81,13 +86,26 @@
         <div class="row abs-center mx-0 mt-4">
             <div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
                 <div>
+                    <div class=" py-1 mb-4">
+                        <h5 class=" py-1 mb-2">Presión neto del río (ms5803)</h5>
+                    </div>
+                    {{graficos.bmp280.presionNeta[1]| safe}}
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row abs-center mx-0 mt-4">
+            <div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
+                <div class=" py-1 mb-4">
                     <h4 class=" py-1 mb-2">Temperatura de la tierra (ds18b20)</h4>
+                    <a class=" py-1 mb-4" href="{{ url_for('static', filename='monitoreoDinamico/'+ id +'/ds18b20.csv')}}" download="Datos">Descargar datos (csv)</a>
                 </div>
             </div>
         </div>
 
         <div class="row abs-center mx-0 mt-4">
-            <div class="col-md-7 animate-box" data-animate-effect="fadeInLeft">
+            <div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
                 <div>
                     {{graficos.ds18b20.temperatura[1]| safe}}
                 </div>
@@ -97,8 +115,9 @@
 
         <div class="row abs-center mx-0 mt-4">
             <div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
-                <div>
+                <div class=" py-1 mb-4">
                     <h4 class=" py-1 mb-2">Temperatura, presión del río (ms5803)</h4>
+                    <a class=" py-1 mb-4" href="{{ url_for('static', filename='monitoreoDinamico/'+ id +'/ms5803.csv')}}" download="Datos">Descargar datos (csv)</a>
                 </div>
             </div>
         </div>
@@ -119,14 +138,15 @@
 
         <div class="row abs-center  mx-0 pt-2">
             <div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
-                <div>
+                <div class=" py-1 mb-4">
                     <h4 class=" py-1 mb-2">Precipitación (tipping)</h4>
+                    <a class=" py-1 mb-4" href="{{ url_for('static', filename='monitoreoDinamico/'+ id +'/tipping.csv')}}" download="Datos">Descargar datos (csv)</a>
                 </div>
             </div>
         </div>
 
         <div class="row abs-center  mx-0 mt-4">
-            <div class="col-md-7 animate-box" data-animate-effect="fadeInLeft">
+            <div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
                 <div>
                     {{graficos.tipping.precipitacion[1]| safe}}
                 </div>
@@ -156,6 +176,5 @@
 </div>
 </div>
 </div>
-
-{{graficos.tipping.precipitacion[0]| safe}} {{graficos.ms5803.temperatura[0]| safe}} {{graficos.ms5803.presion[0]| safe}} {{graficos.ds18b20.temperatura[0]| safe}} {{graficos.bmp280.temperatura[0]| safe}} {{graficos.bmp280.presion[0]| safe}} {{graficos.bmp280.humedad[0]|
-safe}} {{graficos.ultrasonido.distancia[0] | safe}} {% endblock %}
+{{graficos.bmp280.presionNeta[0]| safe}} {{graficos.tipping.precipitacion[0]| safe}} {{graficos.ms5803.temperatura[0]| safe}} {{graficos.ms5803.presion[0]| safe}} {{graficos.ds18b20.temperatura[0]| safe}} {{graficos.bmp280.temperatura[0]| safe}} {{graficos.bmp280.presion[0]|
+safe}} {{graficos.bmp280.humedad[0]| safe}} {{graficos.ultrasonido.distancia[0] | safe}} {% endblock %}

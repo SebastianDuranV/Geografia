@@ -96,10 +96,11 @@ def guardarGraficos(id,instrumento):
 # Diccionario para darle nombres a los ejes de la grafica resultante
 nombreEjeY = {
     "temperatura" : "Temperatura [°C]",
-    "presion" : "Presion []",
-    "humedad" : "Humedad []",
+    "presion" : "Presion [milibares]",
+    "humedad" : "Humedad [%]",
     "distancia" : "Distancia [cm] ",
-    "precipitacion" : "Precipitacion []"
+    "precipitacion" : "Precipitacion []",
+    "presionNeta": "Presión neta del agua [cmH20]"
 }
 
 
@@ -193,8 +194,4 @@ def generarVideo(id):
     output_name = 'static/monitoreoDinamico/' + id +'/video.mp4'
 
 
-    os.popen("ffmpeg -y -i '{input}' -ac 2 -b:v 2000k -c:a aac -c:v libx264 -b:a 160k -vprofile high -bf 0 -strict experimental -f mp4 '{output} '".format(input = avi_file_path, output = output_name))
-
-    avitomp4 = ffmpy.FFmpeg(
-        inputs={'static/monitoreoDinamico/' + id +'/video.avi': None},
-        outputs={'static/monitoreoDinamico/' + id +'/video.mp4': '-y'})
+    os.popen("ffmpeg -y -i '{input}' -ac 2 -b:v 2000k -c:a aac -c:v libx264 -b:a 160k -vprofile high -bf 0 -strict experimental -f mp4 '{output}'".format(input = avi_file_path, output = output_name))

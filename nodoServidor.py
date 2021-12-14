@@ -2,6 +2,9 @@ from flask import Flask, request, Blueprint, render_template,flash,redirect,url_
 import pprint
 import pickle
 
+import forms
+from consultor_sql import User,Nodo, Category , db
+
 nodoServidor = Blueprint('nodo',__name__,url_prefix='/nodo')
 
 instrumentos = ["bmp280","ds18b20","ms5803","tipping", "ultrasonido"]
@@ -9,7 +12,10 @@ instrumentos = ["bmp280","ds18b20","ms5803","tipping", "ultrasonido"]
 @nodoServidor.route('/<id>')
 def consultaNodo(id):
     
-    graficos = {} 
+
+    nodo = Nodo.query.filter_by(id=id).first_or_404()
+
+    graficos = {}
     try:
         for instrumento in instrumentos:
             ubicacion = 'static/monitoreoDinamico/' + str(id) + '/' + instrumento + '.json'
@@ -18,12 +24,7 @@ def consultaNodo(id):
     except:
         return "<h1> Datos no completos </h1>"
       
-    return render_template("monitoreoDinamico/mostrarNodo.html" ,graficos=graficos , id=str(id))
-
-
-
-import forms
-from consultor_sql import User,Nodo, Category , db
+    return render_template("monitoreoDinamico/mostrarNodo.html" ,graficos=graficos , id=str(id), nodo=nodo)
 
 # Diccionario para disminuir el codigo
 TipeClass = dict(
