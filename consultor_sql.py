@@ -173,4 +173,4 @@ class Nodo(db.Model):
         backref=db.backref('nodo', lazy=True))
     
     def __repr__(self):
-        return '(%s,%s,%s,%s, %s)' % (self.id,self.nombre,self.latitud,self.longitud, self.descripcion)
+        return '(%s,%s,%s,%s, %s)' % (self.id,self.nombre,self.latitud,self.longitud,self.descripcion)
