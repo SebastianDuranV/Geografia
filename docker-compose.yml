@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  node_docker_monitoreo:
+    image: node:python:3.7.2
+    ports:
+      - "3000:3000"
+    environment:
+      - DEBUG=myapp:*
+    volumes:
+      - ./:/usr/src/app
+    working_dir: /usr/src/app
+    command: /bin/sh -c "pip3 install -r requirements.txt && python3 app.py"
