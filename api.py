@@ -25,8 +25,8 @@ def post(id,instrumento):
     datos = request.json
     pprint.pprint(datos)
 
-    if existeArchivo(directorio + directorio + 'static/monitoreoDinamico/' + id + '/' + instrumento + '.csv') == False:
-        with open(directorio + directorio + 'static/monitoreoDinamico/' + id + '/' + instrumento + '.csv', 'a', newline='') as f_object:  
+    if existeArchivo( directorio + 'static/monitoreoDinamico/' + id + '/' + instrumento + '.csv') == False:
+        with open( directorio + 'static/monitoreoDinamico/' + id + '/' + instrumento + '.csv', 'a', newline='') as f_object:  
             writer_object = writer(f_object)
             writer_object.writerow(datos)  
             f_object.close()
