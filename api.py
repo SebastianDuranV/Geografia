@@ -182,19 +182,8 @@ def generarVideo(id):
         print(filename)
         img = cv2.imread(filename)
         height, width, layers = img.shape
-        #size = (width,height)
-        #img_array.insert(0,img)
-
-
-    # Preguntar largo de video
-    #for filename in listaFotos:
-    #    print(filename)
-    #    img = cv2.imread(filename)
-    #    print("A")
-    #    height, width, layers = img.shape
-    #    size = (width,height)
-    #    img_array.insert(0,img)
-    
+        size = (width,height)
+        img_array.insert(0,img)
 
 
     out = cv2.VideoWriter(directorio + 'static/monitoreoDinamico/' + id +'/video.avi',cv2.VideoWriter_fourcc(*'DIVX'), 1, size)
