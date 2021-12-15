@@ -9,13 +9,16 @@ nodoServidor = Blueprint('nodo',__name__,url_prefix='/nodo')
 
 instrumentos = ["bmp280","ds18b20","ms5803","tipping", "ultrasonido"]
 
+directorio = "/home/iribarrenp/Geografia/"
+
+
 @nodoServidor.route('/<id>')
 def consultaNodo(id):
     nodo = Nodo.query.filter_by(id=id).first_or_404()
     graficos = {}
     try:
         for instrumento in instrumentos:
-            ubicacion = 'static/monitoreoDinamico/' + str(id) + '/' + instrumento + '.json'
+            ubicacion = directorio + 'static/monitoreoDinamico/' + str(id) + '/' + instrumento + '.json'
             with open(ubicacion, 'rb') as file:
                 graficos[instrumento] = pickle.load(file)
     except:
@@ -56,7 +59,7 @@ def createNodo(type = "Nodo"):
 
 
 
-        os.mkdir('static/monitoreoDinamico/' + str(post.id)) 
+        os.mkdir(directorio + 'static/monitoreoDinamico/' + str(post.id)) 
 
         nodoCsv = {
             "id": post.id,
@@ -65,7 +68,7 @@ def createNodo(type = "Nodo"):
             "longitud" : post.longitud
         }
 
-        with open('static/monitoreoDinamico/' + str(post.id) + '/info.csv', 'a', newline='') as f_object:  
+        with open(directorio +'static/monitoreoDinamico/' + str(post.id) + '/info.csv', 'a', newline='') as f_object:  
                 writer_object = writer(f_object)
                 writer_object.writerow(nodoCsv.values())  
                 f_object.close()
@@ -88,7 +91,7 @@ def eliminarnodo(idPost, type="Nodo"):
     post = TipeClass[type].query.filter_by(id=idPost).first_or_404()
     db.session.delete(post)
     db.session.commit()
-    os.rmdir('static/monitoreoDinamico/' + idPost)
+    os.rmdir(directorio +'static/monitoreoDinamico/' + idPost)
     return redirect(url_for('index'))
 
 
