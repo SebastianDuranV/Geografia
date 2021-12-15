@@ -176,14 +176,14 @@ def generarVideo(id):
     listaFotos = glob.glob(directorio + 'static/monitoreoDinamico/' + id +'/*.jpg')
     listaFotos.sort(reverse=True) # Ordena las fotos en orden de fecha
 
-    print(listaFotos)
+    #print(listaFotos)
 
     for filename in listaFotos:
         print(filename)
-        img = cv2.imread(filename)
-        height, width, layers = img.shape
-        size = (width,height)
-        img_array.insert(0,img)
+        #img = cv2.imread(filename)
+        #height, width, layers = img.shape
+        #size = (width,height)
+        #img_array.insert(0,img)
 
 
     # Preguntar largo de video
