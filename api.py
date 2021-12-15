@@ -53,8 +53,13 @@ def post(id,instrumento):
         infoA = base64.b64decode(info)
         image_result = open(directorio + 'static/monitoreoDinamico/' + id + '/ultima.jpg', 'wb') # create a writable image and write the decoding result
         image_result.write(infoA)
+
+        info = request.json['dato']
+        infoA = base64.b64decode(info)
+        image_result.close()
         image_result = open(directorio + 'static/monitoreoDinamico/' + id + '/' + request.json['data'] +'.jpg', 'wb') # create a writable image and write the decoding result
         image_result.write(infoA)
+        image_result.close()
 
         generarVideo(id)
 
