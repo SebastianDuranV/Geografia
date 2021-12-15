@@ -178,6 +178,8 @@ def generarVideo(id):
 
     print(listaFotos)
 
+    for filename in listaFotos:
+        print(filename)
     # Preguntar largo de video
     for filename in listaFotos:
         print(filename)
