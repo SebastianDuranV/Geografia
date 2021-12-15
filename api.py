@@ -23,7 +23,7 @@ directorio = "/home/iribarrenp/Geografia/"
 @nodo.route("/post/<id>/<instrumento>", methods=["POST"])
 def post(id,instrumento):
     datos = request.json
-    pprint.pprint(datos)
+    #pprint.pprint(datos)
 
     if existeArchivo( directorio + 'static/monitoreoDinamico/' + id + '/' + instrumento + '.csv') == False:
         with open( directorio + 'static/monitoreoDinamico/' + id + '/' + instrumento + '.csv', 'a', newline='') as f_object:  
@@ -122,8 +122,8 @@ def generarGraficos(data, atributo):
             
     #Grafico linea
     fig.line(x="data",y=atributo, color='dodgerblue',line_width = 2,
-                source=source)
-                #legend_label = nombreEjeY[atributo], source=source)
+                legend_label = nombreEjeY[atributo], source=source)
+                # source=source)
     
 
     #Puntito sobre cada dato
