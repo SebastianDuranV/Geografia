@@ -176,6 +176,7 @@ def generarVideo(id):
     listaFotos = glob.glob(directorio + 'static/monitoreoDinamico/' + id +'/*.jpg')
     listaFotos.sort(reverse=True) # Ordena las fotos en orden de fecha
 
+    print(listaFotos)
 
     # Preguntar largo de video
     for filename in listaFotos:
