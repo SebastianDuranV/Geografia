@@ -180,7 +180,7 @@ def generarVideo(id):
 
     for filename in listaFotos:
         print(filename)
-        #img = cv2.imread(filename)
+        img = cv2.imread(filename)
         #height, width, layers = img.shape
         #size = (width,height)
         #img_array.insert(0,img)
