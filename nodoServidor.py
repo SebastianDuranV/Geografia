@@ -11,10 +11,7 @@ instrumentos = ["bmp280","ds18b20","ms5803","tipping", "ultrasonido"]
 
 @nodoServidor.route('/<id>')
 def consultaNodo(id):
-    
-
     nodo = Nodo.query.filter_by(id=id).first_or_404()
-
     graficos = {}
     try:
         for instrumento in instrumentos:

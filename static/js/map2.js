@@ -60,22 +60,6 @@ for (i = 0; i < fNodo.length; i++) {
 
 
 
-
-geojson.features.push({
-        type: "Feature",
-        geometry: {
-            type: "Point",
-            coordinates: [-73.234348, -39.820650],
-        },
-        properties: {
-            title: "Baliza 1",
-            description: "",
-        },
-    }
-
-)
-
-
 // add markers to map
 for (const {
         geometry,
@@ -93,7 +77,7 @@ for (const {
             new mapboxgl.Popup({
                 offset: 25
             }) // add popups
-            .setHTML(`<h2>${properties.title}</h2><p>${properties.description}</p><a class="btn btn-secundary" href='/nodo/${properties.title[7]}'> aquí </a>`)
+            .setHTML(`<h2 style="color:black;">${properties.title}</h2><h3 style="color:black;">${properties.description}</h3><a class="btn btn-secundary" href='/nodo/${properties.title}'> aquí </a>`)
         )
         .addTo(map);
 }
