@@ -16,14 +16,27 @@ from bokeh.embed import components
 
 import base64
 
+from datetime import datetime
+
+
 nodo = Blueprint('api',__name__,url_prefix='/api')
 
 directorio = "/home/iribarrenp/Geografia/"
+#directorio = ""
 
 @nodo.route("/post/<id>/<instrumento>", methods=["POST"])
 def post(id,instrumento):
     datos = request.json
     #pprint.pprint(datos)
+
+    actualizacion = {"fecha": datetime.today().strftime('%Y-%m-%d %H:%M')}
+
+
+
+
+    with open(directorio + 'static/monitoreoDinamico/' + str(id) + '/actualizacion.json', 'wb') as fp:
+        pickle.dump(actualizacion, fp)
+        
 
     if existeArchivo( directorio + 'static/monitoreoDinamico/' + id + '/' + instrumento + '.csv') == False:
         with open( directorio + 'static/monitoreoDinamico/' + id + '/' + instrumento + '.csv', 'a', newline='') as f_object:  
@@ -175,6 +188,8 @@ import numpy as np
 import glob2 as glob
 import ffmpy
 
+## Generar video
+
 def generarVideo(id):
 
     img_array = []
@@ -182,6 +197,9 @@ def generarVideo(id):
     listaFotos.sort(reverse=True) # Ordena las fotos en orden de fecha
 
     #print(listaFotos)
+
+    listaFotos.remove(directorio + 'static/monitoreoDinamico/' + id +'/ultima.jpg')
+    listaFotos.remove(directorio + 'static/monitoreoDinamico/' + id +'/test.jpg')
 
     for filename in listaFotos:
         print(filename)

@@ -9,8 +9,15 @@ nodoServidor = Blueprint('nodo',__name__,url_prefix='/nodo')
 
 instrumentos = ["bmp280","ds18b20","ms5803","tipping", "ultrasonido"]
 
-directorio = "/home/iribarrenp/Geografia/"
+medidasInstrumentos = {"bmp280" : ["temperatura","presion","humedad","presionNeta"],
+                        "ds18b20":["temperatura"],
+                        "ms5803": ["presion","temperatura"],
+                        "tipping": ["precipitacion"],
+                        "ultrasonido": ["distancia"]
+} 
 
+directorio = "/home/iribarrenp/Geografia/"
+#directorio = ""
 
 @nodoServidor.route('/<id>')
 def consultaNodo(id):
@@ -22,9 +29,16 @@ def consultaNodo(id):
             with open(ubicacion, 'rb') as file:
                 graficos[instrumento] = pickle.load(file)
     except:
-        return "<h1> Datos no completos </h1>"
+        return "<h1> Error a cargar los datos </h1>"
+
+
+    try:
+        with open(directorio + 'static/monitoreoDinamico/' + str(id) + '/actualizacion.json', 'rb') as file:
+            actualizacion = pickle.load(file)
+    except:
+        actualizacion = {"fecha" : "No se ha actualizado"}
       
-    return render_template("monitoreoDinamico/mostrarNodo.html" ,graficos=graficos , id=str(id), nodo=nodo)
+    return render_template("monitoreoDinamico/mostrarNodo.html" ,graficos=graficos , id=str(id), nodo=nodo, actualizacion=actualizacion)
 
 # Diccionario para disminuir el codigo
 TipeClass = dict(
@@ -58,8 +72,19 @@ def createNodo(type = "Nodo"):
         
 
 
+        try:
+            os.mkdir(directorio + 'static/monitoreoDinamico/' + str(post.id))
+        except:
+            pass
 
-        os.mkdir(directorio + 'static/monitoreoDinamico/' + str(post.id)) 
+        # Generar archvios vacíos
+        dictGraficos = {}
+        for instrumento in instrumentos:
+            for i in medidasInstrumentos[instrumento]:
+                dictGraficos[i] = ["","<h2> No hay datos </h2>"]
+            d = directorio + 'static/monitoreoDinamico/' + str(post.id) + '/' + str(instrumento) + '.json'
+            with open(d, 'wb') as fp:
+                pickle.dump(dictGraficos, fp) 
 
         nodoCsv = {
             "id": post.id,
@@ -73,7 +98,7 @@ def createNodo(type = "Nodo"):
                 writer_object.writerow(nodoCsv.values())  
                 f_object.close()
 
-        return render_template('monitoreoDinamico/mostrar_nodo_admin.html', nodo=post, lat= post.latitud, lon = post.longitud)
+        return render_template('monitoreoDinamico/mostrar_nodo_admin.html', nodo=post, lat= post.latitud, lon = post.longitud , nombre=post.nombre, id=post.id)
         #return redirect(url_for('index'))
     else:
         return render_template('monitoreoDinamico/create_nodo.html', type="nodo", nodo=comment_form, typeEng=type,  isSuper = user.isSuperUser )
