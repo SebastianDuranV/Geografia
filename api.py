@@ -197,9 +197,15 @@ def generarVideo(id):
     listaFotos.sort(reverse=True) # Ordena las fotos en orden de fecha
 
     #print(listaFotos)
-
-    listaFotos.remove(directorio + 'static/monitoreoDinamico/' + id +'/ultima.jpg')
-    listaFotos.remove(directorio + 'static/monitoreoDinamico/' + id +'/test.jpg')
+    try:
+        listaFotos.remove(directorio + 'static/monitoreoDinamico/' + id +'/ultima.jpg')
+    except:
+        pass
+    
+    try:
+        listaFotos.remove(directorio + 'static/monitoreoDinamico/' + id +'/test.jpg')
+    except:
+        pass
 
     for filename in listaFotos:
         print(filename)
