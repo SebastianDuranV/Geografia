@@ -1,50 +1,52 @@
-{% extends "Frontal/layout.html" %}
-{% block head %}
+{% extends "Frontal/layout.html" %} {% block head %}
 <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
-    <link href="{{ url_for('static', filename='css/map.css')}}" rel="stylesheet" type="text/css"/>
-{% endblock %}
+<link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+<link href="{{ url_for('static', filename='css/map.css')}}" rel="stylesheet" type="text/css" /> {% endblock %} {% block content %}
 
-{% block content %}
-
-        <div id='map'>
-        </div>
-        <div class="row map-overlay top animate-box">
-            <div class="col map-overlay-inner">
-                <fieldset>
-                    <header id="header">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                        <h1 class="mt-1">
-                            Exploradores
-                        </h1>
-                        <div class="container mt-1">
-                            <div class="row">
-                                <div class="col-md-3 ">
-                                    <div class="header-content-left">
-                                        <div class="cambio"></div>
-                                    </div>
-                                </div>
-                                <div class="col-md-9 my-auto">
-                                    <div class="header-content-right">
-                                        <h6>Nodo sensor</h6>     
-                                    </div>
-                                </div>
-                            </div>
-                        
-                        </div>
+<div id='map'>
+</div>
+<div class="row map-overlay top animate-box">
+    <div class="col map-overlay-inner">
+        <fieldset>
+            <header id="header">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
                         </div>
                     </div>
-                    </div>
-                    </header>
-                </fieldset>
-            </div>
-        </div>
+                    <div class="row">
+                        <div class="col">
+                            <h1 class="mt-1">
+                                Estaciones de monitoreo
+                            </h1>
+                            <div class="container mt-1">
+                                <div class="row">
+                                    <div class="col-md-3 ">
+                                        <div class="header-content-left">
+                                            <div class="cambio"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9 my-auto">
+                                        <div class="header-content-right">
+                                            <h6>Nodo sensor</h6>
+                                        </div>
+                                    </div>
+                                </div>
 
-        <script id="nNodo" src="{{ url_for('static', filename='js/map2.js')}}">{{nodo}}</script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+        </fieldset>
+    </div>
+</div>
+
+<script id="nNodo" src="{{ url_for('static', filename='js/map2.js')}}">
+    {
+        {
+            nodo
+        }
+    }
+</script>
 {% endblock %}
