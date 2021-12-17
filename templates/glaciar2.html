@@ -29,7 +29,6 @@
                                     <div class="col-md-9 my-auto">
                                         <div class="header-content-right">
                                             <h6>Nodo sensor</h6>
-                                            {{nodo}}
                                         </div>
                                     </div>
                                 </div>
@@ -43,11 +42,6 @@
     </div>
 </div>
 
-<script id="nNodo" src="{{ url_for('static', filename='js/map2.js')}}">
-    {
-        {
-            nodo
-        }
-    }
+<script id="nNodo" src="{{ url_for('static', filename='js/map2.js')}}">{{nodo}}
 </script>
 {% endblock %}
