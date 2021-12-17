@@ -13,6 +13,7 @@
             <div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
                 <div class="mt-4 abs-center">
                     <h1 class="form-group">Toma de datos del dispositivo: {{id}} {{nodo.nombre}} </h1>
+                    <h5>Fecha de actualizacion de datos: {{actualizacion.fecha}}</h5>
                     <div class="mt-4 row fh5co_footer_bg pt-3 pb-3">
                         <h6 class="col-md-7 form-group abs-center">{{nodo.descripcion}}</h6>
                         <img class="img-fluid col-md-5" src="{{ url_for('static', filename='monitoreoDinamico/'+ id +'/ultima.jpg')}}" alt="" />
@@ -54,7 +55,7 @@
         <div class="row abs-center mx-0 mt-4">
             <div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
                 <div>
-                    <h4 class=" py-1 mb-2">Temperatura, presion, humedad del ambiente (Bmp280)</h4>
+                    <h4 class=" py-1 mb-2">Temperatura, presión, humedad del ambiente (Bmp280)</h4>
                     <a class=" py-1 mb-4" href="{{ url_for('static', filename='monitoreoDinamico/'+ id +'/bmp280.csv')}}" download="Datos">Descargar datos (csv)</a>
                 </div>
             </div>
@@ -114,7 +115,7 @@
         <div class="row abs-center mx-0 mt-4">
             <div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
                 <div class=" py-1 mb-4">
-                    <h4 class=" py-1 mb-2">Temperatura, presión del río (ms5803)</h4>
+                    <h4 class=" py-1 mb-2">Temperatura, presión del río o lago (ms5803)</h4>
                     <a class=" py-1 mb-4" href="{{ url_for('static', filename='monitoreoDinamico/'+ id +'/ms5803.csv')}}" download="Datos">Descargar datos (csv)</a>
                 </div>
             </div>
