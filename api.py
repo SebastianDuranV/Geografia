@@ -16,22 +16,37 @@ from bokeh.embed import components
 
 import base64
 
+from datetime import datetime
+
+
 nodo = Blueprint('api',__name__,url_prefix='/api')
+
+directorio = "/home/iribarrenp/Geografia/"
+#directorio = ""
 
 @nodo.route("/post/<id>/<instrumento>", methods=["POST"])
 def post(id,instrumento):
     datos = request.json
-    pprint.pprint(datos)
+    #pprint.pprint(datos)
 
-    if existeArchivo('static/monitoreoDinamico/' + id + '/' + instrumento + '.csv') == False:
-        with open('static/monitoreoDinamico/' + id + '/' + instrumento + '.csv', 'a', newline='') as f_object:  
+    actualizacion = {"fecha": datetime.today().strftime('%Y-%m-%d %H:%M')}
+
+
+
+
+    with open(directorio + 'static/monitoreoDinamico/' + str(id) + '/actualizacion.json', 'wb') as fp:
+        pickle.dump(actualizacion, fp)
+        
+
+    if existeArchivo( directorio + 'static/monitoreoDinamico/' + id + '/' + instrumento + '.csv') == False:
+        with open( directorio + 'static/monitoreoDinamico/' + id + '/' + instrumento + '.csv', 'a', newline='') as f_object:  
             writer_object = writer(f_object)
             writer_object.writerow(datos)  
             f_object.close()
             print("Nombres guardados")
         
     if instrumento != "camara":
-        with open('static/monitoreoDinamico/' + id + '/' + instrumento + '.csv', 'a', newline='') as f_object:  
+        with open(directorio + 'static/monitoreoDinamico/' + id + '/' + instrumento + '.csv', 'a', newline='') as f_object:  
             writer_object = writer(f_object)
             writer_object.writerow(datos.values())  
             f_object.close()
@@ -41,18 +56,23 @@ def post(id,instrumento):
         return ""
     else:
 
-        with open('static/monitoreoDinamico/' + id + '/' + instrumento + '.csv', 'a', newline='') as f_object:  
+        with open(directorio + 'static/monitoreoDinamico/' + id + '/' + instrumento + '.csv', 'a', newline='') as f_object:  
             writer_object = writer(f_object)
             writer_object.writerow(request.json['data'])  
             f_object.close()
             print("guardado")        
 
         info = request.json['dato']
-        info = base64.b64decode(info)
-        image_result = open('static/monitoreoDinamico/' + id + '/ultima.jpg', 'wb') # create a writable image and write the decoding result
-        image_result.write(info)
-        image_result = open('static/monitoreoDinamico/' + id + '/' + request.json['data'] +'.jpg', 'wb') # create a writable image and write the decoding result
-        image_result.write(info)
+        infoA = base64.b64decode(info)
+        image_result = open(directorio + 'static/monitoreoDinamico/' + id + '/ultima.jpg', 'wb') # create a writable image and write the decoding result
+        image_result.write(infoA)
+
+        info = request.json['dato']
+        infoA = base64.b64decode(info)
+        image_result.close()
+        image_result = open(directorio + 'static/monitoreoDinamico/' + id + '/' + request.json['data'] +'.jpg', 'wb') # create a writable image and write the decoding result
+        image_result.write(infoA)
+        image_result.close()
 
         generarVideo(id)
 
@@ -72,7 +92,7 @@ def existeArchivo(filePath):
 # Obtiene los script y el div de los graficos
 def guardarGraficos(id,instrumento):
 
-    df = pd.read_csv('static/monitoreoDinamico/' + id + '/' + instrumento + '.csv')
+    df = pd.read_csv(directorio + 'static/monitoreoDinamico/' + id + '/' + instrumento + '.csv')
     nombres_columnas = df.columns.values
     nombres_columnas_lista = list(nombres_columnas)
     nombres_columnas_lista.remove("data")
@@ -89,7 +109,7 @@ def guardarGraficos(id,instrumento):
         dictGraficos[i] = [script,div]
 
     # Guardar los graficos
-    with open('static/monitoreoDinamico/' + id + '/' + instrumento + '.json', 'wb') as fp:
+    with open(directorio + 'static/monitoreoDinamico/' + id + '/' + instrumento + '.json', 'wb') as fp:
         pickle.dump(dictGraficos, fp)
 
 
@@ -120,7 +140,8 @@ def generarGraficos(data, atributo):
             
     #Grafico linea
     fig.line(x="data",y=atributo, color='dodgerblue',line_width = 2,
-                 legend_label = nombreEjeY[atributo], source=source)
+                legend_label = nombreEjeY[atributo], source=source)
+                # source=source)
     
 
     #Puntito sobre cada dato
@@ -167,31 +188,41 @@ import numpy as np
 import glob2 as glob
 import ffmpy
 
+## Generar video
+
 def generarVideo(id):
 
     img_array = []
-    listaFotos = glob.glob('static/monitoreoDinamico/' + id +'/*.jpg')
+    listaFotos = glob.glob(directorio + 'static/monitoreoDinamico/' + id +'/*.jpg')
     listaFotos.sort(reverse=True) # Ordena las fotos en orden de fecha
 
+    #print(listaFotos)
+    try:
+        listaFotos.remove(directorio + 'static/monitoreoDinamico/' + id +'/ultima.jpg')
+    except:
+        pass
+    
+    try:
+        listaFotos.remove(directorio + 'static/monitoreoDinamico/' + id +'/test.jpg')
+    except:
+        pass
 
-    # Preguntar largo de video
     for filename in listaFotos:
         print(filename)
         img = cv2.imread(filename)
         height, width, layers = img.shape
         size = (width,height)
         img_array.insert(0,img)
-    
 
 
-    out = cv2.VideoWriter('static/monitoreoDinamico/' + id +'/video.avi',cv2.VideoWriter_fourcc(*'DIVX'), 1, size)
+    out = cv2.VideoWriter(directorio + 'static/monitoreoDinamico/' + id +'/video.avi',cv2.VideoWriter_fourcc(*'DIVX'), 1, size)
  
     for i in range(len(img_array)):
         out.write(img_array[i])
     out.release()
 
-    avi_file_path = 'static/monitoreoDinamico/' + id +'/video.avi'
-    output_name = 'static/monitoreoDinamico/' + id +'/video.mp4'
+    avi_file_path = directorio + 'static/monitoreoDinamico/' + id +'/video.avi'
+    output_name = directorio + 'static/monitoreoDinamico/' + id +'/video.mp4'
 
 
     os.popen("ffmpeg -y -i '{input}' -ac 2 -b:v 2000k -c:a aac -c:v libx264 -b:a 160k -vprofile high -bf 0 -strict experimental -f mp4 '{output}'".format(input = avi_file_path, output = output_name))

@@ -1,5 +1,9 @@
+from nodoServidor import nodoServidor
+from api import nodo
+from flask import Blueprint
+import pickle
 from flask import Flask, redirect, render_template, url_for, request, flash, make_response, session
-from consultor_sql import User, Category , db, Blog, News, Monitoring, Proyects, Maps, app
+from consultor_sql import User, Category, db, Blog, News, Monitoring, Proyects, Maps, app, Nodo
 import forms
 import os
 from werkzeug.utils import secure_filename
@@ -13,13 +17,14 @@ db.create_all()
 
 # Diccionario para disminuir el codigo
 TipeClass = dict(
-    User = User,
-    Category = Category,
-    Blog = Blog ,
-    News = News ,
-    Monitoring = Monitoring ,
-    Maps =  Maps ,
-    Proyects = Proyects
+    User=User,
+    Category=Category,
+    Blog=Blog,
+    News=News,
+    Monitoring=Monitoring,
+    Maps=Maps,
+    Proyects=Proyects,
+    Nodo=Nodo
 )
 
 # El modo editor es para tener acceso a la base de datos.
@@ -225,24 +230,28 @@ def updatePost(idPost,type):
 # Mostrar en el frontend.
 @app.route('/getList')
 def getList():
-    getObject = request.args.get('type','<h1> No type declarated </h1>')
+    getObject = request.args.get('type', '<h1> No type declarated </h1>')
     user = User.query.filter_by(id=session['idUser']).first_or_404()
+    #nodo = Nodo.query.all()
     try:
         #allObject = TipeClass[getObject].query.filter_by(user_id=session['idUser'])
         if user.isSuperUser == 0:
-            allObject = TipeClass[getObject].query.filter_by(user_id=session['idUser'])
+            allObject = TipeClass[getObject].query.filter_by(
+                user_id=session['idUser'])
+            nodo = Nodo.query.all()
         else:
             allObject = TipeClass[getObject].query.all()
+            nodo = Nodo.query.all()
     except:
         return '<h1> No found type </h1>'
 
     #user = User.query.filter_by(id=session['idUser'])
-    #if user.isSuperUser:
+    # if user.isSuperUser:
     #    allObject = TipeClass[getObject].query.filter_by(User=user)
-    #else:
+    # else:
     #    allObject = TipeClass[getObject].query.all()
 
-    return render_template('show_list_types.html', objects=allObject , type=getObject, isSuper = user.isSuperUser )
+    return render_template('show_list_types.html', objects=allObject, nodo=nodo, type=getObject, isSuper=user.isSuperUser)
 
 
 @app.route('/user/<username>')
@@ -421,6 +430,24 @@ def show_casa():
       }
 
     return render_template('/Frontal/casa.html',**templateData)
+
+
+# Creación de nuevo proyecto
+
+@app.route('/Monitoring/nodo')
+def map_glaciar2():
+    nodo = Nodo.query.all()
+    return render_template('/glaciar2.html', nodo=nodo)
+
+# Conexion con la api de los nodos para recivir datos
+
+# Implementación del monitoreo.
+
+app.register_blueprint(nodo)
+app.register_blueprint(nodoServidor)
+
+
+
 
 # Creación de nuevo proyecto
 

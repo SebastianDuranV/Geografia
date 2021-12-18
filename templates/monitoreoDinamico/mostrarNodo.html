@@ -12,11 +12,10 @@
         <div class="row mx-0">
             <div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
                 <div class="mt-4 abs-center">
-                    <h1 class="form-group">Toma de datos del dispositivo: {{id}} </h1>
+                    <h1 class="form-group">Toma de datos del dispositivo: {{id}} {{nodo.nombre}} </h1>
+                    <h5>Fecha de actualizacion de datos: {{actualizacion.fecha}}</h5>
                     <div class="mt-4 row fh5co_footer_bg pt-3 pb-3">
-                        <h6 class="col-md-7 form-group abs-center">El glaciar Exploradores se encuentra ubicado en el límite Norte del Campo de Hielo Patagónico Norte, a los pies de la montaña más alta de la Patagonia: el Monte San Valentín. Este es un glaciar de valle, que posee una superficie
-                            aproximada de 83 Km cuadrados, equivalente al tamaño de 12 estadios de fútbol, y que pierde masa a razón de 10 cm de espesor cada día de verano aproximadamente. El monitoreo de sus cambios de masa tiene un alto valor para la
-                            ciencia, pero también para toda la sociedad.</h6>
+                        <h6 class="col-md-7 form-group abs-center">{{nodo.descripcion}}</h6>
                         <img class="img-fluid col-md-5" src="{{ url_for('static', filename='monitoreoDinamico/'+ id +'/ultima.jpg')}}" alt="" />
                     </div>
                 </div>
@@ -28,8 +27,7 @@
             </div>
 
             <div class="col-md-6 form-group abs-center">
-                <h6>Video de las ultimas fotos tomadas</h6>
-                <h6>Desde la camara de la raspberry</h6>
+                <h6>Video de las ultimas fotos tomadas desde la camara de la raspberry</h6>
             </div>
 
         </div>
@@ -56,7 +54,7 @@
         <div class="row abs-center mx-0 mt-4">
             <div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
                 <div>
-                    <h4 class=" py-1 mb-2">Temperatura, presion, humedad del ambiente (Bmp280)</h4>
+                    <h4 class=" py-1 mb-2">Temperatura, presión, humedad del ambiente (Bmp280)</h4>
                     <a class=" py-1 mb-4" href="{{ url_for('static', filename='monitoreoDinamico/'+ id +'/bmp280.csv')}}" download="Datos">Descargar datos (csv)</a>
                 </div>
             </div>
@@ -87,7 +85,7 @@
             <div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
                 <div>
                     <div class=" py-1 mb-4">
-                        <h5 class=" py-1 mb-2">Presión neto del río (ms5803)</h5>
+                        <h5 class=" py-1 mb-2">Presión neta del río (ms5803)</h5>
                     </div>
                     {{graficos.bmp280.presionNeta[1]| safe}}
                 </div>
@@ -116,7 +114,7 @@
         <div class="row abs-center mx-0 mt-4">
             <div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
                 <div class=" py-1 mb-4">
-                    <h4 class=" py-1 mb-2">Temperatura, presión del río (ms5803)</h4>
+                    <h4 class=" py-1 mb-2">Temperatura, presión del río o lago (ms5803)</h4>
                     <a class=" py-1 mb-4" href="{{ url_for('static', filename='monitoreoDinamico/'+ id +'/ms5803.csv')}}" download="Datos">Descargar datos (csv)</a>
                 </div>
             </div>
