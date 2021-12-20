@@ -11,7 +11,55 @@
             <h3> Nombre: {{nodo.nombre}} </h3>
             <p> {{nodo.descripcion}} </p>
 
-            <h4>Ahora tendrá que ingresar el identificador en el archivo "config.json", que está dentro de la raspberry pi.</h4>
+            <h5>Ahora tendrá que ingresar el identificador en el archivo "config.json", que está dentro de la raspberry pi.</h5>
+
+
+            <!-- Esta sección es para actualizar o crear el archivo json del config-->
+
+            <form action="/nodo/modoeditor/{{id}}" enctype="multipart/form-data" method="POST" id="contactForm" style="padding-top: -3vmin" novalidate>
+                <div class="container">
+                    <div class="control-group">
+
+                        <h3> Actualizar frecuencias por minuto de cada instrumento</h3>
+                        <div class="form-group floating-label-form-group controls">
+                            Ultrasonido: <input type="text" value="{{config.instrumentos.ultrasonido.frecuencia}}" name="ultrasonido" /><br/><br/>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="form-group floating-label-form-group controls">
+                            Camara:<input type="text" value="{{config.instrumentos.camara.frecuencia}}" name="camara" /> <br/><br/>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="form-group floating-label-form-group controls">
+                            Ms5803: <input type="text" value="{{config.instrumentos.ms5803.frecuencia}}" name="ms5803" /> <br/><br/>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="form-group floating-label-form-group controls">
+                            Ds18b20: <input type="text" value="{{config.instrumentos.ds18b20.frecuencia}}" name="ds18b20" /><br/><br/>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="form-group floating-label-form-group controls">
+                            Bmp280: <input type="text" value="{{config.instrumentos.bmp280.frecuencia}}" name="bmp280" /> <br/><br/>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="form-group floating-label-form-group controls">
+                            Tipping (Precipitación): <input type="text" value="{{config.instrumentos.tipping.frecuencia}}" name="tipping" /> <br/><br/>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="form-group floating-label-form-group controls">
+                            Antes de descargar, el archivo "config.json" debe guardar la configuación.
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <br>
+                    </div>
+                    <div id="success"></div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary" id="sendMessageButton">Guardar</button>
+                        <a type="submit" class="btn btn-secondary" href="{{ url_for('static', filename='monitoreoDinamico/'+ id +'/config.json')}}" download="Datos">Descargar config.json</a>
+                    </div>
+                </div>
+            </form>
+
+
         </div>
         <div class="col-md-6 px-3">
             <div id='map'>

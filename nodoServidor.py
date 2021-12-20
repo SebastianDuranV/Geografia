@@ -77,6 +77,26 @@ def createNodo(type = "Nodo"):
         except:
             pass
 
+        
+        #Generar config.json standard
+
+        config = {
+            "id" : post.id,
+            "instrumentos" : {
+                "camara" : {"frecuencia" : 1},
+                "ms5803" : {"frecuencia" : 1},
+                "bmp280" : {"frecuencia" : 1},
+                "ds18b20" : {"frecuencia" : 1},
+                "ultrasonido" : {"frecuencia" : 1},
+                "tipping" : {"frecuencia" : 1},
+            }
+        }
+
+
+        # Guardar config.json
+        with open(directorio + 'static/monitoreoDinamico/' + str(post.id) + '/config.json', 'wb') as fp:
+            pickle.dump(config, fp)
+
         # Generar archvios vacíos
         dictGraficos = {}
         for instrumento in instrumentos:
@@ -98,16 +118,54 @@ def createNodo(type = "Nodo"):
                 writer_object.writerow(nodoCsv.values())  
                 f_object.close()
 
-        return render_template('monitoreoDinamico/mostrar_nodo_admin.html', nodo=post, lat= post.latitud, lon = post.longitud , nombre=post.nombre, id=post.id)
+        return render_template('monitoreoDinamico/mostrar_nodo_admin.html', nodo=post, lat= post.latitud, lon = post.longitud , nombre=post.nombre, id=str(post.id), config = config)
         #return redirect(url_for('index'))
     else:
         return render_template('monitoreoDinamico/create_nodo.html', type="nodo", nodo=comment_form, typeEng=type,  isSuper = user.isSuperUser )
 
+
+import json
 # Mostrar nodos a administrador:
 @nodoServidor.route('modoeditor/<idPost>')
 def mostrarNodoAdmin(idPost, type="Nodo"):
     post = TipeClass[type].query.filter_by(id=idPost).first_or_404()
-    return render_template('monitoreoDinamico/mostrar_nodo_admin.html', nodo=post, lat= post.latitud, lon = post.longitud , nombre=post.nombre, id=post.id)
+
+    #Cargar config.json
+    with open(directorio + 'static/monitoreoDinamico/' + str(idPost) + '/config.json', 'rb') as file:
+        config =  pickle.load(file)
+
+
+    return render_template('monitoreoDinamico/mostrar_nodo_admin.html', nodo=post, lat= post.latitud, lon = post.longitud , nombre=post.nombre, id=str(post.id), config = config)
+
+#Configuracion de frecuencias
+@nodoServidor.route('modoeditor/<idPost>', methods=['POST'])
+def confirguracionFrecuencias(idPost, type="Nodo"):
+    post = TipeClass[type].query.filter_by(id=idPost).first_or_404()
+
+
+    #Obtener frecuencias
+    config = {
+            "id" : post.id,
+            "instrumentos" : {
+                "camara" : {"frecuencia" : request.form["camara"]},
+                "ms5803" : {"frecuencia" :  request.form["ms5803"]},
+                "bmp280" : {"frecuencia" :  request.form["bmp280"]},
+                "ds18b20" : {"frecuencia" :  request.form["ds18b20"]},
+                "ultrasonido" : {"frecuencia" :  request.form["ultrasonido"]},
+                "tipping" : {"frecuencia" :  request.form["tipping"]},
+            }
+        }
+
+    # Guardar config.json
+    with open(directorio + 'static/monitoreoDinamico/' + str(post.id) + '/config.json', 'wb') as fp:
+        pickle.dump(config, fp)
+
+    #Cargar config.json
+    with open(directorio + 'static/monitoreoDinamico/' + str(idPost) + '/config.json', 'rb') as file:
+        config =  pickle.load(file)
+
+
+    return render_template('monitoreoDinamico/mostrar_nodo_admin.html', nodo=post, lat= post.latitud, lon = post.longitud , nombre=post.nombre, id=str(post.id), config = config)
 
 
 # Eliminar nodos

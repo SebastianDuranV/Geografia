@@ -76,7 +76,11 @@ def post(id,instrumento):
 
         generarVideo(id)
 
-        return ""
+         #Cargar config.json
+        with open(directorio + 'static/monitoreoDinamico/' + str(idPost) + '/config.json', 'rb') as file:
+            config =  pickle.load(file)
+
+        return config
 
 
 # Comprueba si esta el archivo
