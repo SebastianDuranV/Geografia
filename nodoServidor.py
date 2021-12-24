@@ -211,6 +211,9 @@ def updatePost(idPost,type = "Nodo"):
         post.longitud = request.form['longitud']
         db.session.commit()
         flash("Actualizado")
-        return render_template('monitoreoDinamico/mostrar_nodo_admin.html', nodo=post, lat= post.latitud, lon = post.longitud , nombre=post.nombre, id=post.id)
+        #Cargar config.json
+        with open(directorio + 'static/monitoreoDinamico/' + str(idPost) + '/config.json', 'rb') as file:
+            config =  pickle.load(file)
+        return render_template('monitoreoDinamico/mostrar_nodo_admin.html', nodo=post, lat= post.latitud, lon = post.longitud , nombre=post.nombre, id=str(post.id), config = config)
     else:
         return render_template('monitoreoDinamico/editar_nodo.html', post=post, id=idPost, type=type, isSuper = user.isSuperUser )
