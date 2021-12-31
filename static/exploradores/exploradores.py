@@ -31,7 +31,7 @@ import requests
 from io import StringIO, BytesIO
 from PIL import Image
 
-directorio = "/home/iribarrenp/Geografia/"
+directorio = "/home/iribarrenp/Geografia/static/exploradores/"
 
 # Obtener las imagenes
 def getUrlData(punto,data,tipo):
