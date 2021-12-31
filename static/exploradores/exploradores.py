@@ -31,7 +31,7 @@ import requests
 from io import StringIO, BytesIO
 from PIL import Image
 
-
+directorio = "/home/iribarrenp/Geografia/"
 
 # Obtener las imagenes
 def getUrlData(punto,data,tipo):
@@ -132,7 +132,7 @@ def getUrlDataList(punto, data, tipo):
     #Guardar Gif
     nombre_archivo = punto + '.gif'
     try:
-        imageio.mimwrite(nombre_archivo, img_array, 'GIF', duration=5)
+        imageio.mimwrite(directorio + nombre_archivo, img_array, 'GIF', duration=5)
     except:
         print("No image")
 
@@ -297,7 +297,7 @@ for punto in puntos:
        "num_mediciones" : num_med, "perdido" : perdido}
     
     nombre_archivo = punto + ".json"
-    with open(nombre_archivo, 'wb') as fp:
+    with open(directorio + nombre_archivo, 'wb') as fp:
         pickle.dump(d, fp)
 
 
@@ -339,6 +339,6 @@ for punto in baliza:
        "num_mediciones" : num_med, "perdido" : perdido}
         
     nombre_archivo = punto + ".json"
-    with open(nombre_archivo, 'wb') as fp:
+    with open(directorio + nombre_archivo, 'wb') as fp:
         pickle.dump(d, fp)
 
