@@ -5,6 +5,5 @@ app.py
 ./static/exploradores/*.json
 ./static/exploradores/*.gif
 *.csv
-*.jpg
 token.txt
 ./__pychache__
